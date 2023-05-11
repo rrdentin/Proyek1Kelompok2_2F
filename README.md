@@ -8,7 +8,7 @@
 </p>
 
 ## About Laravel
-Project Ini semata mata dibuat untuk memenuhi Tugas Proyek 1 dan Pemrograman Web Lanjut, dan sepenuhnya dikelola oleh pihak management kolektif oleh Kelompok 2 
+Project Ini semata mata dibuat untuk memenuhi Tugas Proyek 1 dan Pemrograman Web Lanjut, dan sepenuhnya dikelola oleh pihak management kolektif oleh Kelompok 2 TI 2F
 
 Dikerjakan Oleh 
 - Muhammad Ega Rama Fernanda	2141720143
