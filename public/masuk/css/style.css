@@ -4,11 +4,19 @@ body {
 
 p {
   color: #b3b3b3;
-  font-weight: 300; }
+  font-weight: 300;
+  text-align: center; }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: "Roboto", sans-serif; }
+  font-family: "Poppins";
+  font-weight: bold;
+  text-align: center; }
+
+img.images {
+  margin-left: auto;
+    margin-right: auto;
+}
 
 a {
   -webkit-transition: .3s all ease;
@@ -39,8 +47,8 @@ h2 {
     overflow: hidden;
     margin-bottom: 0;
     border: 1px solid #efefef;
-    padding: 15px 15px;
-    border-bottom: none;
+    border-radius:1.5rem;
+    padding: 5px 15px;
     position: relative; }
     .half .contents .form-group label, .half .bg .form-group label {
       position: absolute;
@@ -86,9 +94,14 @@ h2 {
   text-decoration: underline; }
 
 .half .btn {
-  height: 54px;
+  height: 40px;
   padding-left: 30px;
-  padding-right: 30px; }
+  padding-right: 30px;
+  border-radius:1.5rem;
+  width: 50px;
+  background: #eb7a34;
+  font-family: "Poppins";
+  font-weight: bold; }
 
 .half .forgot-pass {
   position: relative;
