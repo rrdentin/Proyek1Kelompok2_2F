@@ -28,7 +28,10 @@
             </div>
             <form action="{{ route('register') }}" method="post">
             @csrf
-
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+              </div>
               <div class="form-group">
                 <label for="name">Nama</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>

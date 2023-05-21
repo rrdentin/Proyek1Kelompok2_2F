@@ -16,13 +16,12 @@
                         </div>
                     @endif
 
-                    {{ __('ini adalah landing page sementara!') }}
+                    {{ __('ini adalah landing page ADMIN sementara!') }}
                     <table class="table table-responsive">
-                        <tr><th>Username</th><th>:</th><td>{{$username->username}}</td></tr>
+                        <tr><th>Username</th><th>:</th><td>{{$user->username}}</td></tr>
                         <tr><th>Name</th><th>:</th><td>{{$user->name}}</td></tr>
                         <tr><th>Email</th><th>:</th><td>{{$user->email}}</td></tr>
                         <tr><th>Created At</th><th>:</th><td>{{$user->created_at}}</td><tr>
-                            
                     </tabel>
                        
                 </div>
