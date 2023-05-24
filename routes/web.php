@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
 // User routes
 Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard', [HomeController::class, 'showUserDashboard'])->name('user.dashboard');
-    Route::get('/profile', [HomeController::class, 'viewProfile'])->name('user.profile');
+    Route::get('/user/profile', [HomeController::class, 'viewProfile'])->name('user.profile');
 });
 
 // Admin routes
