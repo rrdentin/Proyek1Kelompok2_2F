@@ -204,3 +204,19 @@ h2 {
 .control--checkbox input:disabled:checked ~ .control__indicator {
   background-color: #7e0cf5;
   opacity: .2; }
+
+.bi-facebook{
+  margin-left: 100px;
+}
+.bi-google{
+  margin-left: 105px;
+}
+
+.regis{
+  color: #fff;
+  font-family: "Poppins";
+  text-align: left;
+}
+span{
+  color: rgb(16, 141, 110);
+}

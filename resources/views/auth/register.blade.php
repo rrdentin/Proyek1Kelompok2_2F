@@ -23,44 +23,71 @@
                   <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/>
                 </svg>
               </img>
-              <br>
+              <br><br>
               <p class="mb-4">atau buat akun anda</p>
             </div>
             <form action="{{ route('register') }}" method="post">
             @csrf
               <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-              </div>
-              <div class="form-group">
-                <label for="name">Nama</label>
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-              </div>
-              <br>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                <input name="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                id="username" aria-describedby="usename" required autocomplete="username" value="{{ old('username') }}"
+                placeholder="Username" autofocus style="font-size: 12px">
+              @error('username')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
               </div>
               <br>
               <div class="form-group">
-                <label for="password">Password</label>
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
+                name="name" value="{{ old('name') }}" placeholder="Nama" required autocomplete="name" 
+                autofocus style="font-size: 12px">
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
               </div>
               <br>
               <div class="form-group">
-                <label for="password">Confirm Password</label>
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
+                placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" 
+                style="font-size: 12px" autofocus>
+                @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+              </div>
+              <br>
+              <div class="form-group">
+                <input name="password" type="password"
+                    class="form-control @error('password') is-invalid @enderror" form-control-user" 
+                    id="password" placeholder="Password" style="font-size: 12px">
+                @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+              <br>
+              <div class="form-group">
+                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" 
+                placeholder="Konfirmasi Password" required autocomplete="new-password" style="font-size: 12px">
               </div>
               <br>
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Saya setuju untuk register dengan ketentuan privacy policy</span>
-                  <input type="checkbox" checked="checked"/>
+                  <input type="checkbox" checked="checked" required/>
                   <div class="control__indicator"></div>
                 </label>
               </div>
 
-              <input type="submit" value="Register" class="btn btn-block btn-primary">
+              <input type="submit" value="Register" class="btn btn-block btn-primary" style="margin-top: -30px;">
                 </a>
+              <br>
+                <p>Back to <a href="{{ route('login') }}" class="regis"> <span>Login</span> </a></p>
               </div>
             </form>
           </div>
