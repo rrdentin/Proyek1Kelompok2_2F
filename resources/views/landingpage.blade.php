@@ -42,7 +42,8 @@
             <a class="btn-hero btn-hero-style text-uppercase" href="#about">Tentang Sekolah EgaKids</a>
         </div>
     </header>
-
+    <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+<a href="https://logwork.com/countdown-yi35" class="countdown-timer" data-timezone="Asia/Jakarta" data-date="2023-06-20 15:00">Pengumuman Hasil SNBT</a>
     {{-- About Sekolah (Elang) --}}
     <section class="page-section" id="about">
         <div class="container">
