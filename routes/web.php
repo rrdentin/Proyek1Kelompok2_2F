@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard', [HomeController::class, 'showUserDashboard'])->name('user.dashboard');
     Route::get('/user/profile', [HomeController::class, 'viewProfile'])->name('user.profile');
+    Route::get('/user/landing', [HomeController::class, 'UserLanding'])->name('user.landing');
 });
 
 // Admin routes

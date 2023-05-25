@@ -68,7 +68,8 @@
                                 <a class="dropdown-item"
                                     href="{{ route('admin.profile') }}">{{ __('View Profile') }}</a>
                                 @else
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">{{ __('View Profile') }}</a>
+                                <a class="dropdown-item" href="{{ route('user.landing') }}">{{ __('Home') }}</a>
+                                <a class="dropdown-item" href="{{ route('user.dashboard')}}">{{__('Dashboard')}}</a>
                                 @endif
 
                                 @endif

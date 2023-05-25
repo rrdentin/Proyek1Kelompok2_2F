@@ -37,7 +37,7 @@ class HomeController extends Controller
             } elseif (Auth::user()->level === 'panitia') {
                 return redirect()->route('panitia.dashboard');
             } else {
-                return redirect()->route('user.dashboard');
+                return redirect()->route('user.landing');
             }
         }
 
@@ -193,6 +193,11 @@ class HomeController extends Controller
     {
         $user = Auth::user(); // Get the authenticated user
         return view('user.dashboard', compact('user')); // Pass the user variable to the view
+    }
+    public function UserLanding()
+    {
+        $user = Auth::user(); // Get the authenticated user
+        return view('user.landing', compact('user')); // Pass the user variable to the view
     }
 
     /**
