@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GoogleController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -45,3 +46,7 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
     
 });
+
+// Google routes
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

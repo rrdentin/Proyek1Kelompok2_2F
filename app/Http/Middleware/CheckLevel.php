@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 use Closure;
 use Illuminate\Http\Request;
+Use Illuminate\Support\Facades\Redirect;
 
 class CheckLevel
 {
@@ -18,12 +19,25 @@ class CheckLevel
      */
     public function handle($request, Closure $next, ...$levels)
     {
-        $user = Auth::user();
-
-        if ($user && in_array($user->level, $levels)) {
-            return $next($request);
+        if(in_array($request->user()->level, $levels)){
+            return $next($request); 
         }
 
-        abort(403, 'Unauthorized');
+        $user = Auth::user();
+        
+        if (!$user) {
+            // User is not authenticated, redirect to landing page
+            return Redirect::to('/');
+        }
+
+        if(Auth::user()->level == 'admin'){
+            return Redirect::to('admin.dashboard');
+        }else if(Auth::user()->level == 'panitia'){
+            return Redirect::to('panitia.dashboard');
+        }else{
+            return Redirect::to('user.dashboard');
+        }
+
     }
 }
+

@@ -171,7 +171,7 @@ class HomeController extends Controller
         Auth::login($user);
 
         // Redirect the user to their respective dashboard
-        return redirect()->route('user.dashboard');
+        return redirect()->route('user.landing');
     }
 
     /**
