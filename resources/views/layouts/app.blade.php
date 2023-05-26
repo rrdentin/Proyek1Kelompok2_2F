@@ -66,7 +66,7 @@
                                     href="{{ route('panitia.profile') }}">{{ __('View Profile') }}</a>
                                 @elseif(Auth::user()->level == 'admin')
                                 <a class="dropdown-item"
-                                    href="{{ route('admin.profile') }}">{{ __('View Profile') }}</a>
+                                    href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                                 @else
                                 <a class="dropdown-item" href="{{ route('user.landing') }}">{{ __('Home') }}</a>
                                 <a class="dropdown-item" href="{{ route('user.dashboard')}}">{{__('Dashboard')}}</a>
