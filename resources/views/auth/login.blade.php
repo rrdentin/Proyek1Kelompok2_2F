@@ -77,7 +77,7 @@
                             <input type="submit" value="Login" class="btn btn-block btn-primary">
                             </a>
                             <br>
-                            <a href="{{ route('register') }}" class="regis" style="margin-left: 43%"> <span>Register</span> </a>
+                            <a href="{{ route('register') }}" class="regis" style="margin-left: 40%"> <span>Register</span> </a>
                     </div>
                     </form>
                 </div>
