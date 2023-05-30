@@ -38,7 +38,7 @@
     <header class="mast-hero">
         <div class="container">
             <div class="mast-hero-subheading">Sekolah Terbaik Sejagat Anime by Ega The Kids!</div>
-            <div class="mast-hero-heading text-uppercase">Selamat Datang Kalian Anak-Anak Baru😋</div>
+            <div class="mast-hero-heading text-uppercase">Selamat Datang Kalian Anak-Anak Baru😋🤙</div>
             <a class="btn-hero btn-hero-style text-uppercase" href="#about">Tentang Sekolah EgaKids</a>
         </div>
     </header>
@@ -49,7 +49,7 @@
     </div>
 
     {{-- About Sekolah (Elang) --}}
-    <section class="page-section" id="about">
+    <section class="page-section" id="about" style="margin-top: -2rem;">
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Tentang Sekolah EgaKids</h2>
@@ -104,9 +104,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy;AdamCorp. 2023</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-light mx-2" href="#" aria-label="Twitter"></a>
-                    <a class="btn btn-light mx-2" href="#" aria-label="Facebook"></a>
-                    <a class="btn btn-light mx-2" href="#" aria-label="Instagram"></a>
+                    <a class="btn btn-light mx-2 ft-twitter" href="#" aria-label="Twitter"></a>
+                    <a class="btn btn-light mx-2 ft-facebook" href="#" aria-label="Facebook"></a>
+                    <a class="btn btn-light mx-2 ft-instagram" href="#" aria-label="Instagram"></a>
                 </div>
                 <div class="col-lg-4 text-lg-end">
                     <a class="link-light text-decoration-none me-3" href="#">Privacy Policy</a>
