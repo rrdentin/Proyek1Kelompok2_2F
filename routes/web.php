@@ -37,8 +37,8 @@ Route::middleware(['checkLevel:user'])->group(function () {
 // Admin routes
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
-        Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
-
+    Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
+    Route::get('/admin/admintable', [HomeController::class, 'showAdminTable'])->name('admin.admintable');
 });
 
 // Panitia routes

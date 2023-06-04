@@ -206,11 +206,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function showAdminDashboard()
-{
+    {
     $user = Auth::user(); // Get the authenticated user
     
     return view('admin.dashboard', compact('user')); // Pass the user variable to the view
-}
+    }
 
     /**
      * Show the panitia dashboard.
@@ -218,11 +218,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\View\View
      */
     public function showPanitiaDashboard()
-{
+    {
     $user = Auth::user(); // Get the authenticated user
     
     return view('panitia.dashboard', compact('user')); // Pass the user variable to the view
-}
+    }
 
     public function viewProfile()
     {
@@ -239,4 +239,10 @@ class HomeController extends Controller
         // Handle the case when the user level is not recognized
         abort(403, 'Unauthorized');
     }
+
+    public function showAdminTable()
+    {
+    $user = Auth::user(); // Get the authenticated user
+    return view('admin.admintable', compact('user')); // Pass the user variable to the view
+    } 
 }
