@@ -93,7 +93,7 @@
                         </svg>
                         <p>
                             &nbsp;
-                            Pengaturan Tampilan
+                            Pengaturan Galeri
                         </p>
                     </a>
                 </li>

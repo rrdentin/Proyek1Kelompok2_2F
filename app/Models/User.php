@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    public $timestamps= false;
+    protected $primaryKey = 'id';
     use HasFactory, Notifiable;
 
     /**

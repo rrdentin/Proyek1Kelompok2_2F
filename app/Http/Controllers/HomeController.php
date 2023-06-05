@@ -238,4 +238,25 @@ class HomeController extends Controller
         // Handle the case when the user level is not recognized
         abort(403, 'Unauthorized');
     }
+    public function update(Request $request, $id)
+    {
+        //melakukan validasi data
+        $request->validate([
+            'username' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'level' => '',
+
+        ]);
+        //fungsi eloquent untuk mengupdate data inputan kita
+        User::find($id)->update($request->all());
+        //jika data berhasil diupdate, akan kembali ke halaman utama
+        return redirect()->route('admin.admintable')->with('success', 'Berhasil Diupdate');
+    }
+    public function destroy($id)
+    {
+        //fungsi eloquent untuk menghapus data
+        User::find($id)->delete();
+        return redirect()->route('admin.admintable')->with('success', 'Berhasil Dihapus');
+    }
 }

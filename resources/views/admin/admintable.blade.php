@@ -132,12 +132,14 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->username }}</td>
-                                                    {{-- <form action="{{ route('admin.destroy', $user->id) }}" method="POST">
-                                                        <a class="btn btn-primary" href="{{ route('admin.edit', $user->id) }}">Edit</a>
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                                    </form> --}}
+                                                    <td>
+                                                        <form action="{{ route('admin.destroy',$user->id) }}" method="POST">
+                                                            <a class="btn btn-primary" href="{{ route('admin.edit',$user->id) }}">Edit</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </td>
                                                 </tr>
                                         @endforeach
                                         </tbody>
