@@ -58,7 +58,7 @@
         <!-- /.navbar -->
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="margin-bottom: -4%;">
+        <div class="content-wrapper" style="margin-bottom: -5%;">
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
@@ -133,8 +133,8 @@
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->username }}</td>
                                                     <td>
-                                                        <form action="{{ route('admin.destroy',$user->id) }}" method="POST">
-                                                            <a class="btn btn-primary" href="{{ route('admin.edit',$user->id) }}">Edit</a>
+                                                        <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>

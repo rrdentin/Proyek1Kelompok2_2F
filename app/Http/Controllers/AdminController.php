@@ -45,7 +45,6 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-<<<<<<< HEAD
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
@@ -64,7 +63,7 @@ class AdminController extends Controller
     public function edit($id)
     {
         $User = User::find($id);
-        return view('admin.edit', compact('User', 'kelas'));
+        return view('admin.edit', compact('User'));
         //
     }
 
@@ -75,22 +74,25 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        //
+        //melakukan validasi data
+        $request->validate([
+            'username' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'level' => '',
+
+        ]);
+        //fungsi eloquent untuk mengupdate data inputan kita
+        User::find($id)->update($request->all());
+        //jika data berhasil diupdate, akan kembali ke halaman utama
+        return redirect()->route('admin.admintable')->with('success', 'Berhasil Diupdate');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
+        //fungsi eloquent untuk menghapus data
         User::find($id)->delete();
-        return redirect()->route('admin.admintable')->with('success', 'Admin Berhasil Dihapus');
-        //
+        return redirect()->route('admin.admintable')->with('success', 'Berhasil Dihapus');
     }
 }
