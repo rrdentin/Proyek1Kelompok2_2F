@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Admin;
 
 class AdminController extends Controller
 {
@@ -15,8 +16,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = User::all; // Mengambil 5 isi tabel
-        return view('admin.admintable', compact('user'));
+        $users = User::all(); // Mengambil 5 isi tabel
+        return view('admin.admintable', compact('users'));
+
     }
 
     /**
@@ -43,10 +45,11 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+<<<<<<< HEAD
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Admin $admin)
     {
         //
     }
@@ -54,22 +57,25 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $User = User::find($id);
+        return view('admin.edit', compact('User', 'kelas'));
         //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Admin $admin)
     {
         //
     }
@@ -77,11 +83,14 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
+        User::find($id)->delete();
+        return redirect()->route('admin.admintable')->with('success', 'Admin Berhasil Dihapus');
         //
     }
 }
