@@ -73,6 +73,7 @@
 
             <!-- Main content -->
             <div class="content transition">
+<<<<<<< HEAD
                 <div class="container-fluid dashboard">
         
                     <div class="col-12">
@@ -152,6 +153,85 @@
                     </div>
                 </div>
             </div>
+=======
+        <div class="container-fluid dashboard">
+            
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <button data-toggle="modal" data-target="#buatAkun" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah User</button>
+                        </div>
+                        <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">Tambah User</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST">
+                                            <div class="form-group">
+                                                <label>Username:</label>
+                                                <input class="form-control form-control-sm" name="username" type="text" placeholder="Input your username" required>
+                                                <label>Nama:</label>
+                                                <input class="form-control form-control-sm" name="nama" type="text" placeholder="Input your name" required>
+                                                <label>Email:</label>
+                                                <input class="form-control form-control-sm" name="email" type="text" placeholder="Input your  email" required>
+                                                <label>Password:</label>
+                                                <input class="form-control form-control-sm" name="password" type="password" placeholder="Input your password" required>
+                                                <label>Confirm Password:</label>
+                                                <input class="form-control form-control-sm" name="passwordconfirm" type="password" placeholder="Confirm your password" required>
+                                            </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" name="regisforadmin" class="btn btn-primary">Add User</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="card-text">Authorisasi User</p>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="text-center fonts-big">No</th>
+                                        <th class="text-center fonts-big">Nama</th>
+                                        <th class="text-center fonts-big">Email</th>
+                                        <th class="text-center fonts-big">Username
+                                        <th>
+                                        <th class="text-center fonts-big">Password</th>
+                                        <th class="text-center fonts-big" colspan="2">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($user as $User)
+                                        <tr>
+                                        <td class="text-center fonts-big">{{ $User->name }}</td>
+                                        </tr>
+                                @endforeach
+                                    <?php
+                                    
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="../index.php" class="btn btn-primary btn-icon">
+                            <i class="fas fa-arrow-left"></i>
+                            Kembali</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+            
+>>>>>>> 85c6deceaa30dafe450a82084e914093e3e5c90f
         </div>
     </div>
     <!-- /.col-md-6 -->

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Storage;
+use App\Models\Admin;
 
 class AdminController extends Controller
 {
@@ -18,6 +18,7 @@ class AdminController extends Controller
     {
         $users = User::all(); // Mengambil 5 isi tabel
         return view('admin.admintable', compact('users'));
+
     }
 
     /**
@@ -44,6 +45,7 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
+<<<<<<< HEAD
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
@@ -55,19 +57,21 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $User = User::find($id);
         return view('admin.edit', compact('User', 'kelas'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
@@ -79,12 +83,14 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         User::find($id)->delete();
         return redirect()->route('admin.admintable')->with('success', 'Admin Berhasil Dihapus');
+        //
     }
 }
