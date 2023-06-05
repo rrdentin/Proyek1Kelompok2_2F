@@ -58,7 +58,11 @@
         <!-- /.navbar -->
 
         <!-- Content Wrapper. Contains page content -->
+<<<<<<< HEAD
         <div class="wrapper">
+=======
+        <div class="content-wrapper" style="margin-bottom: -4%;">
+>>>>>>> d857974a9a67bed3c543af613386f8beff477f3f
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
@@ -164,6 +168,8 @@
     </aside>
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
+
+@extends('admin.footer')
 
     <!-- REQUIRED SCRIPTS -->
 
