@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -38,8 +39,7 @@ Route::middleware(['checkLevel:user'])->group(function () {
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
     Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
-    Route::get('/admin/admintable', [HomeController::class, 'showAdminTable'])->name('admin.admintable');
-});
+    Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');});
 
 // Panitia routes
 Route::middleware(['checkLevel:panitia'])->group(function () {
