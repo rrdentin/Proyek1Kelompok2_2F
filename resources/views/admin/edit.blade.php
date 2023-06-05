@@ -19,46 +19,38 @@
                         </ul>
                     </div>
                 @endif
+                <div class="modal-body">
                 <form method="post" action="{{ route('users.update', $user->id) }}" id="myForm">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" class="form-control" 
-                            id="username" value="{{ $user->username }}" ariadescribedby="username" >
+                        <label for="username">Username:</label>
+                        <input class="form-control form-control-sm" name="username" type="text" required
+                            id="username" value="{{ $user->username }}" ariadescribedby="username">
+                        <label for="name">Nama:</label>
+                        <input class="form-control form-control-sm" name="name" type="text" 
+                        id="name" value="{{ $user->name }}" ariadescribedby="name" required>
+                        <label for="email">Email:</label>
+                        <input class="form-control form-control-sm" name="email" type="email" 
+                        id="email" value="{{ $user->email }}" ariadescribedby="email" required>
+                        <label for="level">Level:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" @checked($user->level == "admin") name="level" id="option1" value="admin" ariadescribedby="admin" required>
+                            <label class="form-check-label" for="admin">
+                              Admin
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" @checked($user->level == "user") name="level" id="option2" value="user" ariadescribedby="user" required>
+                            <label class="form-check-label" for="user">
+                              User
+                            </label>
+                          </div>
                     </div>
-                    <div class="form-group">
-                        <label for="name">Nama</label>
-                        <input type="text" name="name" class="form-control" 
-                            id="name" value="{{ $user->name }}" ariadescribedby="name" >
-                    </div>
-                    <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" 
-                                id="email" value="{{ $user->email }}" ariadescribedby="email" >
-                    </div>
-                    {{-- <div class="form-group">
-                        <label for="Tanggal_Lahir">Tanggal Lahir</label>
-                        <input type="text" name="Tanggal_Lahir" class="form-control" 
-                            id="Tanggal_Lahir" value="{{ $Mahasiswa->Tanggal_Lahir }}" ariadescribedby="Tanggal_Lahir" >
-                    </div>
-                    <div class="form-group">
-                        <label for="Kelas">Kelas</label>
-                        <input type="Kelas" name="Kelas" class="form-control" 
-                            id="Kelas" value="{{ $Mahasiswa->Kelas }}" ariadescribedby="Kelas" >
-                    </div>
-                    <div class="form-group">
-                        <label for="Jurusan">Jurusan</label>
-                        <input type="Jurusan" name="Jurusan" class="form-control"
-                            id="Jurusan" value="{{ $Mahasiswa->Jurusan }}" ariadescribedby="Jurusan" >
-                    </div>
-                    <div class="form-group">
-                        <label for="No_Handphone">No_Handphone</label>
-                        <input type="No_Handphone" name="No_Handphone" class="form-control" 
-                            id="No_Handphone" value="{{ $Mahasiswa->No_Handphone }}" ariadescribedby="No_Handphone" >
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button> --}}
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                </div>
+                </div>
             </div>
         </div>
     </div>

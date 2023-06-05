@@ -122,6 +122,7 @@
                                                 <th class="text-center fonts-big">Nama</th>
                                                 <th class="text-center fonts-big">Email</th>
                                                 <th class="text-center fonts-big">Username<th>
+                                                <th class="text-center fonts-big">Level<th>
                                                 <th class="text-center fonts-big" colspan="2">Aksi</th>
                                             </tr>
                                         </thead>
@@ -132,6 +133,7 @@
                                                     <td>{{ $user->name }}</td>
                                                     <td>{{ $user->email }}</td>
                                                     <td>{{ $user->username }}</td>
+                                                    <td>{{ $user->level }}</td>
                                                     <td>
                                                         <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                                                             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
