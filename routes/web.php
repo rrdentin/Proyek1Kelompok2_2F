@@ -48,5 +48,9 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
 });
 
 // Google routes
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+// Facebook routes
+Route::get('login/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
