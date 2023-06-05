@@ -7,6 +7,8 @@
     <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
     <title> Anak Shaleh </title>
 
+    {{-- css --}}
+    <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

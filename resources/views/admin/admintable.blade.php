@@ -58,7 +58,7 @@
         <!-- /.navbar -->
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+        <div class="content-wrapper" style="margin-bottom: -4%;">
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
@@ -143,7 +143,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <a href="../index.php" class="btn btn-primary btn-icon">
+                                <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
                                     Kembali
                                 </a>
@@ -170,6 +170,8 @@
     </aside>
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
+
+@extends('admin.footer')
 
     <!-- REQUIRED SCRIPTS -->
 
