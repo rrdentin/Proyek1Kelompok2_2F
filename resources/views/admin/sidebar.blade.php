@@ -14,7 +14,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <a href="dashboard" class="nav-link">
+                <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23"
                             fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                             <path
