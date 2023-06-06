@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Session;
 
+
 class HomeController extends Controller
 {
     /**
@@ -20,32 +21,33 @@ class HomeController extends Controller
      * @throws ValidationException
      */
     public function login(Request $request)
-    {
-        // Validate the login request data
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+{
+    // Validate the login request data
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        $credentials = $request->only('email', 'password');
+    $credentials = $request->only('email', 'password');
+    $remember = $request->filled('remember');
 
-        // Attempt to authenticate the user
-        if (Auth::attempt($credentials, $request->filled('remember'))) {
-            // Redirect the user based on their level
-            if (Auth::user()->level === 'admin') {
-                return redirect()->route('admin.dashboard');
-            } elseif (Auth::user()->level === 'panitia') {
-                return redirect()->route('panitia.dashboard');
-            } else {
-                return redirect()->route('user.landing');
-            }
+    // Attempt to authenticate the user
+    if (Auth::attempt($credentials, $remember)) {
+        // Redirect the user based on their level
+        if (Auth::user()->level === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif (Auth::user()->level === 'panitia') {
+            return redirect()->route('panitia.dashboard');
+        } else {
+            return redirect()->route('user.landing');
         }
-
-        // If authentication fails, redirect back with an error
-        throw ValidationException::withMessages([
-            'email' => [trans('auth.failed')],
-        ]);
     }
+
+    // If authentication fails, redirect back with an error
+    throw ValidationException::withMessages([
+        'email' => [trans('auth.failed')],
+    ]);
+}
 
     /**
      * Show the login form.
@@ -139,8 +141,12 @@ class HomeController extends Controller
     {
         Auth::logout();
 
-        return redirect('/login');
+        Session::flush();
+
+        // Redirect to the landing page
+        return redirect('/');
     }
+    
 
     /**
      * Handle user registration.
