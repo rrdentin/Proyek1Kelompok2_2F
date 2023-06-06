@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -37,9 +38,9 @@ Route::middleware(['checkLevel:user'])->group(function () {
 // Admin routes
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
-        Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
-
-});
+    Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
+    Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');});
+    Route::resource('users', AdminController::class);
 
 // Panitia routes
 Route::middleware(['checkLevel:panitia'])->group(function () {
@@ -48,5 +49,9 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
 });
 
 // Google routes
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
+// Facebook routes
+Route::get('login/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
