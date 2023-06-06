@@ -132,4 +132,5 @@ class AdminController extends Controller
         User::find($id)->delete();
         return redirect()->route('admin.admintable')->with('success', 'Berhasil Dihapus');
     }
+
 }

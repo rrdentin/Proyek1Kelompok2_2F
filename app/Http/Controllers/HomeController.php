@@ -214,8 +214,11 @@ class HomeController extends Controller
     public function showAdminDashboard()
     {
     $user = Auth::user(); // Get the authenticated user
-    
-    return view('admin.dashboard', compact('user')); // Pass the user variable to the view
+    $adminCount = User::where('level', 'admin')->count();
+    $panitiaCount = User::where('level', 'panitia')->count();
+    $pendaftarCount = User::where('level', 'user')->count();
+
+    return view('admin.dashboard', compact('adminCount', 'panitiaCount', 'pendaftarCount', 'user'));
     }
 
     /**
