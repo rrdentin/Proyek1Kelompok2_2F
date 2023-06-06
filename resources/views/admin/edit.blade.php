@@ -40,8 +40,14 @@
                               Admin
                             </label>
                           </div>
+                           <div class="form-check">
+                            <input class="form-check-input" type="radio" @checked($user->level == "panitia") name="level" id="option2" value="panitia" ariadescribedby="user" required>
+                            <label class="form-check-label" for="panitia">
+                              Panitia
+                            </label>
+                          </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" @checked($user->level == "user") name="level" id="option2" value="user" ariadescribedby="user" required>
+                            <input class="form-check-input" type="radio" @checked($user->level == "user") name="level" id="option3" value="user" ariadescribedby="user" required>
                             <label class="form-check-label" for="user">
                               User
                             </label>

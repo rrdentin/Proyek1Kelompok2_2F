@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Admin;
+use App\Http\Middleware\CheckLevel;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
@@ -14,11 +17,45 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all(); // Mengambil 5 isi tabel
-        return view('admin.admintable', compact('users'));
+        $userLevel = Auth::user()->level;
+        $selectedTable = $request->query('table'); // Mengambil nilai query parameter 'table'
 
+        $users = null;
+        $view = null;
+
+        // Memeriksa level pengguna dan pilihan tabel yang dipilih
+        if ($userLevel === 'admin') {
+            if ($selectedTable === 'admin') {
+                $users = User::where('level', 'admin')->get();
+                $view = 'admin.admintable';
+            } elseif ($selectedTable === 'user') {
+                $users = User::where('level', 'user')->get();
+                $view = 'admin.usertable';
+            } elseif ($selectedTable === 'panitia') {
+                $users = User::where('level', 'panitia')->get();
+                $view = 'panitia-table';
+            } else {
+                // Pengguna level admin tetapi tidak ada pilihan tabel yang dipilih
+                return redirect()->route('table', ['table' => 'admin']);
+            }
+        } elseif ($userLevel === 'panitia') {
+            if ($selectedTable === 'user') {
+                $users = User::where('level', 'user')->get();
+                $view = 'user-table';
+            } elseif ($selectedTable === 'panitia') {
+                $users = User::where('level', 'panitia')->get();
+                $view = 'panitia-table';
+            } else {
+                // Pengguna level panitia tetapi tidak ada pilihan tabel yang dipilih
+                return redirect()->route('table', ['table' => 'user']);
+            }
+        } else {
+            return redirect('/');
+        }
+
+        return view($view, compact('users'));
     }
 
     /**

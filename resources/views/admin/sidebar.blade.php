@@ -43,19 +43,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="admintable" class="nav-link">
+                            <a href="{{ route('table', ['table' => 'admin']) }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Admin</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('table', ['table' => 'panitia']) }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Panitia</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('table', ['table' => 'user']) }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pendaftar</p>
                             </a>

@@ -40,7 +40,9 @@ Route::middleware(['checkLevel:user'])->group(function () {
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
     Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
-    Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');});
+    //Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
+}
+);
     Route::resource('users', AdminController::class);
 
 // Panitia routes
@@ -48,6 +50,8 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
     
 });
+
+Route::get('/table', [AdminController::class, 'index'])->name('table');
 
 // Google routes
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
