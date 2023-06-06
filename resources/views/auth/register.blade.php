@@ -64,20 +64,32 @@
               </div>
               <br>
               <div class="form-group">
-                <input name="password" type="password"
-                    class="form-control @error('password') is-invalid @enderror" form-control-user" 
-                    id="password" placeholder="Password" style="font-size: 12px">
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
+    <div class="input-group">
+        <input name="password" type="password" class="form-control @error('password') is-invalid @enderror form-control-user" id="id_password" required autocomplete="current-password" placeholder="Password" style="font-size: 12px">
+        <div class="input-group-append">
+            <span id="togglePassword" class="input-group-text toggle-eye" style="background-color: transparent; border: none;">
+                <i class="far fa-eye" style="color: #999999;"></i>
+            </span>
+        </div>
+    </div>
+    @error('password')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
+
               <br>
               <div class="form-group">
-                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" 
-                placeholder="Konfirmasi Password" required autocomplete="new-password" style="font-size: 12px">
-              </div>
+    <div class="input-group">
+        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Konfirmasi Password" required autocomplete="new-password" style="font-size: 12px">
+        <div class="input-group-append">
+            <span id="togglePasswordConfirm" class="input-group-text toggle-eye" style="background-color: transparent; border: none;">
+                <i class="far fa-eye" style="color: #999999;"></i>
+            </span>
+        </div>
+    </div>
+</div>
               <br>
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Saya setuju untuk register dengan ketentuan privacy policy</span>

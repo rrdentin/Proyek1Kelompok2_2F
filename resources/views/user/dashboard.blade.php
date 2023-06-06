@@ -89,7 +89,7 @@
           <th width="500px">Nama Panjang</th><th>{{$user -> name}}</th>
         </tr>
         <tr>
-          <th width="500px">Email</th><th>{{$user -> email;}}</th>
+          <th width="500px">Email</th><th>{{$user -> email}}</th>
         </tr>
     </table>
       </p>
