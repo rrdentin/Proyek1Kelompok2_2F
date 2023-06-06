@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->string('google_id')->after('level')->nullable();
             $table->string('facebook_id')->nullable();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('social_accounts');
+        Schema::dropIfExists('test');
     }
 };

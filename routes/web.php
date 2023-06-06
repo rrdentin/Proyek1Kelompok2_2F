@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
@@ -54,4 +55,4 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 // Facebook routes
 Route::get('login/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login.facebook');
-Route::get('login/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
