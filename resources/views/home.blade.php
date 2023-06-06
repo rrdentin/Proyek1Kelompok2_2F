@@ -24,7 +24,7 @@
                         <tr><th>Created At</th><th>:</th><td>{{$user->created_at}}</td><tr>
                             
                     </tabel>
-                       
+                    
                 </div>
             </div>
         </div>
