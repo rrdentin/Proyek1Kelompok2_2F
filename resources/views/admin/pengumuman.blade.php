@@ -64,7 +64,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Table Admin</h1>
+                            <h1 class="m-0">Table Pengumuman</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -74,46 +74,45 @@
             <!-- Main content -->
             <div class="content transition">
                 <div class="container-fluid dashboard">
+        
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#buatAkun" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Admin</button>
+                                    <button data-toggle="modal" data-target="#buatAkun" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Pengumuman</button>
                                 </div>
                                 <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Admin</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Pengumuman</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST">
+                                                <form method="POST" action="{{ route('admin.store') }}" id="myForm" enctype='multipart/form-data'>
                                                     <div class="form-group">
-                                                        <label>Username:</label>
-                                                        <input class="form-control form-control-sm" name="username" type="text" placeholder="Input your username" required>
-                                                        <label>Nama:</label>
-                                                        <input class="form-control form-control-sm" name="nama" type="text" placeholder="Input your name" required>
-                                                        <label>Email:</label>
-                                                        <input class="form-control form-control-sm" name="email" type="text" placeholder="Input your  email" required>
-                                                        <label>Password:</label>
-                                                        <input class="form-control form-control-sm" name="password" type="password" placeholder="Input your password" required>
-                                                        <label>Confirm Password:</label>
-                                                        <input class="form-control form-control-sm" name="passwordconfirm" type="password" placeholder="Confirm your password" required>
+                                                        <label>Tanggal:</label>
+                                                        <input class="form-control form-control-sm" name="tgl_pengumuman" type="date" required>
+                                                        <label>Judul:</label>
+                                                        <input class="form-control form-control-sm" name="judul_pengumuman" type="text" placeholder="Input judul pengumuman Anda.." required>
+                                                        <label>Deskripsi:</label>
+                                                        <input class="form-control form-control-sm" name="desc_pengumuman" type="text" placeholder="Input deskripsi pengumuman Anda.." required>
+                                                        <label>Gambar:</label>
+                                                        <input class="form-control form-control-sm" name="gambar_pengumuman" type="file" placeholder="" required>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" name="regisforadmin" class="btn btn-primary">Add Admin</button>
+                                                <button type="submit" name="regisforadmin" class="btn btn-primary">Add Pengumuman</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="table table-bordered">
+                                <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
@@ -122,18 +121,18 @@
                                                 <th class="text-center fonts-big">Email</th>
                                                 <th class="text-center fonts-big">Username</th>
                                                 <th class="text-center fonts-big">Level</th>
-                                                <th class="text-center fonts-big" colspan="2">Aksi</th>
+                                                <th class="text-center fonts-big">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($users as $user)
                                                 <tr>
-                                                    <td class="text-center fonts-big">{{ $user->id }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->name }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->email }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->username }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->level }}</td>
-                                                    <td class="text-center fonts-big">
+                                                    <td>{{ $user->id }}</td>
+                                                    <td>{{ $user->name }}</td>
+                                                    <td>{{ $user->email }}</td>
+                                                    <td>{{ $user->username }}</td>
+                                                    <td>{{ $user->level }}</td>
+                                                    <td>
                                                         <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                                                             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
                                                             @csrf

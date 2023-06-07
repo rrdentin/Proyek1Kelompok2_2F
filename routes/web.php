@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PengumumanController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -42,7 +43,7 @@ Route::middleware(['checkLevel:user'])->group(function () {
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
     Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
-    //Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
+    Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
 }
 );
     Route::resource('users', AdminController::class);
@@ -62,3 +63,6 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 // Facebook routes
 Route::get('login/facebook', [FacebookController::class, 'redirectToFacebook'])->name('login.facebook');
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
+
+//Pengumuman routes
+Route::get('admin/pengumuman', [PengumumanController::class, 'index'])->name('admin.pengumuman');

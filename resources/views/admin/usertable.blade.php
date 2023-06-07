@@ -121,9 +121,9 @@
                                                 <th class="text-center fonts-big">No</th>
                                                 <th class="text-center fonts-big">Nama</th>
                                                 <th class="text-center fonts-big">Email</th>
-                                                <th class="text-center fonts-big">Username<th>
-                                                <th class="text-center fonts-big">Level<th>
-                                                <th class="text-center fonts-big" colspan="2">Aksi</th>
+                                                <th class="text-center fonts-big">Username</th>
+                                                <th class="text-center fonts-big">Level</th>
+                                                <th class="text-center fonts-big">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
