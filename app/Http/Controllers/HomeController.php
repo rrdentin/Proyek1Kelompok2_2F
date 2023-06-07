@@ -234,17 +234,6 @@ class HomeController extends Controller
 
     public function viewProfile()
     {
-        $user = Auth::user();
-
-        if ($user->level === 'user') {
-            return view('user.profile');
-        } elseif ($user->level === 'admin') {
-            return view('admin.profile',);
-        } elseif ($user->level === 'panitia') {
-            return view('panitia.profile');
-        }
-    
-        // Handle the case when the user level is not recognized
-        abort(403, 'Unauthorized');
+            return view('profile');
     }
 }
