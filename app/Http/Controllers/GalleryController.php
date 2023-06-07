@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengumuman;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 
-class PengumumanController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,8 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumumans = Pengumuman::all(); // Mengambil 5 isi tabel
-        return view('admin.pengumuman', compact('pengumumans'));
+        $gallery = Gallery::all(); // Mengambil 5 isi tabel
+        return view('admin.gallery', compact('gallery'));
     }
 
     /**
@@ -38,17 +37,16 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->file('gambar_pengumuman')){
-            $image_name = $request->file('gambar_pengumuman')->store('pengumuman', 'public');
+        if ($request->file('gambar_galeri')){
+            $image_name = $request->file('gambar_galeri')->store('gallery', 'public');
         }
 
-        Pengumuman::create([
-            'tgl_pengumuman' => $request->tgl_pengumuman,
-            'judul_pengumuman' => $request->judul_pengumuman,
-            'desc_pengumuman' => $request->desc_pengumuman,
-            'gambar_pengumuman' => $image_name,
+        Gallery::create([
+            'kategori_galeri' => $request->kategori_galeri,
+            'keterangan_galeri' => $request->keterangan_galeri,
+            'gambar_galeri' => $image_name,
         ]);
-        return 'Pengumuman berhasil dibuat!';
+        return 'Galeri berhasil dibuat!';
     }
 
     /**
@@ -82,20 +80,19 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pengumumans = Pengumuman::find($id);
+        $gallery = Gallery::find($id);
 
-        $pengumumans->tgl_pengumuman = $request->tgl_pengumuman;
-        $pengumumans->judul_pengumuman = $request->judul_pengumuman;
-        $pengumumans->desc_pengumuman = $request->desc_pengumuman;
+        $gallery->kategori_galeri = $request->kategori_galeri;
+        $gallery->keterangan_galeri = $request->keterangan_galeri;
 
-        if ($pengumumans->gambar_pengumuman && file_exists(storage_path('app/public/' . $pengumumans->gambar_pengumuman))) {
-            Storage::delete('public/' . $pengumumans->gambar_pengumuman);
-    }
-    $image_name = $request->file('gambar_pengumuman')->store('pengumuman', 'public');
-    $pengumumans->gambar_pengumuman = $image_name;
+        if ($gallery->gambar_galeri && file_exists(storage_path('app/public/' . $gallery->gambar_galeri))) {
+            Storage::delete('public/' . $gallery->gambar_galeri);
+        }
+        $image_name = $request->file('gambar_galeri')->store('gallery', 'public');
+        $gallery->gambar_galeri = $image_name;
 
-    $pengumumans->save();
-    return 'Pengumuman berhasil diubah!';
+        $gallery->save();
+        return 'Galeri berhasil diubah!';
     }
 
     /**
@@ -107,7 +104,7 @@ class PengumumanController extends Controller
     public function destroy($id)
     {
         //fungsi eloquent untuk menghapus data
-        Pengumuman::find($id)->delete();
-        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil dihapus!');
+        Gallery::find($id)->delete();
+        return redirect()->route('admin.gallery')->with('success', 'Galeri berhasil dihapus!');
     }
 }
