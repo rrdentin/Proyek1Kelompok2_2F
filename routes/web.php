@@ -28,6 +28,8 @@ Route::post('/reset-password', [HomeController::class, 'resetPassword'])->name('
 Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [HomeController::class, 'showChangePasswordForm'])->name('password.change');
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('password.update');
+    Route::get('/profile', [HomeController::class, 'viewProfile'])->name('profile');
+
 });
 
 // User routes
