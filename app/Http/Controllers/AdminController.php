@@ -35,7 +35,7 @@ class AdminController extends Controller
                 $view = 'admin.usertable';
             } elseif ($selectedTable === 'panitia') {
                 $users = User::where('level', 'panitia')->get();
-                $view = 'panitia-table';
+                $view = 'admin.panitia-table';
             } else {
                 // Pengguna level admin tetapi tidak ada pilihan tabel yang dipilih
                 return redirect()->route('table', ['table' => 'admin']);
@@ -46,7 +46,7 @@ class AdminController extends Controller
                 $view = 'user-table';
             } elseif ($selectedTable === 'panitia') {
                 $users = User::where('level', 'panitia')->get();
-                $view = 'panitia-table';
+                $view = 'admin.panitia-table';
             } else {
                 // Pengguna level panitia tetapi tidak ada pilihan tabel yang dipilih
                 return redirect()->route('table', ['table' => 'user']);
