@@ -91,7 +91,7 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ route('admin.store') }}" id="myForm" enctype='multipart/form-data'>
+                                                <form method="POST" action="{{ route('pengumuman.store') }}" id="myForm" enctype='multipart/form-data'>
                                                     <div class="form-group">
                                                         <label>Tanggal:</label>
                                                         <input class="form-control form-control-sm" name="tgl_pengumuman" type="date" required>
@@ -117,24 +117,24 @@
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center fonts-big">No</th>
-                                                <th class="text-center fonts-big">Nama</th>
-                                                <th class="text-center fonts-big">Email</th>
-                                                <th class="text-center fonts-big">Username</th>
-                                                <th class="text-center fonts-big">Level</th>
+                                                <th class="text-center fonts-big">Tanggal</th>
+                                                <th class="text-center fonts-big">Judul</th>
+                                                <th class="text-center fonts-big">Deskripsi</th>
+                                                <th class="text-center fonts-big">Gambar</th>
                                                 <th class="text-center fonts-big">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($pengumumans as $pengumuman)
                                                 <tr>
-                                                    <td>{{ $user->id }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->username }}</td>
-                                                    <td>{{ $user->level }}</td>
+                                                    <td>{{ $pengumuman->id }}</td>
+                                                    <td>{{ $pengumuman->tgl_pengumuman }}</td>
+                                                    <td>{{ $pengumuman->judul_pengumuman }}</td>
+                                                    <td>{{ $pengumuman->desc_pengumuman }}</td>
+                                                    <td>{{ $pengumuman->gambar_pengumuman }}</td>
                                                     <td>
-                                                        <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                                        <form action="{{ route('pengumuman.destroy',$user->id) }}" method="POST">
+                                                            <a class="btn btn-primary" href="{{ route('pengumuman.edit',$user->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">Delete</button>

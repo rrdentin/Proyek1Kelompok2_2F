@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class PengumumanController extends Controller
 {
@@ -14,8 +16,8 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $user = User::all(); // Mengambil 5 isi tabel
-        return view('admin.pengumuman', compact('user'));
+        $pengumumans = Pengumuman::all(); // Mengambil 5 isi tabel
+        return view('admin.pengumuman', compact('pengumumans'));
     }
 
     /**
@@ -36,7 +38,17 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->file('gambar_pengumuman')){
+            $image_name = $request->file('gambar_pengumuman')->store('images', 'public');
+        }
+
+        Pengumuman::create([
+            'tgl_pengumuman' => $request->tgl_pengumuman,
+            'judul_pengumuman' => $request->judul_pengumuman,
+            'desc_pengumuman' => $request->desc_pengumuman,
+            'gambar_pengumuman' => $image_name,
+        ]);
+        return 'Pengumuman berhasil dibuat!';
     }
 
     /**
@@ -70,7 +82,20 @@ class PengumumanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pengumumans = Pengumuman::find($id);
+
+        $pengumumans->tgl_pengumuman = $request->tgl_pengumuman;
+        $pengumumans->judul_pengumuman = $request->judul_pengumuman;
+        $pengumumans->desc_pengumuman = $request->desc_pengumuman;
+
+        if ($pengumumans->gambar_pengumuman && file_exists(storage_path('app/public/' . $pengumumans->gambar_pengumuman))) {
+            Storage::delete('public/' . $pengumumans->gambar_pengumuman);
+    }
+    $image_name = $request->file('gambar_pengumuman')->store('images', 'public');
+    $pengumumans->gambar_pengumuman = $image_name;
+
+    $pengumumans->save();
+    return 'Pengumuman berhasil diubah!';
     }
 
     /**
@@ -81,6 +106,8 @@ class PengumumanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //fungsi eloquent untuk menghapus data
+        Pengumuman::find($id)->delete();
+        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil dihapus!');
     }
 }
