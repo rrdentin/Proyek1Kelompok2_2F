@@ -19,11 +19,10 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
+        $users = User::paginate(5);
         $userLevel = Auth::user()->level;
         $selectedTable = $request->query('table'); // Mengambil nilai query parameter 'table'
 
-        $users = null;
-        $view = null;
 
         // Memeriksa level pengguna dan pilihan tabel yang dipilih
         if ($userLevel === 'admin') {
