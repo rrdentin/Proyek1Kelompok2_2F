@@ -63,4 +63,4 @@ Route::get('login/facebook', [FacebookController::class, 'redirectToFacebook'])-
 Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebookCallback']);
 
 //Pengumuman routes
-Route::get('admin.pengumuman', [PengumumanController::class, 'index'])->name('admin.pengumuman');
+Route::get('admin/pengumuman', [PengumumanController::class, 'index'])->name('admin.pengumuman');
