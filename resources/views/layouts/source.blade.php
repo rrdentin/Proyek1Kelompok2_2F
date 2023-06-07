@@ -17,17 +17,16 @@
     <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('landing/css/bootstrap.min.css')}}">
     
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Hz6XBs0VdMh1l+kswJu3T1C7z25L7CUuejN7DjqJT5zcUViyAeA33X7BXd1+G9Dy" crossorigin="anonymous"></script>
-
 </head>
 <body>
+    @yield('content')
+
+    <!-- Scripts -->
+    <script>
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('show');
+        }
+    </script>
 </body>
 </html>
-<script>
-    function toggleDropdown() {
-        var dropdownMenu = document.getElementById('dropdownMenu');
-        dropdownMenu.classList.toggle('show');
-    }
-</script>

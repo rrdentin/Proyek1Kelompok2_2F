@@ -12,7 +12,7 @@
 </head>
 
 <body id="top-page">
-    {{-- Navbar Section (Elang) --}}
+    {{-- Navbar Section --}}
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
         <div class="container">
             <img class="navbar-img" src="/landing/images/logo.png">
@@ -47,7 +47,7 @@
         </div>
     </nav>
 
-    {{-- Header Welcoming Section (Elang) --}}
+    {{-- Header Welcoming Section --}}
     <header class="mast-hero">
         <div class="container">
             <div class="mast-hero-subheading">Sekolah Terbaik Sejagat Anime by Ega The Kids!</div>
@@ -106,7 +106,7 @@
         <img src="images/sekolah.jpg" alt=""> --}}
     </div>
 
-    {{-- Footer Section (Elang) --}}
+    {{-- Footer Section --}}
 
     <footer class="footer py-4">
         <div class="container">
