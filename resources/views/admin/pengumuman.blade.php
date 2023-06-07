@@ -64,7 +64,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Table Admin</h1>
+                            <h1 class="m-0">Table Pengumuman</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -126,7 +126,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($user as $user)
                                                 <tr>
                                                     <td>{{ $user->id }}</td>
                                                     <td>{{ $user->name }}</td>
