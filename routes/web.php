@@ -29,8 +29,6 @@ Route::post('/reset-password', [HomeController::class, 'resetPassword'])->name('
 Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [HomeController::class, 'showChangePasswordForm'])->name('password.change');
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('password.update');
-    Route::get('/profile', [HomeController::class, 'viewProfile'])->name('profile');
-
 });
 
 // User routes
@@ -43,7 +41,7 @@ Route::middleware(['checkLevel:user'])->group(function () {
 // Admin routes
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
-    Route::get('/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
+    Route::get('/admin/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
     Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
 }
 );
@@ -52,7 +50,8 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 // Panitia routes
 Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
-    
+    Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
+
 });
 
 Route::get('/table', [AdminController::class, 'index'])->name('table');

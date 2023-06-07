@@ -234,6 +234,18 @@ class HomeController extends Controller
 
     public function viewProfile()
     {
-            return view('profile');
+        $user = Auth::user();
+        $level = $user->level;
+
+        if ($level === 'admin') {
+            // Custom logic for admin level
+            return view('admin.profile', compact('user'));
+        } elseif ($level === 'panitia') {
+            // Custom logic for moderator level
+            return view('panitia.profile', compact('user'));
+        } elseif ($level === 'user') {
+            // Custom logic for regular user level
+            return view('user.profile', compact('user'));
+        } 
     }
 }

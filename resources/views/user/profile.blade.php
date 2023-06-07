@@ -58,8 +58,12 @@
     </div>
 </section>
 
+@endsection
+
+@section('footer')
 
 @endsection
+
 
 <style>
     .gradient-custom {
