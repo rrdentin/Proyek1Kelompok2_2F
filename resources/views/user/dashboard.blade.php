@@ -38,10 +38,10 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="{{ route('user.landing')}}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#user.dashboard" class="nav-link">Dashboard</a>
+        <a href="{{ route('user.profile')}}" class="nav-link">Profile</a>
       </li>
     </ul>
 
