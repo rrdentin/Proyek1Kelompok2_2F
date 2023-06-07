@@ -10,7 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#top-page">Home</a>
+                        <a class="nav-link" href="landing">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
@@ -36,5 +36,8 @@
         </div>
     </nav>
 
-@yield('content2')
 @endsection
+@yield('content2')
+
+@extends('layouts.footer_user')
+

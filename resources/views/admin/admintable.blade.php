@@ -113,27 +113,27 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
+                                <div class="table table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center fonts-big">No</th>
                                                 <th class="text-center fonts-big">Nama</th>
                                                 <th class="text-center fonts-big">Email</th>
-                                                <th class="text-center fonts-big">Username<th>
-                                                <th class="text-center fonts-big">Level<th>
+                                                <th class="text-center fonts-big">Username</th>
+                                                <th class="text-center fonts-big">Level</th>
                                                 <th class="text-center fonts-big" colspan="2">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach ($users as $user)
                                                 <tr>
-                                                    <td>{{ $user->id }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->username }}</td>
-                                                    <td>{{ $user->level }}</td>
-                                                    <td>
+                                                    <td class="text-center fonts-big">{{ $user->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->name }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->email }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->username }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->level }}</td>
+                                                    <td class="text-center fonts-big">
                                                         <form action="{{ route('users.destroy',$user->id) }}" method="POST">
                                                             <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
                                                             @csrf
