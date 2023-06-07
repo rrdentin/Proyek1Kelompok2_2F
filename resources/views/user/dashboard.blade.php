@@ -1,129 +1,140 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Dashboard</title>
+@extends('admin.app')
+@extends('user.sidebar')
+<!--
+`body` tag options:
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="/plugins/jqvmap/jqvmap.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="/plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="/plugins/summernote/summernote-bs4.min.css">
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+  Apply one or more of the following classes to to the body tag
+  to get the desired effect
 
- <!-- Preloader -->
- <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="../../dist/img/polinema.png" alt="AdminLTELogo" height="60" width="60">
-  </div>
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('user.landing')}}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('user.profile')}}" class="nav-link">Profile</a>
-      </li>
-    </ul>
+  * sidebar-collapse
+  * sidebar-mini
+-->
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+<body class="hold-transition sidebar-mini">
 
-      <!-- Messages Dropdown Menu -->
-
-      <!-- Notifications Dropdown Menu -->
-      
-      <li class="nav-item d-none d-sm-inline-block">
-        <a class="nav-link" href="{{route('logout')}}"
-          onclick="event.preventDefault();
-                        document.getElementById('logout-form').submit();">
-                      {{_('Logout')}}
-        </a>
-        <form id="logout-form" action="{{route('logout')}}" method="POST" class="d-none">
-          @csrf 
-        </form>
-      </li>
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  @extends('layouts.sidebar_user')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="card card-primary">
-    <div class="card-header">
-      <h3 class="card-title">About Me</h3>
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo" height="170"
+            width="195">
     </div>
-    <!-- /.card-header -->
-    <div class="card-body">
-      <strong><i class="fas fa-book mr-1"></i>Biodata Mahasiswa</strong>
+    <div class="wrapper">
 
-      <p class="text-muted">
-        <table border ="2" style="width: 100%">
-        
-        <!-- Penambahan Data -->
-        <tr>
-          <th width="500px">Username</th><th>{{Auth::user()-> username}}</th>
-        </tr>
-        <tr>
-          <th width="500px">Nama Panjang</th><th>{{$user -> name}}</th>
-        </tr>
-        <tr>
-          <th width="500px">Email</th><th>{{$user -> email}}</th>
-        </tr>
-    </table>
-      </p>
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+
+            <!-- Right navbar links -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                            class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                            <path fill-rule="evenodd"
+                                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                        </svg>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <a class="nav-link" href="#">
+                            <th>{{ Auth::user()->name }}</th>
+                        </a>
+                        <a class="nav-link" href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="wrapper">
+            <div class="content-wrapper" style="margin-bottom: -5%;">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0">PPBD Manager | Shaleh</h1>
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                </ol>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <!-- Small boxes (Stat box) -->
+                        <!-- content alvian -->
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg">
+                <div class="card">
+                  <div class="card-header border-0">
+                    <div class="d-flex justify-content-between" >
+                    <img src="/ppdb/1.png" style='size:px'><br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <!-- content ega -->
+                        <!-- Main row -->
+                        <div class="row">
+                            <!-- Left col -->
+                            <section class="col-lg-7 connectedSortable">
+                                <!-- Custom tabs (Charts with tabs)-->
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- /.col-md-6 -->
     </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- /.card -->
-</div>
-            <!-- /.card -->
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-    
-  <!-- /.content-wrapper -->
-  @extends('layouts.footer_user')
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- jQuery UI 1.11.4 -->
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-  <script>
-    $.widget.bridge('uibutton', $.ui.button)
-  </script>
-  
-  
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
+        <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script>
-      $("document").ready( function () {
-          alert("Selamat Datang Anda Akan diarahkan ke Halaman Web Kami !, tekan ok untuk memulai petualangan");
-      }); 
-  </script>
-  </body>
+    <!-- ./wrapper -->
+
+    @extends('admin.footer')
+
+    <!-- REQUIRED SCRIPTS -->
+
+    <!-- jQuery -->
+    <script src="{{ asset('/') }}plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('/') }}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="{{ asset('/') }}dist/js/adminlte.js"></script>
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="{{ asset('/') }}plugins/chart.js/Chart.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('/') }}dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
+</body>
+
+</html>
