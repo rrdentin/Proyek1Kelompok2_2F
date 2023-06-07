@@ -65,7 +65,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $user = User::all(); //mendapatkan data dari tabel kelas
+        return view('mahasiswas.create', ['kelas' => $kelas]);
     }
 
     /**
@@ -132,5 +133,4 @@ class AdminController extends Controller
         User::find($id)->delete();
         return redirect()->route('admin.admintable')->with('success', 'Berhasil Dihapus');
     }
-
 }
