@@ -15,7 +15,7 @@ class PengumumanController extends Controller
     public function index()
     {
         $user = User::all(); // Mengambil 5 isi tabel
-        return view('admin.pengumuman', compact('users'));
+        return view('admin.pengumuman', compact('user'));
     }
 
     /**
