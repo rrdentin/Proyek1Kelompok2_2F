@@ -2,6 +2,8 @@
 @section('content')
 
 <title>Login | Shaleh</title>
+<link rel="stylesheet" href="real.css">
+  <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     integrity="sha512-..." crossorigin="anonymous">
 </head>

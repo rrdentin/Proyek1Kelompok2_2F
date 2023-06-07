@@ -2,6 +2,8 @@
 @section('content')
 
   <title>Register | Shaleh</title>
+  <link rel="stylesheet" href="real.css">
+  <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
   </head>
   <body>
 
