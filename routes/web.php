@@ -7,6 +7,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengumumanController;
+use App\Http\Controllers\GalleryController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -67,3 +68,7 @@ Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebook
 //Pengumuman routes
 Route::get('admin/pengumuman', [PengumumanController::class, 'index'])->name('admin.pengumuman');
 Route::resource('pengumuman', PengumumanController::class);
+
+//Gallery routes
+Route::get('admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
+Route::resource('gallery', GalleryController::class);
