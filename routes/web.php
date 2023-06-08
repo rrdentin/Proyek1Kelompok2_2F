@@ -43,6 +43,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
     Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
+    Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
 }
 );
     Route::resource('users', AdminController::class);

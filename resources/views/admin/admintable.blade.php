@@ -90,24 +90,30 @@
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST">
+                                                <form method="POST" action="{{ route('admin.add-admin') }}">
+                                                    @csrf
                                                     <div class="form-group">
-                                                        <label>Username:</label>
+                                                        <label for="username">Username:</label>
                                                         <input class="form-control form-control-sm" name="username" type="text" placeholder="Input your username" required>
-                                                        <label>Nama:</label>
-                                                        <input class="form-control form-control-sm" name="nama" type="text" placeholder="Input your name" required>
-                                                        <label>Email:</label>
-                                                        <input class="form-control form-control-sm" name="email" type="text" placeholder="Input your  email" required>
-                                                        <label>Password:</label>
-                                                        <input class="form-control form-control-sm" name="password" type="password" placeholder="Input your password" required>
-                                                        <label>Confirm Password:</label>
-                                                        <input class="form-control form-control-sm" name="passwordconfirm" type="password" placeholder="Confirm your password" required>
                                                     </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" name="regisforadmin" class="btn btn-primary">Add Admin</button>
+                                                    <div class="form-group">
+                                                        <label for="name">Nama:</label>
+                                                        <input class="form-control form-control-sm" name="name" type="text" placeholder="Input your name" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="email">Email:</label>
+                                                        <input class="form-control form-control-sm" name="email" type="email" placeholder="Input your email" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="password">Password:</label>
+                                                        <input class="form-control form-control-sm" name="password" type="password" placeholder="Input your password" required>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="passwordconfirm">Confirm Password:</label>
+                                                        <input class="form-control form-control-sm" name="password_confirmation" type="password" placeholder="Confirm your password" required>
+                                                    </div>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Add Admin</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Admin;
 use App\Http\Middleware\CheckLevel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class AdminController extends Controller
@@ -74,9 +75,28 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function addAdmin(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|string|max:255|unique:users',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        // Create a new user with the provided data and set the level as 'admin'
+        $user = User::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'level' => 'admin',
+        ]);
+        
+        $user->save();
+
+        // Redirect the user to a desired location after saving to the database
+        return redirect()->route('admin.admintable')->with('success', 'Admin added successfully.');
     }
 
     /**
