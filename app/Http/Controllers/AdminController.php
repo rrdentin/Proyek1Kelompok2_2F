@@ -66,7 +66,7 @@ class AdminController extends Controller
     public function create()
     {
         $user = User::all(); //mendapatkan data dari tabel kelas
-        return view('mahasiswas.create', ['kelas' => $kelas]);
+        // return view('mahasiswas.create', ['kelas' => $kelas]);
     }
 
     /**
@@ -75,7 +75,8 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addAdmin(Request $request)
+
+     public function store(Request $request)
     {
         $request->validate([
             'username' => 'required|string|max:255|unique:users',
@@ -84,21 +85,21 @@ class AdminController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        // Create a new user with the provided data and set the level as 'admin'
+        // Create a new user with the provided data and set the level as 'request'
         $user = User::create([
             'username' => $request->username,
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'level' => 'admin',
+            'level' => $request->level,
         ]);
         
         $user->save();
 
         // Redirect the user to a desired location after saving to the database
-        return redirect()->route('admin.admintable')->with('success', 'Admin added successfully.');
+        return redirect()->route('admin.admintable')->with('success', 'User Berhasil Ditambahakan!');
     }
-
+    
     /**
      * Display the specified resource.
      *

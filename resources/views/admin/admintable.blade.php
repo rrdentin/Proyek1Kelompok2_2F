@@ -78,47 +78,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#buatAkun" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Admin</button>
+                                    <button data-toggle="modal" data-target="#createAdmin" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Admin</button>
                                 </div>
-                                <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Admin</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ route('admin.add-admin') }}">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="username">Username:</label>
-                                                        <input class="form-control form-control-sm" name="username" type="text" placeholder="Input your username" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="name">Nama:</label>
-                                                        <input class="form-control form-control-sm" name="name" type="text" placeholder="Input your name" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="email">Email:</label>
-                                                        <input class="form-control form-control-sm" name="email" type="email" placeholder="Input your email" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="password">Password:</label>
-                                                        <input class="form-control form-control-sm" name="password" type="password" placeholder="Input your password" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="passwordconfirm">Confirm Password:</label>
-                                                        <input class="form-control form-control-sm" name="password_confirmation" type="password" placeholder="Confirm your password" required>
-                                                    </div>
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Add Admin</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
+                                @include('admin.create.createAdmin')
+
                                 <div class="table table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
