@@ -17,14 +17,16 @@
         <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo" height="170"
             width="195">
     </div>
-    <div class="wrapper">
 
+    <div class="wrapper">
+        
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars"></i></a>
                 </li>
             </ul>
 
@@ -57,112 +59,97 @@
         <!-- /.navbar -->
 
         <!-- Content Wrapper. Contains page content -->
-        <div class="wrapper">
-            <div class="content-wrapper" style="margin-bottom: -5%;">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1 class="m-0">Admin</h1>
-                            </div><!-- /.col -->
-                            <div class="col-sm-6">
-                                <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                </ol>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content-header -->
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Admin</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
 
-                <!-- Main content -->
-                <section class="content">
-                    <div class="container-fluid">
-                        <!-- Small boxes (Stat box) -->
-                        <div class="row">
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-info">
-                                    <div class="inner">
-                                        <h3>{{ $adminCount }}</h3>
-                                        <p>Admin</p>
-                                    </div>
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
-                                            fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <!-- SVG path -->
-                                        </svg>
-                                    </div>
-                                    <a href="{{ route('table', ['table' => 'admin']) }}" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+        <!-- Main content -->
+        <section class="content" style="margin-left: 250px">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ $adminCount }}</h3>
+                                <p>Admin</p>
                             </div>
-                            <!-- ./col -->
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-success">
-                                    <div class="inner">
-                                        <h3>{{ $panitiaCount }}</h3>
-                                        <p>Panitia</p>
-                                    </div>
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
-                                            fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <!-- SVG path -->
-                                        </svg>
-                                    </div>
-                                    <a href="{{ route('table', ['table' => 'panitia']) }}" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
+                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <!-- SVG path -->
+                                </svg>
                             </div>
-                            <!-- ./col -->
-                            <div class="col-lg-3 col-6">
-                                <!-- small box -->
-                                <div class="small-box bg-warning">
-                                    <div class="inner">
-                                        <h3>{{ $pendaftarCount }}</h3>
-                                        <p>Pendaftar</p>
-                                    </div>
-                                    <div class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
-                                            fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                            <!-- SVG path -->
-                                        </svg>
-                                    </div>
-                                    <a href="{{ route('table', ['table' => 'user']) }}" class="small-box-footer">More info <i
-                                            class="fas fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        <!-- Main row -->
-                        <div class="row">
-                            <!-- Left col -->
-                            <section class="col-lg-7 connectedSortable">
-                                <!-- Custom tabs (Charts with tabs)-->
+                            <a href="{{ route('table', ['table' => 'admin']) }}" class="small-box-footer">More info
+                                <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>{{ $panitiaCount }}</h3>
+                                <p>Panitia</p>
+                            </div>
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
+                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <!-- SVG path -->
+                                </svg>
+                            </div>
+                            <a href="{{ route('table', ['table' => 'panitia']) }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{ $pendaftarCount }}</h3>
+                                <p>Pendaftar</p>
+                            </div>
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
+                                    fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                                    <!-- SVG path -->
+                                </svg>
+                            </div>
+                            <a href="{{ route('table', ['table' => 'user']) }}" class="small-box-footer">More info <i
+                                    class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <!-- Main row -->
+                <div class="row">
+                    <!-- Left col -->
+                    <section class="col-lg-7 connectedSortable">
+                        <!-- Custom tabs (Charts with tabs)-->
+                    </section>
+                </div>
             </div>
-        </div>
-        <!-- /.col-md-6 -->
+        </section>
     </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-    </div>
+    @extends('admin.footer')
     <!-- /.content-wrapper -->
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
-
-    @extends('admin.footer')
 
     <!-- REQUIRED SCRIPTS -->
 

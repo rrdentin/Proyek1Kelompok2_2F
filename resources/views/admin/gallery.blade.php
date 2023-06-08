@@ -1,5 +1,5 @@
 @extends('admin.app')
-@extends('admin.sidebar')  
+@extends('admin.sidebar')
 <!--
 `body` tag options:
 
@@ -14,8 +14,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo"
-            height="170" width="195">
+        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo" height="170"
+            width="195">
     </div>
     <div class="wrapper">
 
@@ -57,8 +57,7 @@
         </nav>
         <!-- /.navbar -->
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="margin-bottom: -5%;">
+        <div style="margin-left: 250px">
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
@@ -74,37 +73,50 @@
             <!-- Main content -->
             <div class="content transition">
                 <div class="container-fluid dashboard">
-        
+
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#buatAkun" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Galeri</button>
+                                    <button data-toggle="modal" data-target="#buatAkun"
+                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
+                                        Galeri</button>
                                 </div>
-                                <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLongTitle">Tambah Galeri</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <form method="POST" action="{{ route('gallery.store') }}" id="myForm" enctype='multipart/form-data'>
+                                                <form method="POST" action="{{ route('gallery.store') }}"
+                                                    id="myForm" enctype='multipart/form-data'>
                                                     <div class="form-group">
                                                         <label>Kategori:</label>
-                                                        <input class="form-control form-control-sm" name="kategori_galeri" type="text" placeholder="Input kategori galeri Anda.." required>
+                                                        <input class="form-control form-control-sm"
+                                                            name="kategori_galeri" type="text"
+                                                            placeholder="Input kategori galeri Anda.." required>
                                                         <label>Keterangan:</label>
-                                                        <input class="form-control form-control-sm" name="keterangan_galeri" type="text" placeholder="Input keterangan galeri Anda.." required>
+                                                        <input class="form-control form-control-sm"
+                                                            name="keterangan_galeri" type="text"
+                                                            placeholder="Input keterangan galeri Anda.." required>
                                                         <label>Gambar:</label>
-                                                        <input class="form-control form-control-sm" name="gambar_pengumuman" type="file" placeholder="" required>
+                                                        <input class="form-control form-control-sm"
+                                                            name="gambar_pengumuman" type="file" placeholder=""
+                                                            required>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" name="regisforadmin" class="btn btn-primary">Add Galeri</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" name="regisforadmin" class="btn btn-primary">Add
+                                                    Galeri</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -122,22 +134,25 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($gallery as $galeri)
+                                            @foreach ($gallery as $galeri)
                                                 <tr>
                                                     <td>{{ $galeri->id }}</td>
                                                     <td>{{ $galeri->kategori_galeri }}</td>
                                                     <td>{{ $galeri->keterangan_galeri }}</td>
                                                     <td>{{ $galeri->gambar_galeri }}</td>
                                                     <td>
-                                                        <form action="{{ route('gallery.destroy',$user->id) }}" method="POST">
-                                                            <a class="btn btn-primary" href="{{ route('gallery.edit',$user->id) }}">Edit</a>
+                                                        <form action="{{ route('gallery.destroy', $user->id) }}"
+                                                            method="POST">
+                                                            <a class="btn btn-primary"
+                                                                href="{{ route('gallery.edit', $user->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                        @endforeach
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -152,15 +167,7 @@
             </div>
         </div>
     </div>
-    <!-- /.col-md-6 -->
     </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -169,7 +176,7 @@
     <!-- /.control-sidebar -->
     <!-- ./wrapper -->
 
-@extends('admin.footer')
+    @extends('admin.footer')
 
     <!-- REQUIRED SCRIPTS -->
 
@@ -186,4 +193,5 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
 </body>
+
 </html>

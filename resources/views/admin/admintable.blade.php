@@ -1,5 +1,5 @@
 @extends('admin.app')
-@extends('admin.sidebar')  
+@extends('admin.sidebar')
 <!--
 `body` tag options:
 
@@ -14,8 +14,8 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo"
-            height="170" width="195">
+        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo" height="170"
+            width="195">
     </div>
     <div class="wrapper">
 
@@ -57,8 +57,7 @@
         </nav>
         <!-- /.navbar -->
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="margin-bottom: -5%;">
+        <div style="margin-left: 250px">
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
@@ -78,9 +77,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#createAdmin" class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Admin</button>
+                                    <button data-toggle="modal" data-target="#createAdmin"
+                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
+                                        Admin</button>
                                 </div>
-                                
+
                                 @include('admin.create.createAdmin')
 
                                 <div class="table table-bordered">
@@ -96,7 +97,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($users as $user)
+                                            @foreach ($users as $user)
                                                 <tr>
                                                     <td class="text-center fonts-big">{{ $user->id }}</td>
                                                     <td class="text-center fonts-big">{{ $user->name }}</td>
@@ -104,15 +105,18 @@
                                                     <td class="text-center fonts-big">{{ $user->username }}</td>
                                                     <td class="text-center fonts-big">{{ $user->level }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                                        <form action="{{ route('users.destroy', $user->id) }}"
+                                                            method="POST">
+                                                            <a class="btn btn-primary"
+                                                                href="{{ route('users.edit', $user->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                        @endforeach
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -127,24 +131,14 @@
             </div>
         </div>
     </div>
-    <!-- /.col-md-6 -->
     </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
-    <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
+    
+    @extends('admin.footer')
     <!-- /.control-sidebar -->
-    <!-- ./wrapper -->
-
-@extends('admin.footer')
 
     <!-- REQUIRED SCRIPTS -->
 
@@ -161,4 +155,5 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
 </body>
+
 </html>
