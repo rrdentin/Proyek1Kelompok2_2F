@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+
+
 //tesssss
 
 class HomeController extends Controller
@@ -248,4 +253,52 @@ class HomeController extends Controller
             return view('user.profile', compact('user'));
         } 
     }
+    
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('user.edit_profile', compact('user'));
+    }
+    public function updateUser(Request $request)
+{
+    $user = Auth::user();
+    $validator = Validator::make($request->all(), [
+        'username' => 'nullable',
+        'name' => 'required',
+        'noHp' => 'nullable',
+        'tglLahir' => 'nullable',
+        'jenKel' => 'nullable',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    $user->username = $request->username;
+    $user->name = $request->name;
+    $user->noHp = $request->noHp;
+    $user->tglLahir = $request->tglLahir;
+    $user->jenKel = $request->jenKel;
+
+    if ($request->hasFile('foto')) {
+        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+            Storage::disk('public')->delete($user->foto);
+        }
+
+        $image_name = $request->file('foto')->store('images', 'public');
+        $user->foto = $image_name;
+    } elseif ($request->has('delete_foto')) {
+        // Delete profile picture
+        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+            Storage::disk('public')->delete($user->foto);
+        }
+        $user->foto = null;
+    }
+
+    $user->save();
+
+    return redirect()->back()->with('success', 'Profile updated successfully.');
+}
+    
 }

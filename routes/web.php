@@ -36,6 +36,8 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard', [HomeController::class, 'showUserDashboard'])->name('user.dashboard');
     Route::get('/user/profile', [HomeController::class, 'viewProfile'])->name('user.profile');
     Route::get('/user/landing', [HomeController::class, 'UserLanding'])->name('user.landing');
+    Route::get('/user/edit-profile', [HomeController::class, 'editProfile'])->name('edit-profile');
+    Route::post('/user/update-user', [HomeController::class, 'updateUser'])->name('update-user');
 });
 
 // Admin routes
@@ -47,6 +49,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 }
 );
     Route::resource('users', AdminController::class);
+    
 
 // Panitia routes
 Route::middleware(['checkLevel:panitia'])->group(function () {
