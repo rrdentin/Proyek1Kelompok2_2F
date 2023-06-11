@@ -6,16 +6,16 @@
 }
 
 .navbar-light .navbar-img {
-    width: 100px;
+    width: 70px;
 }
 
 .navbar-logo-text {
     color: #fff;
-    margin: auto;
+    margin: 10px;
     font-size: 25px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-weight: bold;
-    letter-spacing: 2px;
+    /* letter-spacing: 5px; */
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -28,8 +28,8 @@ header.mast-hero {
     padding-top: 9.5rem;
     padding-bottom: 17rem;
     text-align: center;
-    color: #fff;
-    background-image: url("/landing/images/sekolahs.jpg");
+    color: #283845;
+    background-image: url("/landing/images/banner.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center center;
