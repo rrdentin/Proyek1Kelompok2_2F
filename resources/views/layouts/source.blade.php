@@ -15,6 +15,7 @@
 
     {{-- Css --}}
     <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('landing/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('landing/css/bootstrap.min.css')}}">
     
 </head>
