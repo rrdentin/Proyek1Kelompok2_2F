@@ -1,5 +1,6 @@
 @extends('layouts.header_user')
-
+    <title>Edit Profile | Shaleh</title>
+    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 @section('content2')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -107,10 +108,8 @@
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right">
-                                        <button type="button" id="cancel" name="cancel"
-                                            class="btn btn-secondary">Cancel</button>
-                                        <button type="submit" id="submit" name="submit"
-                                            class="btn btn-primary">Update</button>
+                                        <button type="button" name="cancel"  class="btn btn-secondary" href="{{ route('user.dashboard')}}">Cancel</button>
+                                        <button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +201,7 @@
         margin: 0;
         font-size: 0.8rem;
         font-weight: 400;
-        color: #9fa8b9;
+        color: #283845;
     }
 
     .account-settings .about {
@@ -212,7 +211,7 @@
 
     .account-settings .about h5 {
         margin: 0 0 15px 0;
-        color: #007ae1;
+        color: #283845;
     }
 
     .account-settings .about p {
@@ -225,12 +224,12 @@
         -moz-border-radius: 2px;
         border-radius: 2px;
         font-size: .825rem;
-        background: #ffffff;
+        background: #283845;
         color: #2e323c;
     }
 
     .card {
-        background: #ffffff;
+        background: #283845;
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;

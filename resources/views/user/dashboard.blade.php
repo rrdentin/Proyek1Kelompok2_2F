@@ -1,5 +1,7 @@
-@extends('admin.app')
-@extends('user.sidebar')
+@extends('layouts.userapp')
+    <title>User Dashboard| Shaleh</title>
+    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
+@extends('layouts.usersidebar')
 <!--
 `body` tag options:
 

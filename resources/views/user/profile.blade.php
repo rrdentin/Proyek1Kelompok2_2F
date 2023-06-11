@@ -1,5 +1,6 @@
 @extends('layouts.header_user')
-
+    <title>Profile | Shaleh</title>
+    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 @section('content2')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section class="vh-100 d-flex align-items-center" style="background-color: #f4f5f7;">
@@ -70,7 +71,7 @@
         /* Chrome 10-25, Safari 5.1-6 */
         background: -webkit-linear-gradient(to right bottom, #4CAF50, #8BC34A);
         /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background: linear-gradient(to right bottom, #4CAF50, #8BC34A);
+        background: linear-gradient(to right bottom, #283845, #283845);
     }
 
     .change-password-link svg {
