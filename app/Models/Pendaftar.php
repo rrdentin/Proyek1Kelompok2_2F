@@ -12,16 +12,19 @@ class Pendaftar extends Model
     protected $table = 'pendaftars';
 
     protected $fillable = [
-        'user_id', 
-        'name', 
-        'jenKel', 
-        'alamat', 
-        'tglLahir', 
-        'foto', 
-        'kk', 
-        'akte', 
-        'status', 
-        'pembayaran_id'
+        'user_id',
+        'name',
+        'jenKel',
+        'alamat',
+        'tglLahir',
+        'foto',
+        'kk',
+        'akte',
+        'jenjangPend',
+        'NIK',
+        'tempatLahir',
+        'status',
+        'pembayaran_id',
     ];
 
     public function user()
