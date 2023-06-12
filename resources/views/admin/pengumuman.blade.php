@@ -108,10 +108,10 @@
                                                     <td>{{ $pengumuman->desc_pengumuman }}</td>
                                                     <td>{{ $pengumuman->gambar_pengumuman }}</td>
                                                     <td>
-                                                        <form action="{{ route('pengumuman.destroy', $user->id) }}"
+                                                        <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('pengumuman.edit', $user->id) }}">Edit</a>
+                                                                href="{{ route('pengumuman.edit', $pengumuman->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
