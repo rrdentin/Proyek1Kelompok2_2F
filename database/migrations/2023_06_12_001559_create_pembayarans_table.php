@@ -18,7 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('pendaftar_id');
             $table->foreign('pendaftar_id')->references('id')->on('pendaftars')->onDelete('cascade');
             $table->string('bukti_pembayaran');
-            $table->enum('status', ['bayar', 'verifikasi', 'terbayar'])->default('bayar');
+            $table->enum('status', ['bayar', 'verifikasi', 'terbayar', 'invalid'])->default('bayar');
+            $table->string('jumlah');
             $table->timestamps();
         });
     }
