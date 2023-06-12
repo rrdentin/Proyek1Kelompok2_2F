@@ -102,16 +102,18 @@
                                         <tbody>
                                             @foreach ($pengumumans as $pengumuman)
                                                 <tr>
-                                                    <td>{{ $pengumuman->id }}</td>
-                                                    <td>{{ $pengumuman->tgl_pengumuman }}</td>
-                                                    <td>{{ $pengumuman->judul_pengumuman }}</td>
-                                                    <td>{{ $pengumuman->desc_pengumuman }}</td>
-                                                    <td>{{ $pengumuman->gambar_pengumuman }}</td>
-                                                    <td>
-                                                        <form action="{{ route('pengumuman.destroy', $user->id) }}"
+                                                    <td class="text-center fonts-big">{{ $pengumuman->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">
+                                                        <img src="{{ asset("storage/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                                                    </td>
+                                                    <td class="text-center fonts-big">
+                                                        <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('pengumuman.edit', $user->id) }}">Edit</a>
+                                                                href="{{ route('pengumuman.edit', $pengumuman->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
