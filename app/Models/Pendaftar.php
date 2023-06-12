@@ -13,10 +13,12 @@ class Pendaftar extends Model
     use HasFactory;
 
     protected $table = 'pendaftars';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'user_id',
         'name',
+        'name_wali',
         'jenKel',
         'alamat',
         'tglLahir',
@@ -51,33 +53,5 @@ class Pendaftar extends Model
         return $this->status === 'pending' && !$this->siswa;
     }
 
-    public static function boot()
-{
-    parent::boot();
-
-    // Unique validation for name, tempatLahir, tglLahir combination
-    static::saving(function ($model) {
-        $validationRules = [
-            'name' => [
-                'required',
-                Rule::unique('pendaftars')->where(function ($query) use ($model) {
-                    return $query->where(function ($query) use ($model) {
-                        $query->where('tempatLahir', $model->tempatLahir)
-                            ->orWhere('tglLahir', $model->tglLahir);
-                    })->orWhere('name', $model->name);
-                }),
-            ],
-            'nik' => [
-                'required',
-                Rule::unique('pendaftars')->ignore($model->id),
-            ],
-        ];
-
-        $validator = Validator::make($model->attributesToArray(), $validationRules);
-
-        if ($validator->fails()) {
-            throw new \Illuminate\Validation\ValidationException($validator);
-        }
-    });
 }
-}
+
