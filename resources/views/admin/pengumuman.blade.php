@@ -102,14 +102,14 @@
                                         <tbody>
                                             @foreach ($pengumumans as $pengumuman)
                                                 <tr>
-                                                    <td>{{ $pengumuman->id }}</td>
-                                                    <td>{{ $pengumuman->tgl_pengumuman }}</td>
-                                                    <td>{{ $pengumuman->judul_pengumuman }}</td>
-                                                    <td>{{ $pengumuman->desc_pengumuman }}</td>
-                                                    <td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">
                                                         <img src="{{ asset("storage/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
                                                     </td>
-                                                    <td>
+                                                    <td class="text-center fonts-big">
                                                         <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
