@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pendaftar;
+use App\Models\Pembayaran;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -101,6 +102,18 @@ class PendaftarController extends Controller
     $pendaftar->status = 'pending';
     $pendaftar->save();
 
+   // Set jumlah berdasarkan jenjangPend
+    if ($pendaftar->jenjangPend == 'TK') {
+        $jumlah = 200000;
+    } elseif ($pendaftar->jenjangPend== 'Paud') {
+        $jumlah = 150000;
+    }
+
+$pembayaran = new Pembayaran;
+$pembayaran->pendaftar_id = $pendaftar->id;
+$pembayaran->jumlah = $jumlah;
+$pembayaran->status = 'bayar'; // Set status sebagai "bayar" secara default
+$pembayaran->save();
     return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil disimpan.');
 }
 

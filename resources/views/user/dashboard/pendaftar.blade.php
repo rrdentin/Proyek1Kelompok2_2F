@@ -9,52 +9,42 @@
         </div>
 
         @if (is_array($pendaftars) && count($pendaftars) > 0)
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Jenjang Pendidikan</th>
-                <th>Pembayaran</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($pendaftars as $pendaftarArray)
-                @foreach ($pendaftarArray as $pendaftar)
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>{{ $pendaftar->name }}</td>
-                        <td>{{ $pendaftar->jenjangPend }}</td>
-                        <td>
-                            @if ($pendaftar->pembayaran)
-                                @if ($pendaftar->pembayaran->status == 'bayar' || $pendaftar->pembayaran->status == 'invalid')
-                                    <a href="{{ route('pembayaran.show', $pendaftar->pembayaran->id) }}">Bayar</a>
-                                @else
-                                    {{ $pendaftar->pembayaran->status }}
-                                @endif
-                            @else
-                                Belum Ada Pembayaran
-                            @endif
-                        </td>
-                        <td>
-                            @if ($pendaftar->status == 'accepted')
-                                <a href="{{ route('siswa.show', $pendaftar->id) }}">{{ $pendaftar->status }}</a>
-                            @else
-                                {{ $pendaftar->status }}
-                            @endif
-                        </td>
-                        <td>
-                            <a href="{{ route('pendaftar.show', $pendaftar->id) }}">Lihat</a>
-                            @if ($pendaftar->status == 'pending')
-                                <a href="{{ route('pendaftar.edit', $pendaftar->id) }}">Edit</a>
-                            @endif
-                        </td>
+                        <th>Nama</th>
+                        <th>Jenjang Pendidikan</th>
+                        <th>Pembayaran</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
-                @endforeach
-            @endforeach
-        </tbody>
-    </table>
-@else
-    <p>Belum ada pendaftaran.</p>
-@endif
+                </thead>
+                <tbody>
+                @foreach($pembayarans as $pembayaran)
+    <tr>
+        <td>{{ $pendaftars[0]->name }}</td>
+        <td>{{ $pendaftars[0]->name_wali }}</td>
+        <td>{{ $pembayaran->jenjangPend }}</td>
+        <td>{{ $pembayaran->jumlah }}</td>
+        <td>{{ $pembayaran->status }}</td>
+        <td>
+            @if ($pembayaran->status == 'bayar')
+                <a href="{{ route('pembayaran.create' }}" class="btn btn-primary">Upload</a>
+            @elseif ($pembayaran->status == 'invalid')
+                <a href="{{ route('pembayaran.update', $pembayaran->id) }}" class="btn btn-warning">Update</a>
+            @elseif ($pembayaran->status == 'pending')
+                <a href="{{ route('pembayaran.show', $pembayaran->id) }}" class="btn btn-primary">Show</a>
+            @elseif ($pembayaran->status == 'terbayar')
+                <a href="{{ route('pembayaran.show', $pembayaran->id) }}" class="btn btn-primary">Show</a>
+                <a href="{{ route('pembayaran.print', $pembayaran->id) }}" class="btn btn-success">Print</a>
+            @endif
+        </td>
+    </tr>
+@endforeach
+                </tbody>
+            </table>
+        @else
+            <p>Belum ada pendaftaran.</p>
+        @endif
+    </div>
 @endsection

@@ -29,7 +29,6 @@ class Pendaftar extends Model
         'nik',
         'tempatLahir',
         'status',
-        'pembayaran_id',
     ];
 
     public function user()

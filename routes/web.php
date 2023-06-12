@@ -9,6 +9,7 @@ use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\PembayaranController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -33,8 +34,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
     Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
     Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
-Route::put('/pendaftar/{id}/update-status', 'PendaftarController@updateStatus')->name('pendaftar.updateStatus');
-Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
+    Route::put('/pendaftar/{id}/update-status', 'PendaftarController@updateStatus')->name('pendaftar.updateStatus');
+    Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
+    Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
+    Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
+    Route::get('/pembayaran/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
+    Route::get('/pembayaran/{id}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
+;
 });
 
 // User routes
@@ -47,6 +53,8 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard/pendaftar', [PendaftarController::class, 'dashboard'])->name('pendaftar.dashboard');
     Route::get('/user/dashboard/pendaftar/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
+    Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
+
 });
 
 // Admin routes
@@ -56,6 +64,8 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
     Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
     Route::get('/admin/dashboard/pendaftar', [PendaftarController::class, 'dashboard'])->name('pendaftar.dashboard');
+    Route::get('/admin/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
+
 }
 );
     Route::resource('users', AdminController::class);

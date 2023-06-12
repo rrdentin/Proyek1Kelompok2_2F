@@ -29,8 +29,6 @@ return new class extends Migration
             $table->string('nik')->unique();
             $table->string('tempatLahir');
             $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
-            $table->unsignedBigInteger('pembayaran_id')->nullable();
-            $table->foreign('pembayaran_id')->references('id')->on('pembayarans')->onDelete('set null');
             $table->timestamps();
         });
     }
