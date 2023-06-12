@@ -94,8 +94,8 @@
                                 </a>
                                 <br>
                                 <div class="signin">
-                                <span>You don't have an account? <a href="{{ route('register') }}">Register</a></span><br>
-                                <span><a href="/">Home</a></span>
+                                <span style="margin-left: 15%">You don't have an account? <a href="{{ route('register') }}">Register</a></span><br>
+                                <span style="margin: 47%">Or </span><br> <span style="margin-left: 39%">Go To <a href="/">Home</a></span><br>
                             </div>
                         </div>
                         </form>
