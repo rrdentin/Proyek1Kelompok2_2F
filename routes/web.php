@@ -33,7 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
     Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
     Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
-
+Route::put('/pendaftar/{id}/update-status', 'PendaftarController@updateStatus')->name('pendaftar.updateStatus');
+Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
 });
 
 // User routes
@@ -54,6 +55,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
     Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
     Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
+    Route::get('/admin/dashboard/pendaftar', [PendaftarController::class, 'dashboard'])->name('pendaftar.dashboard');
 }
 );
     Route::resource('users', AdminController::class);
