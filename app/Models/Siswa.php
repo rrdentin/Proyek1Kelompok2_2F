@@ -47,6 +47,10 @@ class Siswa extends Model
                         })->orWhere('name', $model->name);
                     }),
                 ],
+                'nik' => [
+                    'required',
+                    Rule::unique('siswas')->ignore($model->id),
+                ],
             ];
 
             $validator = Validator::make($model->attributesToArray(), $validationRules);
