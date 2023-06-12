@@ -166,27 +166,27 @@
                 </div>
             </div>
 
-            <div class="container px-5">
+            <div class="container">
                 <div class="tutor-list">
                     <div class="kartu-tutor">
                         <img src="/landing/images/about/1.png"/>
-                        <p>M Ega Rama Fernanda</p>
+                        <p style="text-align: center; margin-left: -15%">M Ega Rama Fernanda</p>
                     </div>
                     <div class="kartu-tutor">
                         <img src="/landing/images/about/2.png"/>
-                        <p>Abdullah Azzam</p></h7>
+                        <p style="text-align: center; margin-left: -15%">Abdullah Azzam</p></h7>
                     </div>
                     <div class="kartu-tutor">
                         <img src="/landing/images/about/3.png"/>
-                        <p>Alvian Nur Firdaus</p>
+                        <p style="text-align: center; margin-left: -15%">Alvian Nur Firdaus</p>
                     </div>
                     <div class="kartu-tutor">
                         <img src="/landing/images/about/4.png"/>
-                        <p>Elang Putra Adam</p>
+                        <p style="text-align: center; margin-left: -15%">Elang Putra Adam</p>
                     </div>
                     <div class="kartu-tutor">
                         <img src="/landing/images/about/5.png"/>
-                        <p>Rr Denti Nurramadhona</p>
+                        <p style="text-align: center; margin-left: -15%">Rr Denti Nurramadhona</p>
                     </div>
                 </div>
         </div>
