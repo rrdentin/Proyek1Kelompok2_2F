@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Gallery Setting | Shaleh </title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Gallery Setting | Shaleh </title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 <!--
 `body` tag options:
@@ -80,50 +80,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#buatAkun"
+                                    <button data-toggle="modal" data-target="#createGallery"
                                         class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
                                         Galeri</button>
                                 </div>
-                                <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Galeri</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST" action="{{ route('gallery.store') }}"
-                                                    id="myForm" enctype='multipart/form-data'>
-                                                    <div class="form-group">
-                                                        <label>Kategori:</label>
-                                                        <input class="form-control form-control-sm"
-                                                            name="kategori_galeri" type="text"
-                                                            placeholder="Input kategori galeri Anda.." required>
-                                                        <label>Keterangan:</label>
-                                                        <input class="form-control form-control-sm"
-                                                            name="keterangan_galeri" type="text"
-                                                            placeholder="Input keterangan galeri Anda.." required>
-                                                        <label>Gambar:</label>
-                                                        <input class="form-control form-control-sm"
-                                                            name="gambar_pengumuman" type="file" placeholder=""
-                                                            required>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="submit" name="regisforadmin" class="btn btn-primary">Add
-                                                    Galeri</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
+                                @include('admin.create.createGallery')
+                                
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-dark">
