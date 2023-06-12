@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\AdminController;
@@ -29,6 +30,9 @@ Route::post('/reset-password', [HomeController::class, 'resetPassword'])->name('
 Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [HomeController::class, 'showChangePasswordForm'])->name('password.change');
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('password.update');
+        Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
+    Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
+
 });
 
 // User routes
@@ -36,6 +40,11 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard', [HomeController::class, 'showUserDashboard'])->name('user.dashboard');
     Route::get('/user/profile', [HomeController::class, 'viewProfile'])->name('user.profile');
     Route::get('/user/landing', [HomeController::class, 'UserLanding'])->name('user.landing');
+    Route::get('/user/edit-profile', [HomeController::class, 'editProfile'])->name('edit-profile');
+    Route::post('/user/update-user', [HomeController::class, 'updateUser'])->name('update-user');
+    Route::get('/user/dashboard/pendaftar', [PendaftarController::class, 'dashboard'])->name('pendaftar.dashboard');
+    Route::get('/user/dashboard/pendaftar/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
+    Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
 });
 
 // Admin routes
@@ -47,6 +56,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 }
 );
     Route::resource('users', AdminController::class);
+    
 
 // Panitia routes
 Route::middleware(['checkLevel:panitia'])->group(function () {

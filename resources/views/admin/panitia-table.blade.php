@@ -1,4 +1,6 @@
 @extends('admin.app')
+    <title>Tabel Panitia | Shaleh </title>
+    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 <!--
 `body` tag options:

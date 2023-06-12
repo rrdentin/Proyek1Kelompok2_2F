@@ -4,12 +4,11 @@
     {{-- Navbar Section --}}
     <nav class="navbar navbar-expand-lg navbar-light fixed-top navbar-color">
         <div class="container">
-            <img class="navbar-img" src="/landing/images/logo.png">
-            <p class="navbar-logo-text">EgaKids</p>
-
+            <img class="navbar-img" src="/landing/images/logoShaleh.png">
+            <p class="navbar-logo-text">Sekolah Saleh
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="landing">Home</a>
                     </li>
                     <li class="nav-item">

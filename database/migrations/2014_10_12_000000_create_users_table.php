@@ -20,6 +20,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->enum('level', ['admin', 'panitia', 'user'])->default('user');
             $table->string('password');
+            $table->string('foto')->nullable();
+            $table->string('noHp')->nullable();
+            $table->string('jenKel')->nullable();
+            $table->date('tglLahir')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

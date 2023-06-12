@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -15,6 +15,7 @@
 
     {{-- Css --}}
     <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('landing/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('landing/css/bootstrap.min.css')}}">
     
 </head>

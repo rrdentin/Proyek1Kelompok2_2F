@@ -31,6 +31,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'level',
+        'noHp',
+        'tglLahir',
+        'jenKel',
+        'foto',
         'google_id',
         'facebook_id',
     ];
@@ -51,5 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function level()
     {
         return $this->belongsTo(Level::class, 'level');
+    }
+
+    public function pendaftars()
+    {
+        return $this->hasMany(Pendaftar::class, 'user_id');
     }
 }
