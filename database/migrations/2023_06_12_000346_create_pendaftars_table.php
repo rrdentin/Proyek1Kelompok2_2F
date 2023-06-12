@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('kk');
             $table->string('akte');
             $table->enum('jenjangPend', ['TK', 'Paud']);
-            $table->string('NIK');
+            $table->string('nik')->unique();
             $table->string('tempatLahir');
-            $table->string('status')->default('pending');
+            $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->unsignedBigInteger('pembayaran_id')->nullable();
             $table->foreign('pembayaran_id')->references('id')->on('pembayarans')->onDelete('set null');
             $table->timestamps();
