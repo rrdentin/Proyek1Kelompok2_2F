@@ -86,7 +86,7 @@
                                 </div>
 
                                 @include('admin.create.createGallery')
-                                
+
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-dark">
@@ -101,15 +101,15 @@
                                         <tbody>
                                             @foreach ($gallery as $galeri)
                                                 <tr>
-                                                    <td>{{ $galeri->id }}</td>
-                                                    <td>{{ $galeri->kategori_galeri }}</td>
-                                                    <td>{{ $galeri->keterangan_galeri }}</td>
-                                                    <td>{{ $galeri->gambar_galeri }}</td>
-                                                    <td>
-                                                        <form action="{{ route('gallery.destroy', $user->id) }}"
+                                                    <td class="text-center fonts-big">{{ $galeri->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $galeri->kategori_galeri }}</td>
+                                                    <td class="text-center fonts-big">{{ $galeri->keterangan_galeri }}</td>
+                                                    <td class="text-center fonts-big">{{ $galeri->gambar_galeri }}</td>
+                                                    <td class="text-center fonts-big">
+                                                        <form action="{{ route('gallery.destroy', $galeri->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('gallery.edit', $user->id) }}">Edit</a>
+                                                                href="{{ route('gallery.edit', $galeri->id) }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
