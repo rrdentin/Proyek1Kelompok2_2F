@@ -106,7 +106,9 @@
                                                     <td>{{ $pengumuman->tgl_pengumuman }}</td>
                                                     <td>{{ $pengumuman->judul_pengumuman }}</td>
                                                     <td>{{ $pengumuman->desc_pengumuman }}</td>
-                                                    <td>{{ $pengumuman->gambar_pengumuman }}</td>
+                                                    <td>
+                                                        <img src="{{ asset("storage/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                                                    </td>
                                                     <td>
                                                         <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
                                                             method="POST">
