@@ -104,7 +104,9 @@
                                                     <td class="text-center fonts-big">{{ $galeri->id }}</td>
                                                     <td class="text-center fonts-big">{{ $galeri->kategori_galeri }}</td>
                                                     <td class="text-center fonts-big">{{ $galeri->keterangan_galeri }}</td>
-                                                    <td class="text-center fonts-big">{{ $galeri->gambar_galeri }}</td>
+                                                    <td class="text-center fonts-big">
+                                                        <img src="{{ asset("storage/$galeri->gambar_galeri") }}" width= '50' height='50' class="img img-responsive"/>
+                                                    </td>
                                                     <td class="text-center fonts-big">
                                                         <form action="{{ route('gallery.destroy', $galeri->id) }}"
                                                             method="POST">
