@@ -12,9 +12,10 @@ class Pembayaran extends Model
     protected $table = 'pembayarans';
 
     protected $fillable = [
-        'pendaftar_id', 
-        'bukti_pembayaran', 
-        'status'
+        'pendaftar_id',
+        'bukti_pembayaran',
+        'status',
+        'jumlah',
     ];
 
     public function pendaftar()
