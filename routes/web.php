@@ -30,8 +30,9 @@ Route::post('/reset-password', [HomeController::class, 'resetPassword'])->name('
 Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [HomeController::class, 'showChangePasswordForm'])->name('password.change');
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('password.update');
-        Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
+    Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
     Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
+    Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
 
 });
 

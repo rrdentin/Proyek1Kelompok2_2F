@@ -125,57 +125,75 @@ class PendaftarController extends Controller
     {
         $pendaftar = Pendaftar::findOrFail($id);
 
-        if (!$pendaftar->isEditable()) {
-            return redirect()->route('pendaftar.dashboard')->with('error', 'Tidak dapat mengedit pendaftaran yang sudah diproses.');
-        }
-
-        // Validate input fields
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'name_wali' => 'required',
-            'jenKel' => 'required',
-            'alamat' => 'required',
-            'tglLahir' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'akte' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'kk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'jenjangPend' => 'required|in:TK,Paud',
-            'nik' => 'required|unique:pendaftars,nik,' . $pendaftar->id,
-            'tempatLahir' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Update pendaftar data
-        $pendaftar->name = $request->name;
-        $pendaftar->name_wali = $request->name_wali;
-        $pendaftar->jenKel = $request->jenKel;
-        $pendaftar->alamat = $request->alamat;
-        $pendaftar->tglLahir = $request->tglLahir;
-        $pendaftar->jenjangPend = $request->jenjangPend;
-        $pendaftar->nik = $request->nik;
-        $pendaftar->tempatLahir = $request->tempatLahir;
-
-        // Update image files if provided
-        if ($request->hasFile('foto')) {
-            Storage::disk('public')->delete($pendaftar->foto);
-            $pendaftar->foto = $request->file('foto')->store('images', 'public');
-        }
-        if ($request->hasFile('akte')) {
-            Storage::disk('public')->delete($pendaftar->akte);
-            $pendaftar->akte = $request->file('akte')->store('images', 'public');
-        }
-        if ($request->hasFile('kk')) {
-            Storage::disk('public')->delete($pendaftar->kk);
-            $pendaftar->kk = $request->file('kk')->store('images', 'public');
-        }
-
-        $pendaftar->save();
-
-        return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil diperbarui.');
+    if (!$pendaftar->isEditable()) {
+        return redirect()->route('pendaftar.dashboard')->with('error', 'Tidak dapat mengedit pendaftaran yang sudah diproses.');
     }
+
+    $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'name_wali' => 'required',
+        'user_jenKel' => 'required',
+        'pendaftar_jenKel' => 'required',
+        'alamat' => 'required',
+        'tglLahir' => 'required',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'akte' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'kk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'jenjangPend' => 'required|in:TK,Paud',
+        'tempatLahir' => 'required',
+        'noHp' => 'required',
+    ]);
+
+    $validator->after(function ($validator) use ($request, $pendaftar) {
+        $existingPendaftar = Pendaftar::where('name', $request->input('name'))
+            ->where('tempatLahir', $request->input('tempatLahir'))
+            ->where('tglLahir', $request->input('tglLahir'))
+            ->where('id', '!=', $pendaftar->id)
+            ->first();
+
+        if ($existingPendaftar) {
+            $validator->errors()->add('name', 'Sudah ada Pendaftar dengan data Nama, Tempat Lahir, dan Tanggal Lahir tersebut.');
+        }
+    });
+
+    // Validate input fields
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Update pendaftar data
+    $pendaftar->name = $request->name;
+    $pendaftar->name_wali = $request->name_wali;
+    $pendaftar->jenKel = $request->input('pendaftar_jenKel');
+    $pendaftar->alamat = $request->alamat;
+    $pendaftar->tglLahir = $request->tglLahir;
+    $pendaftar->jenjangPend = $request->jenjangPend;
+    $pendaftar->tempatLahir = $request->tempatLahir;
+
+    // Update image files if provided
+    if ($request->hasFile('foto')) {
+        Storage::disk('public')->delete($pendaftar->foto);
+        $pendaftar->foto = $request->file('foto')->store('images', 'public');
+    }
+    if ($request->hasFile('akte')) {
+        Storage::disk('public')->delete($pendaftar->akte);
+        $pendaftar->akte = $request->file('akte')->store('images', 'public');
+    }
+    if ($request->hasFile('kk')) {
+        Storage::disk('public')->delete($pendaftar->kk);
+        $pendaftar->kk = $request->file('kk')->store('images', 'public');
+    }
+
+    // Update related User model
+    $user = $pendaftar->user;
+    $user->noHp = $request->noHp;
+    $user->jenKel = $request->input('user_jenKel');
+    $user->save();
+
+    $pendaftar->save();
+
+    return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil diperbarui.');
+}
 
     public function destroy($id)
     {
