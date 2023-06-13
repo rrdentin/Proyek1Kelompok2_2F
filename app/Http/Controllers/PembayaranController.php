@@ -31,7 +31,7 @@ class PembayaranController extends Controller
 
         $pembayarans = $pembayarans->paginate(5);
 
-        return view('admin.dashboard.pembayaran', compact('pembayarans'));
+    return view('admin.pembayaran', compact('pembayarans'));
     } elseif ($user->level == 'panitia') {
         // ...
     } elseif ($user->level == 'user') {

@@ -221,9 +221,9 @@ class HomeController extends Controller
     $user = Auth::user(); // Get the authenticated user
     $adminCount = User::where('level', 'admin')->count();
     $panitiaCount = User::where('level', 'panitia')->count();
-    $pendaftarCount = User::where('level', 'user')->count();
+    $userCount = User::where('level', 'user')->count();
 
-    return view('admin.dashboard', compact('adminCount', 'panitiaCount', 'pendaftarCount', 'user'));
+    return view('admin.dashboard', compact('adminCount', 'panitiaCount', 'userCount', 'user'));
     }
 
     /**

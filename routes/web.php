@@ -63,8 +63,8 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/profile', [HomeController::class, 'viewProfile'])->name('admin.profile');
     Route::get('/admin/admintable', [AdminController::class, 'index'])->name('admin.admintable');
     Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
-    Route::get('/admin/dashboard/pendaftar', [PendaftarController::class, 'dashboard'])->name('pendaftar.dashboard');
-    Route::get('/admin/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
+    Route::get('/admin/pendaftar', [PendaftarController::class, 'dashboard'])->name('admin.pendaftar');
+    Route::get('/admin/pembayaran', [PembayaranController::class, 'dashboard'])->name('admin.pembayaran');
 
 }
 );

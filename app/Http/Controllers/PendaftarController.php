@@ -23,7 +23,7 @@ class PendaftarController extends Controller
     
         if ($user->level == 'admin') {
             $pendaftars = Pendaftar::with('pembayaran')->get();
-            return view('admin.dashboard.pendaftar', compact('pendaftars'));
+            return view('admin.pendaftar', compact('pendaftars'));
         } elseif ($user->level == 'panitia') {
             return view('panitia.pendaftar.dashboard');
         } elseif ($user->level == 'user') {
