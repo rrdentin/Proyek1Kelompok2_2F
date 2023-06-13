@@ -120,8 +120,8 @@
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3>{{ $pendaftarCount }}</h3>
-                                    <p>Pendaftar</p>
+                                    <h3>{{ $userCount }}</h3>
+                                    <p>User</p>
                                 </div>
                                 <div class="icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
