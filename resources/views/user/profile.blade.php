@@ -75,12 +75,12 @@
     }
 
     .change-password-link svg {
-        fill: black;
+        fill: white;
         transition: fill 0.3s ease;
     }
 
     .change-password-link:hover svg {
-        fill: white;
+        fill: black;
         /* Change to the desired color */
     }
 
