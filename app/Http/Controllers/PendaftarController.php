@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
+
+use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Pendaftar;
 use App\Models\Pembayaran;
@@ -9,7 +13,6 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Support\Facades\Validator;
 
 class PendaftarController extends Controller
@@ -19,14 +22,15 @@ class PendaftarController extends Controller
         $user = Auth::user();
     
         if ($user->level == 'admin') {
-            $pendaftars = Pendaftar::all();
+            $pendaftars = Pendaftar::with('pembayaran')->get();
             return view('admin.dashboard.pendaftar', compact('pendaftars'));
         } elseif ($user->level == 'panitia') {
             return view('panitia.pendaftar.dashboard');
         } elseif ($user->level == 'user') {
-            $pendaftar = Pendaftar::where('user_id', $user->id)->get();
-        $pendaftars = [$pendaftar];
-        return view('user.dashboard.pendaftar', compact('pendaftars'));
+            $pendaftar = Pendaftar::where('user_id', $user->id)->first();
+            $pendaftars = $pendaftar ? collect([$pendaftar]) : collect();
+            $pembayaran = $pendaftar ? $pendaftar->pembayaran : null;
+            return view('user.dashboard.pendaftar', compact('pendaftars', 'pembayaran'));
         }
     
         // Handle other levels or no level assigned
@@ -225,5 +229,23 @@ $pembayaran->save();
         $pendaftar->delete();
 
         return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil dihapus.');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        // Find the Pendaftar record
+        $pendaftar = Pendaftar::find($id);
+
+        if (!$pendaftar) {
+            // Handle the case when the Pendaftar record is not found
+            abort(404);
+        }
+
+        // Update the status
+        $pendaftar->status = $request->input('status');
+        $pendaftar->save();
+
+        // Redirect back or do any other desired action
+        return redirect()->back()->with('success', 'Status updated successfully.');
     }
 }

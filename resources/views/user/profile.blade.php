@@ -1,6 +1,6 @@
 @extends('layouts.header_user')
-    <title>Profile | Shaleh</title>
-    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
+<title>Profile | Shaleh</title>
+<link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 @section('content2')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <section class="vh-100 d-flex align-items-center" style="background-color: #f4f5f7;">
@@ -32,11 +32,11 @@
                                 <div class="row pt-1">
                                     <div class="col-8 mb-3">
                                         <h6>Email</h6>
-                                        <p class="text-muted text-nowrap">{{ Auth::user()->email }}</p>
+                                        <p class="text-muted text-nowrap">{{ Auth::user()->email ?? '-' }}</p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Nomor Telepon</h6>
-                                        <p class="text-muted">{{ Auth::user()->noHp }}</p>
+                                        <p class="text-muted">{{ Auth::user()->noHp ?? '-' }}</p>
                                     </div>
                                 </div>
                                 <h6>Details</h6>
@@ -44,14 +44,15 @@
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Jenis Kelamin</h6>
-                                        <p class="text-muted">{{ Auth::user()->jenKel }}</p>
+                                        <p class="text-muted">{{ Auth::user()->jenKel ?? '-' }}</p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Tanggal Lahir</h6>
-                                        <p class="text-muted">{{ Auth::user()->tglLahir }}</p>
+                                        <p class="text-muted">{{ Auth::user()->tglLahir ?? '-' }}</p>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

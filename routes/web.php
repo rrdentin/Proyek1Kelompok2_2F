@@ -40,6 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::get('/pembayaran/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
     Route::get('/pembayaran/{id}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
+    Route::post('/pendaftar/{id}/update-status', 'PendaftarController@updateStatus')->name('pendaftar.updateStatus');
 ;
 });
 
@@ -54,7 +55,6 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard/pendaftar/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
     Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
-
 });
 
 // Admin routes
