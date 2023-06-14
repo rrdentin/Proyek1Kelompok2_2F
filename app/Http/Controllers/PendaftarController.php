@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Barryvdh\DomPDF\Facade\PDF;
 
 class PendaftarController extends Controller
 {
@@ -247,5 +248,11 @@ $pembayaran->save();
 
         // Redirect back or do any other desired action
         return redirect()->back()->with('success', 'Status updated successfully.');
+    }
+
+    public function print(){
+        $pendaftar = Pendaftar::all();
+        $pdf = PDF::loadview('admin.print',['pendaftar'=>$pendaftar]);
+        return $pdf->stream();
     }
 }
