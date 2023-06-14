@@ -18,34 +18,45 @@ use Barryvdh\DomPDF\Facade\PDF;
 
 class PendaftarController extends Controller
 {
-    public function dashboard()
-    {
-        $user = Auth::user();
-    
-        if ($user->level == 'admin') {
-            $pendaftars = Pendaftar::with('pembayaran')->get();
-            return view('admin.pendaftar', compact('pendaftars'));
-        } elseif ($user->level == 'panitia') {
-            return view('panitia.pendaftar.dashboard');
-        } elseif ($user->level == 'user') {
-            $pendaftar = Pendaftar::where('user_id', $user->id)->first();
-            $pendaftars = $pendaftar ? collect([$pendaftar]) : collect();
-            $pembayaran = $pendaftar ? $pendaftar->pembayaran : null;
-            return view('user.dashboard.pendaftar', compact('pendaftars', 'pembayaran'));
+    public function dashboard(Request $request){
+    $user = Auth::user();
+
+    if ($user->level == 'admin') {
+        $pembayarans = Pembayaran::orderBy('created_at', 'desc');
+
+        // Filter by name, name_wali, jenjangPend, status
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $pembayarans = $pembayarans->whereHas('pendaftar', function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('name_wali', 'like', '%' . $search . '%')
+                    ->orWhere('jenjangPend', 'like', '%' . $search . '%');
+            })->orWhere('status', 'like', '%' . $search . '%');
         }
-    
-        // Handle other levels or no level assigned
-        return redirect()->back()->with('error', 'Unauthorized access.');
+
+        $pembayarans = $pembayarans->paginate(5);
+
+        return view('admin.pembayaran', compact('pembayarans'));
+    } elseif ($user->level == 'panitia') {
+        // ...
+    } elseif ($user->level == 'user') {
+        $pendaftar = Pendaftar::where('user_id', $user->id)->first();
+        $pembayarans = [];
+
+        if ($pendaftar) {
+            $pembayarans = Pembayaran::where('pendaftar_id', $pendaftar->id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(5);
+        }
+
+        return view('user.dashboard.pembayaran', compact('pembayarans'));
     }
 
-    public function create()
-    {
-        $user = Auth::user();
-        return view('pendaftar.create', compact('user'));
+    // Handle other levels or no level assigned
+    return redirect()->back()->with('error', 'Unauthorized access.');
     }
 
-    public function store(Request $request)
-{
+    public function store(Request $request){
     // Validate input fields
     $validator = Validator::make($request->all(), [
         'name' => 'required',
@@ -62,7 +73,7 @@ class PendaftarController extends Controller
         'tempatLahir' => 'required',
         'noHp' => 'required',
     ]);
- $validator->after(function ($validator) use ($request) {
+    $validator->after(function ($validator) use ($request) {
         $existingPendaftar = Pendaftar::where('name', $request->input('name'))
             ->where('tempatLahir', $request->input('tempatLahir'))
             ->where('tglLahir', $request->input('tglLahir'))

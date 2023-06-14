@@ -211,6 +211,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'PDF' => Barryvdh\DomPDF\Facade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ])->toArray(),
 
