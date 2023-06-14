@@ -62,15 +62,15 @@
     </div>
 
     {{-- About Sekolah (Elang) --}}
-    <section class="page-section" id="mekanisme" style="margin-top: -2rem;">
-        <div class="container">
-            <div class="text-center">
-                <h2 class="section-heading text-uppercase">Mekanisme Pendaftaran</h2>
-                <h3 class="section-subheading text-muted">Berikut Berkas yang harus disiapkan Orangtua sebelum mendaftarkan Ananda ke SD Anak Saleh.</h3>
+        <section class="page-section" id="mekanisme" style="margin-top: -2rem;">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-heading text-uppercase">Mekanisme Pendaftaran</h2>
+                    <h3 class="section-subheading text-muted">Berikut Berkas yang harus disiapkan Orangtua sebelum mendaftarkan Ananda ke SD Anak Saleh.</h3>
+                    <img src="/ppdb/alvian.jpeg" style='size:px'><br>
+                </div>
             </div>
-        </div>
-    </section>
-
+        </section>
     <div>
         {{-- <img src="images/sekolah.jpg" alt="">
         <img src="images/sekolah.jpg" alt=""> --}}
