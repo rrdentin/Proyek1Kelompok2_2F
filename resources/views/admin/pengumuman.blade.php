@@ -106,7 +106,7 @@
                                                         <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('pengumuman.edit', $pengumuman->id) }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}"">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -117,6 +117,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @include('admin.edit.editPengumuman')
                                 </div>
                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>

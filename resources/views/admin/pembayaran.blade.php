@@ -66,100 +66,102 @@
                                     <div class="col-md-12">
                                         <div class="box">
                                             <div class="card-body">
-                                            <div class="box-header with-border">
-                                                <h3 class="box-title">Filter</h3>
-                                                <form action="{{ route('pembayaran.dashboard') }}" method="GET"
-                                                    class="box-tools">
-                                                    <div class="input-group">
-                                                        <input type="text" name="search" class="form-control"
-                                                            placeholder="Search">
-                                                        <div class="input-group-btn">
-                                                            <button type="submit"
-                                                                class="btn btn-primary">Search</button>
+                                                <div class="box-header with-border">
+                                                    <h3 class="box-title">Filter</h3>
+                                                    <form action="{{ route('pembayaran.dashboard') }}" method="GET"
+                                                        class="box-tools">
+                                                        <div class="input-group">
+                                                            <input type="text" name="search" class="form-control"
+                                                                placeholder="Search">
+                                                            <div class="input-group-btn">
+                                                                <button type="submit"class="btn btn-primary">
+                                                                    Search
+                                                                </button>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!-- /.box-header -->
-                                            <div class="box-body">
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Name</th>
-                                                            <th>Name Wali</th>
-                                                            <th>Jenjang Pendidikan</th>
-                                                            <th>Jumlah</th>
-                                                            <th>Status</th>
-                                                            <th>Actions</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($pembayarans as $pembayaran)
+                                                    </form>
+                                                </div>
+                                                <!-- /.box-header -->
+                                                <div class="box-body">
+                                                    <table class="table table-bordered">
+                                                        <thead>
                                                             <tr>
-                                                                <td>{{ $pembayaran->pendaftar->name }}</td>
-                                                                <td>{{ $pembayaran->pendaftar->name_wali }}</td>
-                                                                <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
-                                                                <td>
-                                                                    @if ($pembayaran->status === 'bayar')
-                                                                        {{ $pembayaran->jumlah }}
-                                                                    @else
-                                                                        <input type="number" name="jumlah"
-                                                                            value="{{ $pembayaran->jumlah }}">
-                                                                    @endif
-                                                                </td>
-                                                                <td>
-                                                                    <form
-                                                                        action="{{ route('pembayaran.update', $pembayaran->id) }}"
-                                                                        method="POST" id="updateForm">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <select name="status" class="form-control"
-                                                                            onchange="submitForm()">
-                                                                            <option value="bayar"
-                                                                                {{ $pembayaran->status === 'bayar' ? 'selected' : '' }}>
-                                                                                Bayar
-                                                                            </option>
-                                                                            <option value="verifikasi"
-                                                                                {{ $pembayaran->status === 'verifikasi' ? 'selected' : '' }}>
-                                                                                Verifikasi</option>
-                                                                            <option value="invalid"
-                                                                                {{ $pembayaran->status === 'invalid' ? 'selected' : '' }}>
-                                                                                Invalid
-                                                                            </option>
-                                                                            <option value="terbayar"
-                                                                                {{ $pembayaran->status === 'terbayar' ? 'selected' : '' }}>
-                                                                                Terbayar
-                                                                            </option>
-                                                                        </select>
-                                                                        <button type="submit" class="btn btn-primary"
-                                                                            style="display: none;">Update</button>
-                                                                    </form>
-
-                                                                    <script>
-                                                                        function submitForm() {
-                                                                            document.getElementById("updateForm").submit();
-                                                                        }
-                                                                    </script>
-
-                                                                </td>
-                                                                <td>
-                                                                    <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
-                                                                        class="btn btn-info">View</a>
-                                                                    <a href="{{ route('admin.print', $pembayaran->id) }}"
-                                                                        class="btn btn-success">Print</a>
-                                                                </td>
+                                                                <th>Name</th>
+                                                                <th>Name Wali</th>
+                                                                <th>Jenjang Pendidikan</th>
+                                                                <th>Jumlah</th>
+                                                                <th>Status</th>
+                                                                <th>Actions</th>
                                                             </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach ($pembayarans as $pembayaran)
+                                                                <tr>
+                                                                    <td>{{ $pembayaran->pendaftar->name }}</td>
+                                                                    <td>{{ $pembayaran->pendaftar->name_wali }}</td>
+                                                                    <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
+                                                                    <td>
+                                                                        @if ($pembayaran->status === 'bayar')
+                                                                            {{ $pembayaran->jumlah }}
+                                                                        @else
+                                                                            <input type="number" name="jumlah"
+                                                                                value="{{ $pembayaran->jumlah }}">
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                        <form
+                                                                            action="{{ route('pembayaran.update', $pembayaran->id) }}"
+                                                                            method="POST" id="updateForm">
+                                                                            @csrf
+                                                                            @method('PUT')
+                                                                            <select name="status" class="form-control"
+                                                                                onchange="submitForm()">
+                                                                                <option value="bayar"
+                                                                                    {{ $pembayaran->status === 'bayar' ? 'selected' : '' }}>
+                                                                                    Bayar
+                                                                                </option>
+                                                                                <option value="verifikasi"
+                                                                                    {{ $pembayaran->status === 'verifikasi' ? 'selected' : '' }}>
+                                                                                    Verifikasi</option>
+                                                                                <option value="invalid"
+                                                                                    {{ $pembayaran->status === 'invalid' ? 'selected' : '' }}>
+                                                                                    Invalid
+                                                                                </option>
+                                                                                <option value="terbayar"
+                                                                                    {{ $pembayaran->status === 'terbayar' ? 'selected' : '' }}>
+                                                                                    Terbayar
+                                                                                </option>
+                                                                            </select>
+                                                                            <button type="submit"
+                                                                                class="btn btn-primary"
+                                                                                style="display: none;">Update</button>
+                                                                        </form>
+
+                                                                        <script>
+                                                                            function submitForm() {
+                                                                                document.getElementById("updateForm").submit();
+                                                                            }
+                                                                        </script>
+
+                                                                    </td>
+                                                                    <td>
+                                                                        <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
+                                                                            class="btn btn-info">View</a>
+                                                                        <a href="{{ route('admin.print', $pembayaran->id) }}"
+                                                                            class="btn btn-success">Print</a>
+                                                                    </td>
+                                                                </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                                <div class="box-footer clearfix">
+                                                    {{ $pembayarans->links() }}
+                                                </div>
                                             </div>
-                                            <!-- /.box-body -->
-                                            <div class="box-footer clearfix">
-                                                {{ $pembayarans->links() }}
-                                            </div>
+                                            <!-- /.box -->
                                         </div>
-                                        <!-- /.box -->
-                                    </div>
                                     </div>
                                     <!-- Main row -->
                                     <div class="row">
@@ -181,19 +183,19 @@
         </div>
     </div>
 
-        @extends('admin.footer')
+    @extends('admin.footer')
 
-        <!-- jQuery -->
-        <script src="{{ asset('/') }}plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="{{ asset('/') }}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE -->
-        <script src="{{ asset('/') }}dist/js/adminlte.js"></script>
-        <!-- OPTIONAL SCRIPTS -->
-        <script src="{{ asset('/') }}plugins/chart.js/Chart.min.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="{{ asset('/') }}dist/js/demo.js"></script>
-        <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('/') }}plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{ asset('/') }}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="{{ asset('/') }}dist/js/adminlte.js"></script>
+    <!-- OPTIONAL SCRIPTS -->
+    <script src="{{ asset('/') }}plugins/chart.js/Chart.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('/') }}dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
 
 </body>

@@ -48,7 +48,7 @@ class PengumumanController extends Controller
             'desc_pengumuman' => $request->desc_pengumuman,
             'gambar_pengumuman' => $image_name,
         ]);
-        return 'Pengumuman berhasil dibuat!';
+        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil ditambahakan!');
     }
 
     /**
@@ -95,7 +95,7 @@ class PengumumanController extends Controller
     $pengumumans->gambar_pengumuman = $image_name;
 
     $pengumumans->save();
-    return 'Pengumuman berhasil diubah!';
+    return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil diubah!');
     }
 
     /**
