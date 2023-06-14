@@ -31,18 +31,20 @@ class PembayaranController extends Controller
 
         $pembayarans = $pembayarans->paginate(5);
 
-    return view('admin.pembayaran', compact('pembayarans'));
+        return view('admin.pembayaran', compact('pembayarans'));
     } elseif ($user->level == 'panitia') {
         // ...
     } elseif ($user->level == 'user') {
         $pendaftar = Pendaftar::where('user_id', $user->id)->first();
-        $pendaftars = [$pendaftar];
+        $pembayarans = [];
 
-        $pembayarans = Pembayaran::where('pendaftar_id', $pendaftar->id)
-            ->orderBy('created_at', 'desc')
-            ->paginate(5);
+        if ($pendaftar) {
+            $pembayarans = Pembayaran::where('pendaftar_id', $pendaftar->id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(5);
+        }
 
-        return view('user.dashboard.pembayaran', compact('pembayarans', 'pendaftars'));
+        return view('user.dashboard.pembayaran', compact('pembayarans'));
     }
 
     // Handle other levels or no level assigned
