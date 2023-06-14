@@ -154,7 +154,7 @@
                                                                 <td>
                                                                     <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
                                                                         class="btn btn-info">View</a>
-                                                                    <a href="{{ route('pembayaran.print', $pembayaran->id) }}"
+                                                                    <a href="{{ route('admin.print', $pembayaran->id) }}"
                                                                         class="btn btn-success">Print</a>
                                                                 </td>
                                                             </tr>

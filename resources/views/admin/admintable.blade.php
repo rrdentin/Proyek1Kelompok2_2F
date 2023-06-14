@@ -80,10 +80,9 @@
                             <div class="card-body">
                                 <div class="card-header">
                                     <button data-toggle="modal" data-target="#createAdmin"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
-                                        Admin</button>
+                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Admin</button>
                                 </div>
-
+                                
                                 @include('admin.create.createAdmin')
 
                                 <div class="table table-bordered">
