@@ -109,7 +109,8 @@
                                                         <form action="{{ route('users.destroy', $user->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('users.edit', $user->id) }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editAdmin">Edit</a>
+                                                                {{-- {{ route('users.edit', $user->id) }} --}}
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -120,6 +121,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @include('admin.edit.editAdmin')
                                 </div>
                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
