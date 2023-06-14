@@ -110,7 +110,6 @@
                                                             method="POST">
                                                             <a class="btn btn-primary"
                                                                 href="#" data-toggle="modal" data-target="#editAdmin">Edit</a>
-                                                                {{-- {{ route('users.edit', $user->id) }} --}}
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
