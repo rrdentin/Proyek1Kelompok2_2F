@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 
-
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Pendaftar;
 use App\Models\Pembayaran;
+
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -251,8 +252,7 @@ $pembayaran->save();
         $pendaftar->save();
 
         // Redirect back or do any other desired action
-        return redirect()->back()->with('success', 'Status updated successfully.');
-    }
+        return Redirect::to('/admin/pendaftar')->with('success', 'Status updated successfully.');    }
 
     public function print(){
         $pendaftar = Pendaftar::all();

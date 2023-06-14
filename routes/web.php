@@ -34,13 +34,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
     Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
     Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
-    Route::put('/pendaftar/{id}/update-status', 'PendaftarController@updateStatus')->name('pendaftar.updateStatus');
-    Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
+        Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
     Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
     Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::get('/pembayaran/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
     Route::get('/pembayaran/{id}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
-    Route::post('/pendaftar/{id}/update-status', 'PendaftarController@updateStatus')->name('pendaftar.updateStatus');
 ;
 });
 
@@ -66,6 +64,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/pendaftar', [PendaftarController::class, 'dashboard'])->name('admin.pendaftar');
     Route::get('/admin/pembayaran', [PembayaranController::class, 'dashboard'])->name('admin.pembayaran');
     Route::get('/admin/pendaftar/print', [PendaftarController::class, 'print'])->name('admin.print');
+    Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
 
 }
 );
