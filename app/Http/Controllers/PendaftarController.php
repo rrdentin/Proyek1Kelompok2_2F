@@ -28,9 +28,13 @@ class PendaftarController extends Controller
         } elseif ($user->level == 'panitia') {
             return view('panitia.pendaftar.dashboard');
         } elseif ($user->level == 'user') {
-            $pendaftar = Pendaftar::where('user_id', $user->id)->first();
-            $pendaftars = $pendaftar ? collect([$pendaftar]) : collect();
-            $pembayaran = $pendaftar ? $pendaftar->pembayaran : null;
+            $pendaftars = Pendaftar::where('user_id', $user->id)->get();
+            $pembayaran = [];
+    
+            if ($pendaftars->isNotEmpty()) {
+                $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
+            }
+    
             return view('user.dashboard.pendaftar', compact('pendaftars', 'pembayaran'));
         }
     
