@@ -23,13 +23,6 @@
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -109,7 +102,7 @@
                                                         <form action="{{ route('users.destroy', $user->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editAdmin">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
