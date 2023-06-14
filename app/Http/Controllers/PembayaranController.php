@@ -35,11 +35,12 @@ class PembayaranController extends Controller
     } elseif ($user->level == 'panitia') {
         // ...
     } elseif ($user->level == 'user') {
-        $pendaftar = Pendaftar::where('user_id', $user->id)->first();
+        $pendaftars = Pendaftar::where('user_id', $user->id)->get();
         $pembayarans = [];
 
-        if ($pendaftar) {
-            $pembayarans = Pembayaran::where('pendaftar_id', $pendaftar->id)
+        if ($pendaftars->isNotEmpty()) {
+            $pendaftarIds = $pendaftars->pluck('id')->toArray();
+            $pembayarans = Pembayaran::whereIn('pendaftar_id', $pendaftarIds)
                 ->orderBy('created_at', 'desc')
                 ->paginate(5);
         }
