@@ -104,9 +104,11 @@
                                                     </td>
                                                     <td class="text-center fonts-big">
                                                         <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
-                                                            method="POST">
+                                                            method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
                                                             <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}"">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
