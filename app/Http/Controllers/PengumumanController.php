@@ -38,15 +38,14 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->file('gambar_pengumuman')){
-            $image_name = $request->file('gambar_pengumuman')->store('pengumuman', 'public');
-        }
+        $fileName = date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
+        $request->gambar_pengumuman->storeAs('public/pengumuman', $fileName);
 
         Pengumuman::create([
             'tgl_pengumuman' => $request->tgl_pengumuman,
             'judul_pengumuman' => $request->judul_pengumuman,
             'desc_pengumuman' => $request->desc_pengumuman,
-            'gambar_pengumuman' => $image_name,
+            'gambar_pengumuman' => $fileName,
         ]);
         return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil ditambahakan!');
     }
@@ -84,18 +83,25 @@ class PengumumanController extends Controller
     {
         $pengumumans = Pengumuman::find($id);
 
+        $fileName = '';
+
+        if ($request->hasFile('gambar_pengumuman')) {
+            $fileName = date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
+            $request->gambar_pengumuman->storeAs('public/pengumuman', $fileName);
+            if ($pengumumans->gambar_pengumuman) {
+            Storage::delete('public/pengumuman' . $pengumumans->gambar_pengumuman);
+            }
+        } else {
+            $fileName = $pengumumans->gambar_pengumuman;
+        }
+
         $pengumumans->tgl_pengumuman = $request->tgl_pengumuman;
         $pengumumans->judul_pengumuman = $request->judul_pengumuman;
         $pengumumans->desc_pengumuman = $request->desc_pengumuman;
+        $pengumumans->gambar_pengumuman = $fileName;
+        $pengumumans->save();
 
-        if ($pengumumans->gambar_pengumuman && file_exists(storage_path('app/public/' . $pengumumans->gambar_pengumuman))) {
-            Storage::delete('public/' . $pengumumans->gambar_pengumuman);
-    }
-    $image_name = $request->file('gambar_pengumuman')->store('pengumuman', 'public');
-    $pengumumans->gambar_pengumuman = $image_name;
-
-    $pengumumans->save();
-    return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil diubah!');
+        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil diubah!');
     }
 
     /**

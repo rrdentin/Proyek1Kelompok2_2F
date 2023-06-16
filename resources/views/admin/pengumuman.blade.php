@@ -100,7 +100,7 @@
                                                     <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
                                                     <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <img src="{{ asset("storage/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                                                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
                                                     </td>
                                                     <td class="text-center fonts-big">
                                                         <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"

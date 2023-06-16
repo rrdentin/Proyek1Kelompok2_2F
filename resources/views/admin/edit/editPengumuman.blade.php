@@ -28,13 +28,13 @@
                         <label for="desc_pengumuman">Deskripsi:</label>
                         <textarea class="form-control" rows="3" class="form-control form-control-sm" name="desc_pengumuman" type="text"
                         placeholder="Input deskripsi pengumuman Anda.." 
-                        value="{{ $pengumuman->desc_pengumuman }}" required></textarea>
+                        required>{{ $pengumuman->desc_pengumuman }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="gambar_pengumuman">Gambar:</label>
-                        <img src="{{ asset("storage/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
                         <input class="form-control form-control-sm" name="gambar_pengumuman" type="file"
-                        value="{{ $pengumuman->tgl_pengumuman }}" required>
+                        value="{{ $pengumuman->gambar_pengumuman }}">
                     </div>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Edit Pengumuman</button>
