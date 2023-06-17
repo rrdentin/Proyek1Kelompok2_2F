@@ -233,8 +233,12 @@ class HomeController extends Controller
      */
     public function showPanitiaDashboard()
     {
-    $user = Auth::user(); // Get the authenticated user
-    return view('panitia.dashboard', compact('user')); // Pass the user variable to the view
+        $user = Auth::user(); // Get the authenticated user
+        $adminCount = User::where('level', 'admin')->count();
+        $panitiaCount = User::where('level', 'panitia')->count();
+        $userCount = User::where('level', 'user')->count();
+    
+        return view('panitia.dashboard', compact('adminCount', 'panitiaCount', 'userCount', 'user'));
     }
 
     public function viewProfile()
@@ -260,7 +264,7 @@ class HomeController extends Controller
         return view('user.edit_profile', compact('user'));
     }
     public function updateUser(Request $request)
-{
+    {
     $user = Auth::user();
     $validator = Validator::make($request->all(), [
         'username' => 'nullable',
@@ -299,6 +303,5 @@ class HomeController extends Controller
     $user->save();
 
     return redirect()->back()->with('success', 'Profile updated successfully.');
-}
-    
+    }    
 }
