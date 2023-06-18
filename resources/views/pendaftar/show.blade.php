@@ -25,7 +25,7 @@
                             aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">
                             {{ Auth::user()->username }}
                         </a>
-                        <div id="dropdownMenu" class="dropdown-menu dropdown-menu-end">
+                        <div id="dropdownMenu" class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('user.profile') }}">View Profile</a>
                             <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
