@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pendaftar_id')->unique();
             $table->foreign('pendaftar_id')->references('id')->on('pendaftars')->onDelete('cascade');
+            $table->string('nis')->nullable();
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\AdminController;
@@ -34,12 +35,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
     Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
     Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
-        Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
+    Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
     Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
     Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::get('/pembayaran/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
     Route::get('/pembayaran/{id}/print', [PembayaranController::class, 'print'])->name('pembayaran.print');
-;
+    Route::get('/siswa/{id}', [SiswaController::class, 'show'])->name('siswa.show');
+    Route::get('/siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edit');
+    Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
+    Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
+    Route::get('/siswa/{id}/print', [SiswaController::class, 'print'])->name('siswa.print');
+
 });
 
 // User routes
@@ -53,6 +59,7 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/dashboard/pendaftar/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
     Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
+    Route::get('/user/dashboard/siswa', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');
 });
 
 // Admin routes
@@ -65,6 +72,8 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/pembayaran', [PembayaranController::class, 'dashboard'])->name('admin.pembayaran');
     Route::get('/admin/pendaftar/print', [PendaftarController::class, 'print'])->name('admin.print');
     Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
+    Route::get('/admin/siswa', [SiswaController::class, 'dashboard'])->name('admin.siswa');
+
 
 }
 );

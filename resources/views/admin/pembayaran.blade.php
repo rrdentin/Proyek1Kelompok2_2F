@@ -74,7 +74,7 @@
                                                             <input type="text" name="search" class="form-control"
                                                                 placeholder="Search">
                                                             <div class="input-group-btn">
-                                                                <button type="submit"class="btn btn-primary">
+                                                                <button type="submit" class="btn btn-primary">
                                                                     Search
                                                                 </button>
                                                             </div>
@@ -96,61 +96,62 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($pembayarans as $pembayaran)
-                                                                <tr>
-                                                                    <td>{{ $pembayaran->pendaftar->name }}</td>
-                                                                    <td>{{ $pembayaran->pendaftar->name_wali }}</td>
-                                                                    <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
-                                                                    <td>
-                                                                        @if ($pembayaran->status === 'bayar')
-                                                                            {{ $pembayaran->jumlah }}
-                                                                        @else
-                                                                            <input type="number" name="jumlah"
-                                                                                value="{{ $pembayaran->jumlah }}">
-                                                                        @endif
-                                                                    </td>
-                                                                    <td>
-                                                                        <form
-                                                                            action="{{ route('pembayaran.update', $pembayaran->id) }}"
-                                                                            method="POST" id="updateForm">
-                                                                            @csrf
-                                                                            @method('PUT')
-                                                                            <select name="status" class="form-control"
-                                                                                onchange="submitForm()">
-                                                                                <option value="bayar"
-                                                                                    {{ $pembayaran->status === 'bayar' ? 'selected' : '' }}>
-                                                                                    Bayar
-                                                                                </option>
-                                                                                <option value="verifikasi"
-                                                                                    {{ $pembayaran->status === 'verifikasi' ? 'selected' : '' }}>
-                                                                                    Verifikasi</option>
-                                                                                <option value="invalid"
-                                                                                    {{ $pembayaran->status === 'invalid' ? 'selected' : '' }}>
-                                                                                    Invalid
-                                                                                </option>
-                                                                                <option value="terbayar"
-                                                                                    {{ $pembayaran->status === 'terbayar' ? 'selected' : '' }}>
-                                                                                    Terbayar
-                                                                                </option>
-                                                                            </select>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary"
-                                                                                style="display: none;">Update</button>
-                                                                        </form>
+                                                            <tr>
+                                                                <td>{{ $pembayaran->pendaftar->name }}</td>
+                                                                <td>{{ $pembayaran->pendaftar->name_wali }}</td>
+                                                                <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
+                                                                <td>
+                                                                    @if ($pembayaran->status === 'bayar')
+                                                                    {{ $pembayaran->jumlah }}
+                                                                    @else
+                                                                    <input type="number" name="jumlah"
+                                                                        value="{{ $pembayaran->jumlah }}">
+                                                                    @endif
+                                                                </td>
+                                                                <td>
+                                                                    <form
+                                                                        action="{{ route('pembayaran.update', $pembayaran->id) }}"
+                                                                        method="POST" id="updateForm">
+                                                                        @csrf
+                                                                        @method('PUT')
+                                                                        <select name="status" class="form-control"
+                                                                            onchange="submitForm()">
+                                                                            <option value="bayar"
+                                                                                {{ $pembayaran->status === 'bayar' ? 'selected' : '' }}>
+                                                                                Bayar
+                                                                            </option>
+                                                                            <option value="verifikasi"
+                                                                                {{ $pembayaran->status === 'verifikasi' ? 'selected' : '' }}>
+                                                                                Verifikasi</option>
+                                                                            <option value="invalid"
+                                                                                {{ $pembayaran->status === 'invalid' ? 'selected' : '' }}>
+                                                                                Invalid
+                                                                            </option>
+                                                                            <option value="terbayar"
+                                                                                {{ $pembayaran->status === 'terbayar' ? 'selected' : '' }}>
+                                                                                Terbayar
+                                                                            </option>
+                                                                        </select>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            style="display: none;">Update</button>
+                                                                    </form>
 
-                                                                        <script>
-                                                                            function submitForm() {
-                                                                                document.getElementById("updateForm").submit();
-                                                                            }
-                                                                        </script>
+                                                                    <script>
+                                                                        function submitForm() {
+                                                                            document.getElementById("updateForm")
+                                                                                .submit();
+                                                                        }
 
-                                                                    </td>
-                                                                    <td>
-                                                                        <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
-                                                                            class="btn btn-info">View</a>
-                                                                        <a href="{{ route('admin.print', $pembayaran->id) }}"
-                                                                            class="btn btn-success">Print</a>
-                                                                    </td>
-                                                                </tr>
+                                                                    </script>
+
+                                                                </td>
+                                                                <td>
+                                                                    <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
+                                                                        class="btn btn-info">View</a>
+                                                                    <a href="{{ route('admin.print', $pembayaran->id) }}"
+                                                                        class="btn btn-success">Print</a>
+                                                                </td>
+                                                            </tr>
                                                             @endforeach
                                                         </tbody>
                                                     </table>
@@ -159,9 +160,14 @@
                                                 <div class="box-footer clearfix">
                                                     {{ $pembayarans->links() }}
                                                 </div>
+                                                <a href="/admin/dashboard" class="btn btn-primary btn-icon">
+                                                    <i class="fas fa-arrow-left"></i>
+                                                    Kembali
+                                                </a>
                                             </div>
                                             <!-- /.box -->
                                         </div>
+
                                     </div>
                                     <!-- Main row -->
                                     <div class="row">
@@ -169,11 +175,14 @@
                                         <section class="col-lg-7 connectedSortable">
                                             <!-- Custom tabs (Charts with tabs)-->
                                         </section>
+
                                     </div>
+
                                     <!-- /.col -->
                                 </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- /.row -->
                 </section>

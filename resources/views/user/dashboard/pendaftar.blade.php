@@ -66,9 +66,9 @@
                                                 Calon Siswa</a>
                                         </div>
                                         <br>
-                                        <div class="table table-bordered">
+                                        <div class="table table-responsive">
                                             @if ($pendaftars->count() > 0)
-                                                <table class="table">
+                                                <table class="table table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th class="text-center fonts-big">Nama</th>
@@ -118,7 +118,9 @@
                                                     </tbody>
                                                 </table>
                                             @else
+                                            <div class="alert alert-info" style="border: none;">
                                                 <p>Tidak ada pendaftar yang tersedia.</p>
+                                            </div>
                                             @endif
                                         </div>
                                     </div>
