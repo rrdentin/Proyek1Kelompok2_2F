@@ -20,7 +20,6 @@ class AdminController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::paginate(5);
         $userLevel = Auth::user()->level;
         $selectedTable = $request->query('table'); // Mengambil nilai query parameter 'table'
 
@@ -42,14 +41,14 @@ class AdminController extends Controller
             }
         } elseif ($userLevel === 'panitia') {
             if ($selectedTable === 'user') {
-                $users = User::where('level', 'user')->get();
-                $view = 'user-table';
+                $users = User::where('level', 'user')->paginate(5);
+                $view = 'panitia.usertable';
             } elseif ($selectedTable === 'panitia') {
-                $users = User::where('level', 'panitia')->get();
-                $view = 'admin.panitia-table';
+                $users = User::where('level', 'panitia')->paginate(5);
+                $view = 'panitia.panitiatable';
             } else {
                 // Pengguna level panitia tetapi tidak ada pilihan tabel yang dipilih
-                return redirect()->route('table', ['table' => 'user']);
+                return redirect()->route('table', ['table' => 'panitia']);
             }
         } else {
             return redirect('/');

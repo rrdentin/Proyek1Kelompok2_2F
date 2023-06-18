@@ -11,6 +11,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PanitiaController;
 
 Route::get('/', function () {
     return view('landingpage');
@@ -84,7 +85,8 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
     Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
-
+    Route::get('/panitia/panitiatable', [AdminController::class, 'index'])->name('panitia.panitiatable');
+    Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
 });
 
 Route::get('/table', [AdminController::class, 'index'])->name('table');

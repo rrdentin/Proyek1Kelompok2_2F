@@ -1,6 +1,6 @@
 @extends('admin.app')
-<title>Tabel Panitia | Shaleh </title>
-<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+    <title>Tabel User | Shaleh </title>
+    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('panitia.sidebar')
 <!--
 `body` tag options:
@@ -23,13 +23,6 @@
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-            </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -59,14 +52,13 @@
         </nav>
         <!-- /.navbar -->
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="margin-bottom: -5%;">
+        <div style="margin-left: 250px">
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Table Panitia</h1>
+                            <h1 class="m-0">Table User</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -81,54 +73,13 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#buatAkun"
+                                    <button data-toggle="modal" data-target="#createUser"
                                         class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
-                                        Panitia</button>
+                                        User</button>
+                                </div>
 
-                                </div>
-                                <div class="modal fade" id="buatAkun" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Panitia</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form method="POST">
-                                                    <div class="form-group">
-                                                        <label>Username:</label>
-                                                        <input class="form-control form-control-sm" name="username"
-                                                            type="text" placeholder="Input your username" required>
-                                                        <label>Nama:</label>
-                                                        <input class="form-control form-control-sm" name="nama"
-                                                            type="text" placeholder="Input your name" required>
-                                                        <label>Email:</label>
-                                                        <input class="form-control form-control-sm" name="email"
-                                                            type="text" placeholder="Input your  email" required>
-                                                        <label>Password:</label>
-                                                        <input class="form-control form-control-sm" name="password"
-                                                            type="password" placeholder="Input your password" required>
-                                                        <label>Confirm Password:</label>
-                                                        <input class="form-control form-control-sm"
-                                                            name="passwordconfirm" type="password"
-                                                            placeholder="Confirm your password" required>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                                <button type="submit" name="regisforpanitia"
-                                                    class="btn btn-primary">Add Panitia</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                @include('admin.create.createUser')
+
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-dark">
@@ -136,33 +87,35 @@
                                                 <th class="text-center fonts-big">No</th>
                                                 <th class="text-center fonts-big">Nama</th>
                                                 <th class="text-center fonts-big">Email</th>
-                                                <th class="text-center fonts-big">Username
-                                                <th>
-                                                <th class="text-center fonts-big">Level
-                                                <th>
+                                                <th class="text-center fonts-big">Username</th>
+                                                <th class="text-center fonts-big">Level</th>
                                                 <th class="text-center fonts-big" colspan="2">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $user->name }}</td>
-                                                    <td>{{ $user->email }}</td>
-                                                    <td>{{ $user->username }}</td>
-                                                    <td>{{ $user->level }}</td>
-                                                    <td>
+                                                    <td class="text-center fonts-big">{{ $loop->iteration }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->name }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->email }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->username }}</td>
+                                                    <td class="text-center fonts-big">{{ $user->level }}</td>
+                                                    <td class="text-center fonts-big">
                                                         <form action="{{ route('users.destroy', $user->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('users.edit', $user->id) }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editUser{{ $user->id }}">Edit</a>
                                                             @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @include('admin.edit.editAdmin')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
@@ -175,15 +128,7 @@
             </div>
         </div>
     </div>
-    <!-- /.col-md-6 -->
     </div>
-    <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-    </div>
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

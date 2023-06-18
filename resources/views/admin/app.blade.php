@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
-    <title>Dashboard Admin | Shaleh</title>
 
     {{-- css --}}
     <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">

@@ -1,5 +1,7 @@
 @extends('admin.app')
-@extends('admin.sidebar')
+<title>Dashboard Panitia | Shaleh</title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+@extends('panitia.sidebar')
 <!--
 `body` tag options:
 
@@ -57,7 +59,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Admin</h1>
+                            <h1 class="m-0">Panitia</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                         </div><!-- /.col -->
@@ -70,23 +72,6 @@
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-info">
-                                <div class="inner">
-                                    <h3>{{ $adminCount }}</h3>
-                                    <p>Admin</p>
-                                </div>
-                                <div class="icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75"
-                                        fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                                        <!-- SVG path -->
-                                    </svg>
-                                </div>
-                                <a href="{{ route('table', ['table' => 'admin']) }}" class="small-box-footer">More info
-                                    <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
                         <!-- ./col -->
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
