@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Tabel Panitia | Shaleh </title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Tabel Panitia | Shaleh </title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 <!--
 `body` tag options:
@@ -106,21 +106,17 @@
                                                     <td class="text-center fonts-big">{{ $user->username }}</td>
                                                     <td class="text-center fonts-big">{{ $user->level }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('users.destroy', $user->id) }}"
-                                                            method="POST">
-                                                            <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger">Delete</button>
-                                                        </form>
+                                                        <a class="btn btn-primary" href="#" data-toggle="modal"
+                                                            data-target="#editAdmin{{ $user->id }}">Edit</a>
+                                                        <a class="btn btn-danger" href="#" data-toggle="modal"
+                                                            data-target="#deleteAdmin{{ $user->id }}">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     @include('admin.edit.editAdmin')
+                                    @include('admin.delete.deleteAdmin')
                                 </div>
                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
