@@ -103,23 +103,17 @@
                                                         <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
                                                     </td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT')
                                                             <a class="btn btn-primary"
                                                                 href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger">Delete</button>
-                                                        </form>
+                                                            <a class="btn btn-danger"
+                                                                href="#" data-toggle="modal" data-target="#deletePengumuman{{ $pengumuman->id }}">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     @include('admin.edit.editPengumuman')
+                                    @include('admin.delete.deletePengumuman')
                                 </div>
                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
