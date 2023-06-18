@@ -45,7 +45,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Admin</h1>
+                            <h1 class="m-0">Pembayaran Calon Siswa</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                         </div><!-- /.col -->
@@ -59,7 +59,7 @@
                     <div class="col-12">
                         <div class="card">
                             <section class="content-header">
-                                <h1>Pembayaran Dashboard</h1>
+                                
                             </section>
 
                             <!-- Main content -->
@@ -69,7 +69,8 @@
                                         <div class="box">
                                             <div class="card-body">
                                                 <div class="box-header with-border">
-                                                    <h3 class="box-title">Filter</h3>
+                                                    <h6 class="box-title">Detail Pembayaran</h6>
+                                                    
                                                     <form action="{{ route('pembayaran.dashboard') }}" method="GET"
                                                         class="box-tools">
                                                         <div class="input-group">
