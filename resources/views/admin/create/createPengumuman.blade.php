@@ -11,28 +11,31 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('pengumuman.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label for="tgl_pengumuman">Tanggal:</label>
-                        <input class="form-control form-control-sm" name="tgl_pengumuman" type="date"
-                        required>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="tgl_pengumuman">Tanggal:</label>
+                            <input class="form-control form-control-sm" name="tgl_pengumuman" type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="judul_pengumuman">Judul:</label>
+                            <input class="form-control form-control-sm" name="judul_pengumuman" type="text"
+                                placeholder="Ketikan judul pengumuman Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="desc_pengumuman">Deskripsi:</label>
+                            <textarea class="form-control" rows="3" class="form-control form-control-sm" name="desc_pengumuman" type="text"
+                                placeholder="Ketikan deskripsi pengumuman Anda.." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar_pengumuman">Gambar:</label>
+                            <input class="form-control form-control-sm" name="gambar_pengumuman" type="file"
+                                required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="judul_pengumuman">Judul:</label>
-                        <input class="form-control form-control-sm" name="judul_pengumuman" type="text"
-                            placeholder="Input judul pengumuman Anda.." required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary">Tambah Pengumuman</button>
                     </div>
-                    <div class="form-group">
-                        <label for="desc_pengumuman">Deskripsi:</label>
-                        <textarea class="form-control" rows="3" class="form-control form-control-sm" name="desc_pengumuman" type="text"
-                        placeholder="Input deskripsi pengumuman Anda.." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="gambar_pengumuman">Gambar:</label>
-                        <input class="form-control form-control-sm" name="gambar_pengumuman" type="file"
-                        required>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add Pengumuman</button>
                 </form>
             </div>
         </div>

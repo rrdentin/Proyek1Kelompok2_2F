@@ -11,23 +11,26 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('gallery.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <label for="kategori_galeri">Kategori:</label>
-                        <input class="form-control form-control-sm" name="kategori_galeri" type="text"
-                        placeholder="Input kategori galeri Anda.." required>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="kategori_galeri">Kategori:</label>
+                            <input class="form-control form-control-sm" name="kategori_galeri" type="text"
+                                placeholder="Ketikan kategori galeri Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="keterangan_galeri">Keterangan:</label>
+                            <input class="form-control form-control-sm" name="keterangan_galeri" type="text"
+                                placeholder="Ketikan keterangan galeri Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gambar_galeri">Gambar:</label>
+                            <input class="form-control form-control-sm" name="gambar_galeri" type="file" required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="keterangan_galeri">Keterangan:</label>
-                        <input class="form-control form-control-sm" name="keterangan_galeri" type="text"
-                            placeholder="Input keterangan galeri Anda.." required>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary">Tambah Gallery</button>
                     </div>
-                    <div class="form-group">
-                        <label for="gambar_galeri">Gambar:</label>
-                        <input class="form-control form-control-sm" name="gambar_galeri" type="file"
-                        required>
-                    </div>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add Gallery</button>
                 </form>
             </div>
         </div>

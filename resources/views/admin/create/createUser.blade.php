@@ -1,4 +1,5 @@
-<div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -10,29 +11,38 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('users.store') }}">
                     @csrf
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input class="form-control form-control-sm" name="username" type="text" placeholder="Input your username" required>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input class="form-control form-control-sm" name="username" type="text"
+                                placeholder="Ketikan username Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nama:</label>
+                            <input class="form-control form-control-sm" name="name" type="text"
+                                placeholder="Ketikan nama Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input class="form-control form-control-sm" name="email" type="email"
+                                placeholder="Ketikan email Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input class="form-control form-control-sm" name="password" type="password"
+                                placeholder="Ketikan password Anda.." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordconfirm">Confirm Password:</label>
+                            <input class="form-control form-control-sm" name="password_confirmation" type="password"
+                                placeholder="Ketikan lagi password Anda.." required>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="name">Nama:</label>
-                        <input class="form-control form-control-sm" name="name" type="text" placeholder="Input your name" required>
+                    <div class="modal-footer">
+                        <input type="hidden" name="level" value="user">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary">Tambah User</button>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input class="form-control form-control-sm" name="email" type="email" placeholder="Input your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input class="form-control form-control-sm" name="password" type="password" placeholder="Input your password" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="passwordconfirm">Confirm Password:</label>
-                        <input class="form-control form-control-sm" name="password_confirmation" type="password" placeholder="Confirm your password" required>
-                    </div>
-                    <input type="hidden" name="level" value="user">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add User</button>
                 </form>
             </div>
         </div>
