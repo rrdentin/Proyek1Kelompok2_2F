@@ -55,7 +55,8 @@
         <div style="margin-left: 250px">
             <!-- Content Header (Page header) -->
             <div class="container">
-                <h1>Admin Dashboard - Pendaftaran</h1>
+                <h1>Tabel Daftar Calon Siswa </h1>
+                <h6>Mohon untuk selektif dan teliti dalam menyeleksi calon siswa !  </h6>
                 <hr>
                 <form class="form-left my-4" method="get" action="{{ route('searchPendaftar') }}">
                     <div class="form-group w-80 mb-3">
