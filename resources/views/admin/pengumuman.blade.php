@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Tabel Pengumuman | Shaleh </title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Tabel Pengumuman | Shaleh </title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 <!--
 `body` tag options:
@@ -79,7 +79,7 @@
                                 </div>
 
                                 @include('admin.create.createPengumuman')
-                                
+
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-dark">
@@ -96,17 +96,21 @@
                                             @foreach ($pengumumans as $pengumuman)
                                                 <tr>
                                                     <td class="text-center fonts-big">{{ $pengumuman->id }}</td>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}</td>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
-                                                    <td class="text-center fonts-big">
-                                                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}
                                                     </td>
                                                     <td class="text-center fonts-big">
-                                                            <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
-                                                            <a class="btn btn-danger"
-                                                                href="#" data-toggle="modal" data-target="#deletePengumuman{{ $pengumuman->id }}">Delete</a>
+                                                        {{ $pengumuman->judul_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}
+                                                    </td>
+                                                    <td class="text-center fonts-big">
+                                                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                                            width='50' height='50' class="img img-responsive" />
+                                                    </td>
+                                                    <td class="text-center fonts-big">
+                                                        <a class="btn btn-primary" href="#" data-toggle="modal"
+                                                            data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
+                                                        <a class="btn btn-danger" href="#" data-toggle="modal"
+                                                            data-target="#deletePengumuman{{ $pengumuman->id }}">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

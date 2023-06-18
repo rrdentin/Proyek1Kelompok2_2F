@@ -95,29 +95,26 @@
                                             @foreach ($gallery as $galeri)
                                                 <tr>
                                                     <td class="text-center fonts-big">{{ $galeri->id }}</td>
-                                                    <td class="text-center fonts-big">{{ $galeri->kategori_galeri }}</td>
-                                                    <td class="text-center fonts-big">{{ $galeri->keterangan_galeri }}</td>
-                                                    <td class="text-center fonts-big">
-                                                        <img src="{{ asset("storage/gallery/$galeri->gambar_galeri") }}" width= '50' height='50' class="img img-responsive"/>
+                                                    <td class="text-center fonts-big">{{ $galeri->kategori_galeri }}
+                                                    </td>
+                                                    <td class="text-center fonts-big">{{ $galeri->keterangan_galeri }}
                                                     </td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('gallery.destroy', $galeri->id) }}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editGallery{{ $galeri->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger">Delete</button>
-                                                        </form>
+                                                        <img src="{{ asset("storage/gallery/$galeri->gambar_galeri") }}"
+                                                            width='50' height='50' class="img img-responsive" />
+                                                    </td>
+                                                    <td class="text-center fonts-big">
+                                                        <a class="btn btn-primary" href="#" data-toggle="modal"
+                                                            data-target="#editGallery{{ $galeri->id }}">Edit</a>
+                                                        <a class="btn btn-danger" href="#" data-toggle="modal"
+                                                            data-target="#deleteGallery{{ $galeri->id }}">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     @include('admin.edit.editGallery')
+                                    @include('admin.delete.deleteGallery')
                                 </div>
                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
