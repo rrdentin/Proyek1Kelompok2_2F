@@ -106,4 +106,5 @@ Route::resource('pengumuman', PengumumanController::class);
 
 //Gallery routes
 Route::get('admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
+Route::get('panitia/gallery', [GalleryController::class, 'index'])->name('panitia.gallery');
 Route::resource('gallery', GalleryController::class);

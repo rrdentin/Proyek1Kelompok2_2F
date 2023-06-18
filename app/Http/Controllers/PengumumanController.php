@@ -32,7 +32,7 @@ class PengumumanController extends Controller
             return redirect('/');
         }
 
-        return view($view, compact('users'));
+        return view(compact('users'));
     }
 
     /**
