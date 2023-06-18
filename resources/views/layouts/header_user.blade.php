@@ -11,8 +11,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="landing">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                    
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                             aria-haspopup="true" aria-expanded="false" onclick="toggleDropdown()">

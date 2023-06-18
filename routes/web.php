@@ -60,6 +60,7 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
     Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
     Route::get('/user/dashboard/siswa', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');
+    
 });
 
 // Admin routes

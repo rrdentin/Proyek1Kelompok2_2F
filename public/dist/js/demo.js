@@ -14,7 +14,7 @@
     if (window.___browserSync___ === undefined && Number(localStorage.getItem('AdminLTE:Demo:MessageShowed')) < Date.now()) {
       localStorage.setItem('AdminLTE:Demo:MessageShowed', (Date.now()) + (15 * 60 * 1000))
       // eslint-disable-next-line no-alert
-      alert('Selamat datang')
+      alert('Selamat Datang di Website Anak Shaleh !, sebelum menggunakan web ini anda juga bisa membaca privacy policy dan term of use untuk keamanan data.')
     }
   }, 1000)
 
