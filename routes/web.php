@@ -64,6 +64,14 @@ Route::middleware(['checkLevel:user'])->group(function () {
     
 });
 
+// Panitia routes
+Route::middleware(['checkLevel:panitia'])->group(function () {
+    Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
+    Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
+    Route::get('/panitia/panitiatable', [PanitiaController::class, 'index'])->name('panitia.panitiatable');
+    Route::post('add-panitia', [PanitiaController::class, 'addPanitia'])->name('panitia.add-panitia');
+});
+
 // Admin routes
 Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/dashboard', [HomeController::class, 'showAdminDashboard'])->name('admin.dashboard');
@@ -80,15 +88,6 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 }
 );
     Route::resource('users', AdminController::class);
-    
-
-// Panitia routes
-Route::middleware(['checkLevel:panitia'])->group(function () {
-    Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
-    Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
-    Route::get('/panitia/panitiatable', [AdminController::class, 'index'])->name('panitia.panitiatable');
-    Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
-});
 
 Route::get('/table', [AdminController::class, 'index'])->name('table');
 
@@ -102,6 +101,7 @@ Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebook
 
 //Pengumuman routes
 Route::get('admin/pengumuman', [PengumumanController::class, 'index'])->name('admin.pengumuman');
+Route::get('panitia/pengumuman', [PengumumanController::class, 'index'])->name('panitia.pengumuman');
 Route::resource('pengumuman', PengumumanController::class);
 
 //Gallery routes

@@ -68,19 +68,17 @@
             <!-- Main content -->
             <div class="content transition">
                 <div class="container-fluid dashboard">
-
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
                                     <button data-toggle="modal" data-target="#createUser"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
-                                        User</button>
+                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah User</button>
                                 </div>
-
+                                
                                 @include('admin.create.createUser')
 
-                                <div class="table-responsive">
+                                <div class="table table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
@@ -104,7 +102,7 @@
                                                         <form action="{{ route('users.destroy', $user->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editUser{{ $user->id }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -130,14 +128,12 @@
     </div>
     </div>
 
-    <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
-    <!-- /.control-sidebar -->
-    <!-- ./wrapper -->
-
+    
     @extends('admin.footer')
+    <!-- /.control-sidebar -->
 
     <!-- REQUIRED SCRIPTS -->
 

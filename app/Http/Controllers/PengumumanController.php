@@ -6,6 +6,9 @@ use App\Models\Pengumuman;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Middleware\CheckLevel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PengumumanController extends Controller
 {
@@ -16,8 +19,20 @@ class PengumumanController extends Controller
      */
     public function index()
     {
-        $pengumumans = Pengumuman::all(); // Mengambil 5 isi tabel
-        return view('admin.pengumuman', compact('pengumumans'));
+        $userLevel = Auth::user()->level;
+
+        // Memeriksa level pengguna dan pilihan tabel yang dipilih
+        if ($userLevel === 'admin') {
+            $pengumumans = Pengumuman::all(); // Mengambil 5 isi tabel
+            return view('admin.pengumuman', compact('pengumumans'));
+        } elseif ($userLevel === 'panitia') {
+            $pengumumans = Pengumuman::all(); // Mengambil 5 isi tabel
+            return view('panitia.pengumuman', compact('pengumumans'));
+        } else {
+            return redirect('/');
+        }
+
+        return view($view, compact('users'));
     }
 
     /**
@@ -38,7 +53,8 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        $fileName = date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
+        $fileName =
+            date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
         $request->gambar_pengumuman->storeAs('public/pengumuman', $fileName);
 
         Pengumuman::create([
@@ -47,7 +63,9 @@ class PengumumanController extends Controller
             'desc_pengumuman' => $request->desc_pengumuman,
             'gambar_pengumuman' => $fileName,
         ]);
-        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil ditambahakan!');
+        return redirect()
+            ->route('admin.pengumuman')
+            ->with('success', 'Pengumuman berhasil ditambahakan!');
     }
 
     /**
@@ -86,12 +104,17 @@ class PengumumanController extends Controller
         $fileName = '';
 
         if ($request->hasFile('gambar_pengumuman')) {
-            $fileName = date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
-            $request->gambar_pengumuman->storeAs('public/pengumuman', $fileName);
+            $fileName =
+                date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
+            $request->gambar_pengumuman->storeAs(
+                'public/pengumuman',
+                $fileName
+            );
 
-            Storage::delete('public/pengumuman/' . $pengumumans->gambar_pengumuman);
+            Storage::delete(
+                'public/pengumuman/' . $pengumumans->gambar_pengumuman
+            );
             $pengumumans->delete();
-            
         } else {
             $fileName = $pengumumans->gambar_pengumuman;
         }
@@ -102,7 +125,9 @@ class PengumumanController extends Controller
         $pengumumans->gambar_pengumuman = $fileName;
         $pengumumans->save();
 
-        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil diubah!');
+        return redirect()
+            ->route('admin.pengumuman')
+            ->with('success', 'Pengumuman berhasil diubah!');
     }
 
     /**
@@ -117,6 +142,9 @@ class PengumumanController extends Controller
         Storage::delete('public/pengumuman/' . $data->gambar_pengumuman);
         $data->delete();
 
-        return redirect(url('admin/pengumuman'))->with('success', 'Data Pengumuman Berhasil Dihapus');
+        return redirect(url('admin/pengumuman'))->with(
+            'success',
+            'Data Pengumuman Berhasil Dihapus'
+        );
     }
 }

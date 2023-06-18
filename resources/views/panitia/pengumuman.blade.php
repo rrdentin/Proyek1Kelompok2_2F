@@ -1,5 +1,5 @@
 @extends('admin.app')
-    <title>Tabel Panitia | Shaleh </title>
+    <title>Tabel Pengumuman | Shaleh </title>
     <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('panitia.sidebar')
 <!--
@@ -58,7 +58,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Table Panitia</h1>
+                            <h1 class="m-0">Table Pengumuman</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -68,48 +68,58 @@
             <!-- Main content -->
             <div class="content transition">
                 <div class="container-fluid dashboard">
+
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#createPanitia"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Panitia</button>
+                                    <button data-toggle="modal" data-target="#createPengumuman"
+                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
+                                        Pengumuman</button>
                                 </div>
-                                
-                                @include('admin.create.createPanitia')
 
-                                <div class="table table-bordered">
+                                @include('admin.create.createPengumuman')
+                                
+                                <div class="table-responsive">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center fonts-big">No</th>
-                                                <th class="text-center fonts-big">Nama</th>
-                                                <th class="text-center fonts-big">Email</th>
-                                                <th class="text-center fonts-big">Username</th>
-                                                <th class="text-center fonts-big">Level</th>
-                                                <th class="text-center fonts-big" colspan="2">Aksi</th>
+                                                <th class="text-center fonts-big">Tanggal</th>
+                                                <th class="text-center fonts-big">Judul</th>
+                                                <th class="text-center fonts-big">Deskripsi</th>
+                                                <th class="text-center fonts-big">Gambar</th>
+                                                <th class="text-center fonts-big">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($users as $user)
+                                            @foreach ($pengumumans as $pengumuman)
                                                 <tr>
-                                                    <td class="text-center fonts-big">{{ $loop->iteration }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->name }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->email }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->username }}</td>
-                                                    <td class="text-center fonts-big">{{ $user->level }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('users.destroy', $user->id) }}"
-                                                            method="POST">
+                                                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                                                    </td>
+                                                    <td class="text-center fonts-big">
+                                                        <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
+                                                            method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
                                                             <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit"
+                                                                class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    @include('admin.edit.editAdmin')
+                                    @include('admin.edit.editPengumuman')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
@@ -124,12 +134,14 @@
     </div>
     </div>
 
+    <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
-    
-    @extends('admin.footer')
     <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+
+    @extends('admin.footer')
 
     <!-- REQUIRED SCRIPTS -->
 
