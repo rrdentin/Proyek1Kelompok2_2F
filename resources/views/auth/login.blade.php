@@ -82,13 +82,6 @@
                                 </div>
 
                                 <br>
-
-<<<<<<< HEAD
-=======
-                                <!-- Remember Me Checkbox -->
-                                
-
->>>>>>> 2b8cfaac6de61a7e91d74cac7e617a5f6d8a124d
                                 <input type="submit" value="Login" class="btn btn-block btn-primary">
                                 </a>
                                 <br>
