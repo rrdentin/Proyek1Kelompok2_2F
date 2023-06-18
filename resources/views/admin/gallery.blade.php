@@ -98,13 +98,15 @@
                                                     <td class="text-center fonts-big">{{ $galeri->kategori_galeri }}</td>
                                                     <td class="text-center fonts-big">{{ $galeri->keterangan_galeri }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <img src="{{ asset("storage/$galeri->gambar_galeri") }}" width= '50' height='50' class="img img-responsive"/>
+                                                        <img src="{{ asset("storage/gallery/$galeri->gambar_galeri") }}" width= '50' height='50' class="img img-responsive"/>
                                                     </td>
                                                     <td class="text-center fonts-big">
                                                         <form action="{{ route('gallery.destroy', $galeri->id) }}"
-                                                            method="POST">
+                                                            method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
                                                             <a class="btn btn-primary"
-                                                                href="{{ route('gallery.edit', $galeri->id) }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editGallery{{ $galeri->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -115,6 +117,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
+                                    @include('admin.edit.editGallery')
                                 </div>
                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>

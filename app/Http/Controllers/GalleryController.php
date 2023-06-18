@@ -37,16 +37,18 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->file('gambar_galeri')){
-            $image_name = $request->file('gambar_galeri')->store('gallery', 'public');
-        }
+        $fileName =
+            date('YmdHis') . '.' . $request->gambar_galeri->extension();
+        $request->gambar_galeri->storeAs('public/gallery', $fileName);
 
         Gallery::create([
             'kategori_galeri' => $request->kategori_galeri,
             'keterangan_galeri' => $request->keterangan_galeri,
-            'gambar_galeri' => $image_name,
+            'gambar_galeri' => $fileName,
         ]);
-        return 'Galeri berhasil dibuat!';
+        return redirect()
+            ->route('admin.gallery')
+            ->with('success', 'Galeri berhasil ditambahakan!');
     }
 
     /**
@@ -82,17 +84,25 @@ class GalleryController extends Controller
     {
         $gallery = Gallery::find($id);
 
+        $fileName = '';
+
+        if ($request->hasFile('gambar_galeri')) {
+            $fileName =
+                date('YmdHis') . '.' . $request->gambar_galeri->extension();
+            $request->gambar_galeri
+                ->storeAs('public/gallery', $fileName);
+            Storage::delete('public/gallery/' . $gallery->gambar_galeri);
+            $gallery->delete();
+        } else {
+            $fileName = $gallery->gambar_galeri;
+        }
+
         $gallery->kategori_galeri = $request->kategori_galeri;
         $gallery->keterangan_galeri = $request->keterangan_galeri;
-
-        if ($gallery->gambar_galeri && file_exists(storage_path('app/public/' . $gallery->gambar_galeri))) {
-            Storage::delete('public/' . $gallery->gambar_galeri);
-        }
-        $image_name = $request->file('gambar_galeri')->store('gallery', 'public');
-        $gallery->gambar_galeri = $image_name;
-
+        $gallery->gambar_galeri = $fileName;
         $gallery->save();
-        return 'Galeri berhasil diubah!';
+
+        return redirect()->route('admin.gallery')->with('success', 'Galeri berhasil diubah!');
     }
 
     /**
@@ -104,7 +114,13 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         //fungsi eloquent untuk menghapus data
-        Gallery::find($id)->delete();
-        return redirect()->route('admin.gallery')->with('success', 'Galeri berhasil dihapus!');
+        $data = Gallery::find($id);
+        Storage::delete('public/gallery/' . $data->gambar_galeri);
+        $data->delete();
+
+        return redirect()->route('admin.gallery')->with(
+            'success',
+            'Data Pengumuman Berhasil Dihapus'
+        );
     }
 }
