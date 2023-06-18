@@ -64,8 +64,13 @@
                                         <div class="d-flex justify-content-between">
                                             <a href="{{ route('pendaftar.create') }}" class="btn btn-primary">Tambah
                                                 Calon Siswa</a>
+                                                <button data-toggle="modal" data-target="#createPendaftar"
+                                                    class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Calon Siswa
+                                                </button>
                                         </div>
                                         <br>
+
+                                        @include('user.create.createPendaftar')
                                         @if ($message = Session::get('success'))
                                             <div class="alert alert-success">
                                                 <p>{{ $message }}</p>
