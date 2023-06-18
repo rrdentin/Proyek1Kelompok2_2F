@@ -59,7 +59,12 @@
                         <div class="col-md-12">
                             <div class="table table-bordered">
                             @if (!empty($pembayarans) && count($pembayarans) > 0)
-                                <table class="table">
+                            @if ($message = Session::get('success'))
+                                            <div class="alert alert-success">
+                                                <p>{{ $message }}</p>
+                                            </div>
+                                        @endif    
+                            <table class="table">
                                     <thead>
                                         <tr>
                                             <th>Name</th>
