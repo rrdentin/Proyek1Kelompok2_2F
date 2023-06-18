@@ -82,14 +82,6 @@
                                 </div>
 
                                 <br>
-
-                                <!-- Remember Me Checkbox -->
-                                <label for="remember">
-                                    <input id="remember" type="checkbox" name="remember"
-                                        {{ old('remember') ? 'checked' : '' }}>
-                                    Remember me
-                                </label>
-
                                 <input type="submit" value="Login" class="btn btn-block btn-primary">
                                 </a>
                                 <br>

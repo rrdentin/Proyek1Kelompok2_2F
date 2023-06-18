@@ -75,6 +75,13 @@
                                     <button data-toggle="modal" data-target="#createAdmin"
                                         class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
                                         Admin</button>
+                                    <form class="form-left my-3" method="get" action="{{ route('searchAdmin') }}">
+                                        <div class="form-group w-80 mb-1">
+                                            <input type="text" name="search" class="form-control w-50 d-inline"
+                                                id="search" placeholder="Search">
+                                            <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                        </div>
+                                    </form>
                                 </div>
 
                                 @include('admin.create.createAdmin')

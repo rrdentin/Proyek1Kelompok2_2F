@@ -76,6 +76,13 @@
                                     <button data-toggle="modal" data-target="#createUser"
                                         class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
                                         User</button>
+                                    <form class="form-left my-4" method="get" action="{{ route('searchUser') }}">
+                                        <div class="form-group w-80 mb-3">
+                                            <input type="text" name="search" class="form-control w-50 d-inline"
+                                                id="search" placeholder="Search">
+                                            <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                        </div>
+                                    </form>
                                 </div>
 
                                 @include('admin.create.createUser')

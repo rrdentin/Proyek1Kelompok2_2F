@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Pendaftar;
+use App\Models\Pembayaran;
 
 
 //tesssss
@@ -303,5 +305,71 @@ class HomeController extends Controller
     $user->save();
 
     return redirect()->back()->with('success', 'Profile updated successfully.');
-    }    
+    }
+    public function searchAdmin(Request $request){
+
+        $request->has('search');
+        $level = Auth::user()->level;
+
+        if ($level === 'admin') {
+            $users = User::where('level', 'admin')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $view = 'admin.admintable';
+        }
+        else{
+            $users = User::all();
+        }
+
+        return view($view,['users' => $users]);
+    }
+
+    public function searchUser(Request $request){
+
+        $request->has('search');
+        $level = Auth::user()->level;
+        $view = 'admin.usertable';
+
+        if ($level === 'user') {
+            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+        }
+        else{
+            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+        }
+
+        return view($view,['users' => $users]);
+    }
+    public function searchPanitia(Request $request){
+
+        $request->has('search');
+        $level = Auth::user()->level;
+        $view = 'admin.panitia-table';
+
+        if ($level === 'panitia') {
+            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+        }
+        else{
+            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+        }
+
+        return view($view,['users' => $users]);
+    }
+    public function searchPendaftar(Request $request){
+
+        $request->has('search');
+        $level = Auth::user()->level;
+        $view = 'admin.pendaftar';
+
+        if ($level === 'admin') {
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+        }
+        else{
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+        }
+
+        $pembayaran = [];
+        if ($pendaftars->isNotEmpty()) {
+            $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
+        }
+
+        return view('admin.pendaftar', compact('pendaftars', 'pembayaran'));
+    }
 }

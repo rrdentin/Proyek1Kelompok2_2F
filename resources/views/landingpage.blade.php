@@ -218,7 +218,7 @@
         <section id="tutors">
             <div class="tengah">
             <div class="kolom">
-                <p class="deskripsi">tutorial pendaftaran</p>
+                <p class="deskripsi">Tutorial Pendaftaran</p>
                 <h2>Anak Saleh</h2>
             </div>
                 <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="534" height="300" type="text/html" src="https://www.youtube.com/embed/xskyxQOCkRw?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/pl/">youtubeembedcode pl</a></small></div><div><small><a href="https://allabeviljas.se/">smslån som beviljar alla</a></small></div><div><small><a href="https://youtubeembedcode.com/pl/">youtubeembedcode pl</a></small></div><div><small><a href="https://skipborules.com/">skipborules.com</a></small></div><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode nl</a></small></div><div><small><a href="https://xn--snabbln5000-28a.com/lana-2000/">låna 2000</a></small></div><div><small><a href="https://youtubeembedcode.com/en">youtubeembedcode.com/en/</a></small></div><div><small><a href="https://nouc.se/sms-lan/handelsbanken/">sms lån handelsbanken</a></small></div></iframe>
