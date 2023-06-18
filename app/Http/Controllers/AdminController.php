@@ -48,7 +48,7 @@ class AdminController extends Controller
                 $view = 'panitia.panitiatable';
             } else {
                 // Pengguna level panitia tetapi tidak ada pilihan tabel yang dipilih
-                return redirect()->route('table', ['table' => 'panitia']);
+                return redirect()->route('table', ['table' => 'panitia']) ;
             }
         } else {
             return redirect('/');
@@ -96,7 +96,7 @@ class AdminController extends Controller
         $user->save();
 
         // Redirect the user to a desired location after saving to the database
-        return redirect()->route('admin.admintable')->with('success', 'User Berhasil Ditambahakan!');
+        return redirect()->route('admin.admintable')->with('scs', 'User Berhasil Ditambahakan!');
     }
     
     /**

@@ -66,6 +66,11 @@
                                                 Calon Siswa</a>
                                         </div>
                                         <br>
+                                        @if ($message = Session::get('success'))
+                                            <div class="alert alert-success">
+                                                <p>{{ $message }}</p>
+                                            </div>
+                                        @endif
                                         <div class="table table-responsive">
                                             @if ($pendaftars->count() > 0)
                                                 <table class="table table-bordered">
