@@ -1,5 +1,5 @@
 @extends('layouts.userapp')
-<title>Tabel Admin | Shaleh </title>
+<title>Pembayaran user | Shaleh </title>
 <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('layouts.usersidebar')
 <!--
@@ -35,7 +35,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('user.profile') }}">
                             <th>{{ Auth::user()->name }}</th>
                         </a>
                         <a class="nav-link" href="{{ route('logout') }}"

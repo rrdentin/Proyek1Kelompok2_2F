@@ -27,7 +27,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('user.profile') }}">
                             <th>{{ Auth::user()->name }}</th>
                         </a>
                         <a class="nav-link" href="{{ route('logout') }}"
@@ -83,10 +83,11 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                
             </div>
             <!-- /.row -->
         </div>
+    </div>
     </div>
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->

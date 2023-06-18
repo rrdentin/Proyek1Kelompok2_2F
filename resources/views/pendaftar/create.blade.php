@@ -1,6 +1,11 @@
+<marquee bgcolor="#283845" width="100%" color="#ffff">
+        <h1 style="color:#FFFF00; font-size: 1rem;">Penting : Pastikan data yang anda input sudah benar sebelum melakukan submit data !, bersama Sekolah Anak Saleh Be Piously Great</h1>
+    </marquee>
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <h1>Tambah Calon Siswa</h1>
 
@@ -100,4 +105,5 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
 @endsection
