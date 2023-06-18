@@ -62,11 +62,10 @@
                                 <div class="card">
                                     <div class="card-header border-0">
                                         <div class="d-flex justify-content-between">
-                                            <a href="{{ route('pendaftar.create') }}" class="btn btn-primary">Tambah
-                                                Calon Siswa</a>
-                                                <button data-toggle="modal" data-target="#createPendaftar"
-                                                    class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Calon Siswa
-                                                </button>
+                                            <button data-toggle="modal" data-target="#createPendaftar"
+                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
+                                                Calon Siswa
+                                            </button>
                                         </div>
                                         <br>
 
@@ -128,9 +127,9 @@
                                                     </tbody>
                                                 </table>
                                             @else
-                                            <div class="alert alert-info" style="border: none;">
-                                                <p>Tidak ada pendaftar yang tersedia.</p>
-                                            </div>
+                                                <div class="alert alert-info" style="border: none;">
+                                                    <p>Tidak ada pendaftar yang tersedia.</p>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>

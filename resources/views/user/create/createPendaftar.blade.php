@@ -1,5 +1,5 @@
 <div class="modal fade" id="createPendaftar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-aria-hidden="true">
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -12,14 +12,16 @@ aria-hidden="true">
                 <form method="POST" action="{{ route('pendaftar.store') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    
+
                     <div class="mb-3">
                         <label for="nik" class="form-label">NIK:</label>
-                        <input type="text" class="form-control" id="nik" name="nik" placeholder="Ketikan nik calon siswa.." required>
+                        <input type="text" class="form-control" id="nik" name="nik"
+                            placeholder="Ketikan nik calon siswa.." required>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Calon Siswa:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Ketikan nama calon siswa.." required>
+                        <input type="text" class="form-control" id="name" name="name"
+                            placeholder="Ketikan nama calon siswa.." required>
                     </div>
                     <div class="mb-3">
                         <label for="pendaftar_jenKel" class="form-label">Jenis Kelamin Calon Siswa:</label>
@@ -42,7 +44,8 @@ aria-hidden="true">
                     </div>
                     <div class="mb-3">
                         <label for="tempatLahir" class="form-label">Tempat Lahir:</label>
-                        <input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="Ketikan tempat lahir calon siswa.." required>
+                        <input type="text" class="form-control" id="tempatLahir" name="tempatLahir"
+                            placeholder="Ketikan tempat lahir calon siswa.." required>
                     </div>
                     <div class="mb-3">
                         <label for="tglLahir" class="form-label">Tanggal Lahir:</label>
@@ -63,17 +66,18 @@ aria-hidden="true">
                     <hr>
                     <div class="mb-3">
                         <label for="name_wali" class="form-label">Nama Wali:</label>
-                        <input type="text" class="form-control" id="name_wali" name="name_wali" value="{{ Auth::user()->name }}" readonly="readonly"
-                        required>
+                        <input type="text" class="form-control" id="name_wali" name="name_wali"
+                            value="{{ Auth::user()->name }}" readonly="readonly" required>
                     </div>
                     <div class="mb-3">
                         <label for="noHp" class="form-label">Nomor Hp Wali:</label>
-                        <input type="text" class="form-control" id="noHp" name="noHp" value="{{ Auth::user()->noHp }}" readonly="readonly" required>
+                        <input type="text" class="form-control" id="noHp" name="noHp"
+                            value="{{ Auth::user()->noHp }}" readonly="readonly" required>
                     </div>
                     <div class="mb-3">
                         <label for="user_jenKel" class="form-label">Jenis Kelamin Wali:</label>
-                        <input class="form-control form-control-sm" id="user_jenKel" name="user_jenKel" type="text"
-                            value="{{ Auth::user()->jenKel }}" readonly="readonly" required>
+                        <input class="form-control form-control-sm" id="user_jenKel" name="user_jenKel"
+                            type="text" value="{{ Auth::user()->jenKel }}" readonly="readonly" required>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
