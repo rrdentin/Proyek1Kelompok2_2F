@@ -37,7 +37,8 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        $fileName = date('YmdHis') . '.' . $request->gambar_galeri->extension();
+        $fileName =
+            date('YmdHis') . '.' . $request->gambar_galeri->extension();
         $request->gambar_galeri->storeAs('public/gallery', $fileName);
 
         Gallery::create([
@@ -45,7 +46,9 @@ class GalleryController extends Controller
             'keterangan_galeri' => $request->keterangan_galeri,
             'gambar_galeri' => $fileName,
         ]);
-        return redirect()->route('admin.gallery')->with('success', 'Galeri berhasil ditambahakan!');
+        return redirect()
+            ->route('admin.gallery')
+            ->with('success', 'Galeri berhasil ditambahakan!');
     }
 
     /**
@@ -84,11 +87,12 @@ class GalleryController extends Controller
         $fileName = '';
 
         if ($request->hasFile('gambar_galeri')) {
-            $fileName = date('YmdHis') . '.' . $request->gambar_galeri->extension();
-            $request->gambar_galeri->storeAs('public/gallery', $fileName);
-            if ($gallery->gambar_galeri) {
-            Storage::delete('public/gallery' . $gallery->gambar_galeri);
-            }
+            $fileName =
+                date('YmdHis') . '.' . $request->gambar_galeri->extension();
+            $request->gambar_galeri
+                ->storeAs('public/gallery', $fileName);
+            Storage::delete('public/gallery/' . $gallery->gambar_galeri);
+            $gallery->delete();
         } else {
             $fileName = $gallery->gambar_galeri;
         }
@@ -110,7 +114,13 @@ class GalleryController extends Controller
     public function destroy($id)
     {
         //fungsi eloquent untuk menghapus data
-        Gallery::find($id)->delete();
-        return redirect()->route('admin.gallery')->with('success', 'Galeri berhasil dihapus!');
+        $data = Gallery::find($id);
+        Storage::delete('public/gallery/' . $data->gambar_galeri);
+        $data->delete();
+
+        return redirect()->route('admin.gallery')->with(
+            'success',
+            'Data Pengumuman Berhasil Dihapus'
+        );
     }
 }

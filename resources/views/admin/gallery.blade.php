@@ -102,7 +102,9 @@
                                                     </td>
                                                     <td class="text-center fonts-big">
                                                         <form action="{{ route('gallery.destroy', $galeri->id) }}"
-                                                            method="POST">
+                                                            method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('PUT')
                                                             <a class="btn btn-primary"
                                                                 href="#" data-toggle="modal" data-target="#editGallery{{ $galeri->id }}">Edit</a>
                                                             @csrf

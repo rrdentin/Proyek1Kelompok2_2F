@@ -106,14 +106,9 @@ class PengumumanController extends Controller
         if ($request->hasFile('gambar_pengumuman')) {
             $fileName =
                 date('YmdHis') . '.' . $request->gambar_pengumuman->extension();
-            $request->gambar_pengumuman->storeAs(
-                'public/pengumuman',
-                $fileName
-            );
-
-            Storage::delete(
-                'public/pengumuman/' . $pengumumans->gambar_pengumuman
-            );
+            $request->gambar_pengumuman
+                ->storeAs('public/pengumuman', $fileName);
+            Storage::delete('public/pengumuman/' . $pengumumans->gambar_pengumuman);
             $pengumumans->delete();
         } else {
             $fileName = $pengumumans->gambar_pengumuman;
@@ -142,7 +137,7 @@ class PengumumanController extends Controller
         Storage::delete('public/pengumuman/' . $data->gambar_pengumuman);
         $data->delete();
 
-        return redirect(url('admin/pengumuman'))->with(
+        return redirect()->route('admin.pengumuman')->with(
             'success',
             'Data Pengumuman Berhasil Dihapus'
         );
