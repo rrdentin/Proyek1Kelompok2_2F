@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Middleware\CheckLevel;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class GalleryController extends Controller
 {
@@ -15,8 +18,21 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $gallery = Gallery::all(); // Mengambil 5 isi tabel
-        return view('admin.gallery', compact('gallery'));
+
+        $userLevel = Auth::user()->level;
+
+        // Memeriksa level pengguna dan pilihan tabel yang dipilih
+        if ($userLevel === 'admin') {
+            $gallery = Gallery::all(); // Mengambil 5 isi tabel
+            return view('admin.gallery', compact('gallery'));
+        } elseif ($userLevel === 'panitia') {
+            $gallery = Gallery::all(); // Mengambil 5 isi tabel
+            return view('panitia.gallery', compact('gallery'));
+        } else {
+            return redirect('/');
+        }
+
+        return view(compact('users'));
     }
 
     /**
@@ -120,7 +136,7 @@ class GalleryController extends Controller
 
         return redirect()->route('admin.gallery')->with(
             'success',
-            'Data Pengumuman Berhasil Dihapus'
+            'Data Gallery Berhasil Dihapus'
         );
     }
 }
