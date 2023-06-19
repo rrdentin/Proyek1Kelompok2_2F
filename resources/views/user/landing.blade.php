@@ -52,9 +52,12 @@
         <div class="container">
             <div class="mast-hero-subheading">Selamat Datang " {{ Auth::user()->name }} " di </div>
             <div class="mast-hero-heading text-uppercase">Sekolah Shaleh</div>
-            <a class="btn-hero btn-hero-style text-uppercase" href="#about">Daftar Sekarang</a>
+            <a class="btn-hero btn-hero-style text-uppercase" href="{{ route('user.dashboard')}}">PPDB Manager </a>
         </div>
     </header>
+    <marquee bgcolor="#283845" width="100%" color="#ffff">
+        <h1 style="color:#FFFF00; font-size: 1rem;">Untuk memulai mendaftarkan anak ke TK / Paud Anak Saleh silahkan masuk ke dashboard atau tombol ppdb manager untuk melakukan registrasi calon siswa sekolah saleh malang, bersama Sekolah Anak Saleh Be Piously Great</h1>
+    </marquee>
     {{-- Deadline Section --}}
     <div class="page-section">
         <script src="https://cdn.logwork.com/widget/countdown.js"></script>

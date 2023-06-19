@@ -48,7 +48,7 @@
             <div class="mast-hero-subheading">Selamat Datang </div>
             <div class="mast-hero-heading text-uppercase">Sekolah Anak Saleh</div>
             <div class="mast-hero-subheading">Mendidik Dan Berbakti Untuk Negeri</div>
-            <a class="btn-hero btn-hero-style text-uppercase" href="#about">Daftar Sekarang ! </a>
+            <a class="btn-hero btn-hero-style text-uppercase" href="{{ route('register') }}">Daftar Sekarang ! </a>
         </div>
 
     </header>
