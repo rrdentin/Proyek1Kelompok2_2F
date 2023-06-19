@@ -43,8 +43,9 @@
         </nav>
         <!-- /.navbar -->
         <!-- Main content -->
-        <div class="wrapper">
-            <div class="content-wrapper" style="margin-bottom: -5%;">
+        <div style="margin-left: 250px">
+        <section class="content">
+            <div class="container-fluid">
                 <!-- Content Header (Page header) -->
                 <div class="content-header">
                     <div class="container-fluid">
@@ -85,6 +86,8 @@
                     </div>
                 
             </div>
+        </section>
+        </div>
             <!-- /.row -->
         </div>
     </div>

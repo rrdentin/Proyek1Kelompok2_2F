@@ -80,7 +80,7 @@
 
                                 @include('admin.create.createPengumuman')
                                 
-                                <div class="table-responsive">
+                                <div class="table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
@@ -95,31 +95,26 @@
                                         <tbody>
                                             @foreach ($pengumumans as $pengumuman)
                                                 <tr>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $loop->iteration }}</td>
                                                     <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}</td>
                                                     <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
                                                     <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width= '50' height='50' class="img img-responsive"/>
+                                                        <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                                            width='50' height='50' class="img img-responsive" />
                                                     </td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('pengumuman.destroy', $pengumuman->id) }}"
-                                                            method="POST" enctype="multipart/form-data">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger">Delete</button>
-                                                        </form>
+                                                        <a class="btn btn-primary" href="#" data-toggle="modal"
+                                                            data-target="#editPengumuman{{ $pengumuman->id }}">Edit</a>
+                                                        <a class="btn btn-danger" href="#" data-toggle="modal"
+                                                            data-target="#deletePengumuman{{ $pengumuman->id }}">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     @include('admin.edit.editPengumuman')
+                                    @include('admin.delete.deletePengumuman')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>

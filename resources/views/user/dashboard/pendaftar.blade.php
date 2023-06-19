@@ -70,66 +70,80 @@
                                         <br>
 
                                         @include('user.create.createPendaftar')
+                                        @include('user.edit.editPendaftar')
+
+                                        @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
+
                                         @if ($message = Session::get('success'))
-                                            <div class="alert alert-success">
-                                                <p>{{ $message }}</p>
-                                            </div>
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                         @endif
                                         <div class="table table-responsive">
                                             @if ($pendaftars->count() > 0)
-                                                <table class="table table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th class="text-center fonts-big">Nama</th>
-                                                            <th class="text-center fonts-big">Jenjang Pendidikan</th>
-                                                            <th class="text-center fonts-big">Pembayaran</th>
-                                                            <th class="text-center fonts-big">Status</th>
-                                                            <th class="text-center fonts-big" colspan="2">Aksi</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        @foreach ($pendaftars as $pendaftar)
-                                                            <tr>
-                                                                <td>{{ $pendaftar->name }}
-                                                                </td>
-                                                                <td class="text-center fonts-big">
-                                                                    {{ $pendaftar->jenjangPend }}</td>
-                                                                <td class="text-center fonts-big">
-                                                                    @if ($pendaftar->pembayaran->isNotEmpty())
-                                                                        @foreach ($pendaftar->pembayaran as $pembayaran)
-                                                                            @if ($pembayaran->status == 'bayar' || $pembayaran->status == 'invalid')
-                                                                                <a
-                                                                                    class="btn btn-success "href="{{ route('pembayaran.dashboard') }}">Bayar</a>
-                                                                            @else
-                                                                                {{ $pembayaran->status }}
-                                                                            @endif
-                                                                        @endforeach
-                                                                    @endif
-                                                                </td>
-                                                                <td class="text-center fonts-big">
-                                                                    @if ($pendaftar->status == 'accepted')
-                                                                        <a
-                                                                            href="{{ route('siswa.show', $pendaftar->id) }}">{{ $pendaftar->status }}</a>
-                                                                    @else
-                                                                        {{ $pendaftar->status }}
-                                                                    @endif
-                                                                </td>
-                                                                <td class="text-center fonts-big">
-                                                                    <a
-                                                                        class="btn btn-primary "href="{{ route('pendaftar.show', $pendaftar->id) }}">Lihat</a>
-                                                                    @if ($pendaftar->status == 'pending')
-                                                                        <a
-                                                                            class="btn btn-primary "href="{{ route('pendaftar.edit', $pendaftar->id) }}">Edit</a>
-                                                                    @endif
-                                                                </td>
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
-                                                </table>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center fonts-big">Nama</th>
+                                                        <th class="text-center fonts-big">Jenjang Pendidikan</th>
+                                                        <th class="text-center fonts-big">Pembayaran</th>
+                                                        <th class="text-center fonts-big">Status</th>
+                                                        <th class="text-center fonts-big" colspan="2">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($pendaftars as $pendaftar)
+                                                    <tr>
+                                                        <td>{{ $pendaftar->name }}
+                                                        </td>
+                                                        <td class="text-center fonts-big">
+                                                            {{ $pendaftar->jenjangPend }}</td>
+                                                        <td class="text-center fonts-big">
+                                                            @if ($pendaftar->pembayaran->isNotEmpty())
+                                                            @foreach ($pendaftar->pembayaran as $pembayaran)
+                                                            @if ($pembayaran->status == 'bayar' || $pembayaran->status
+                                                            == 'invalid')
+                                                            <a class="btn btn-success "
+                                                                href="{{ route('pembayaran.dashboard') }}">Bayar</a>
+                                                            @else
+                                                            {{ $pembayaran->status }}
+                                                            @endif
+                                                            @endforeach
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center fonts-big">
+                                                            @if ($pendaftar->status == 'accepted')
+                                                            <a
+                                                                href="{{ route('siswa.show', $pendaftar->siswa->id) }}">{{ $pendaftar->status }}</a>
+                                                            @else
+                                                            {{ $pendaftar->status }}
+                                                            @endif
+                                                        </td>
+                                                        <td class="text-center fonts-big">
+                                                            <a class="btn btn-primary"
+                                                                href="{{ route('pendaftar.show', $pendaftar->id) }}">Lihat</a>
+                                                            @if ($pendaftar->status == 'pending')
+                                                            <button data-toggle="modal" data-target="#editPendaftar{{ $pendaftar->id }}"
+                                                                class="btn btn-primary" href="#">Edit</button>
+                                                            @endif
+                                                        </td>
+
+                                                    </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                             @else
-                                                <div class="alert alert-info" style="border: none;">
-                                                    <p>Tidak ada pendaftar yang tersedia.</p>
-                                                </div>
+                                            <div class=" alert alert-info" style="border: none;">
+                                                <p>Tidak ada pendaftar yang tersedia.</p>
+                                            </div>
                                             @endif
                                         </div>
                                     </div>

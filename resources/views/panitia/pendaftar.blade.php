@@ -1,7 +1,7 @@
 @extends('admin.app')
 <title>Tabel Panitia | Shaleh </title>
 <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
-@extends('admin.sidebar')
+@extends('panitia.sidebar')
 <!--
 `body` tag options:
 
@@ -56,36 +56,16 @@
             <!-- Content Header (Page header) -->
             <div class="container">
                 <h1>Tabel Daftar Calon Siswa </h1>
-                <h6>Mohon untuk selektif dan teliti dalam menyeleksi calon siswa ! </h6>
+                <h6>Mohon untuk selektif dan teliti dalam menyeleksi calon siswa !  </h6>
                 <hr>
-                @include('user.edit.editPendaftar')
-                @if (session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-                @endif
-                @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-                @endif
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @endif
                 <form class="form-left my-4" method="get" action="{{ route('searchPendaftar') }}">
                     <div class="form-group w-80 mb-3">
-                        <input type="text" name="search" class="form-control w-50 d-inline" id="search"
-                            placeholder="Search">
+                        <input type="text" name="search" class="form-control w-50 d-inline"
+                            id="search" placeholder="Search">
                         <button type="submit" class="btn btn-primary mb-1">Cari</button>
                     </div>
                 </form>
-
+            
                 @if (count($pendaftars) > 0)
                 <table class="table table-striped">
                     <thead>
@@ -111,34 +91,29 @@
                                 @if ($pendaftar->pembayaran->isNotEmpty())
                                 @foreach ($pendaftar->pembayaran as $pembayaran)
                                 {{ $pembayaran->status }}
-
+            
                                 @endforeach
                                 @endif
                             </td>
-
+            
                             <td>{{ $pendaftar->status }}</td>
                             <td>
                                 <form action="{{ route('pendaftar.updateStatus', $pendaftar->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <select name="status" class="form-control" onchange="this.form.submit()">
-                                        <option value="pending" {{ $pendaftar->status == 'pending' ? 'selected' : '' }}>
-                                            Pending
+                                        <option value="pending" {{ $pendaftar->status == 'pending' ? 'selected' : '' }}>Pending
                                         </option>
-                                        <option value="accepted"
-                                            {{ $pendaftar->status == 'accepted' ? 'selected' : '' }}>Accepted
+                                        <option value="accepted" {{ $pendaftar->status == 'accepted' ? 'selected' : '' }}>Accepted
                                         </option>
-                                        <option value="rejected"
-                                            {{ $pendaftar->status == 'rejected' ? 'selected' : '' }}>Rejected
+                                        <option value="rejected" {{ $pendaftar->status == 'rejected' ? 'selected' : '' }}>Rejected
                                         </option>
                                     </select>
                                 </form>
                             </td>
                             <td>
-                                <a href="{{ route('pendaftar.show', $pendaftar->id) }}"
-                                    class="btn btn-primary">Lihat</a>
-                                <a href="#" data-toggle="modal" data-target="#editPendaftar{{ $pendaftar->id }}"
-                                    class="btn btn-info">Edit</a>
+                                <a href="{{ route('pendaftar.show', $pendaftar->id) }}" class="btn btn-primary">Lihat</a>
+                                <a href="{{ route('pendaftar.edit', $pendaftar->id) }}" class="btn btn-info">Edit</a>
                                 <form action="{{ route('pendaftar.delete', $pendaftar->id) }}" method="POST"
                                     style="display: inline-block">
                                     @csrf

@@ -72,8 +72,24 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#createUser"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah User</button>
+                                    <div class="container">
+                                        <div class="d-flex align-items-center" style="height: 50px">
+                                        <div class="col-md-9">
+                                            <button data-toggle="modal" data-target="#createUser"
+                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah User
+                                            </button>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <form class="form-left my-4" method="get" action="{{ route('searchUser') }}">
+                                                <div class="form-group w-80 mb-1">
+                                                        <input type="text" name="search" class="form-control w-50 d-inline"
+                                                        id="search" placeholder="Search">
+                                                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 
                                 @include('admin.create.createUser')
@@ -99,21 +115,17 @@
                                                     <td class="text-center fonts-big">{{ $user->username }}</td>
                                                     <td class="text-center fonts-big">{{ $user->level }}</td>
                                                     <td class="text-center fonts-big">
-                                                        <form action="{{ route('users.destroy', $user->id) }}"
-                                                            method="POST">
-                                                            <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-danger">Delete</button>
-                                                        </form>
+                                                        <a class="btn btn-primary" href="#" data-toggle="modal" 
+                                                            data-target="#editPanitia{{ $user->id }}">Edit</a>
+                                                        <a class="btn btn-danger" href="#" data-toggle="modal"
+                                                            data-target="#deleteAdmin{{ $user->id }}">Delete</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    @include('admin.edit.editAdmin')
+                                    @include('panitia.edit.editPanitia')
+                                    @include('admin.delete.deleteAdmin')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>

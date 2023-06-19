@@ -27,13 +27,13 @@ class AdminController extends Controller
         // Memeriksa level pengguna dan pilihan tabel yang dipilih
         if ($userLevel === 'admin') {
             if ($selectedTable === 'admin') {
-                $users = User::where('level', 'admin')->get();
+                $users = User::where('level', 'admin')->paginate(5);
                 $view = 'admin.admintable';
             } elseif ($selectedTable === 'user') {
-                $users = User::where('level', 'user')->get();
+                $users = User::where('level', 'user')->paginate(5);
                 $view = 'admin.usertable';
             } elseif ($selectedTable === 'panitia') {
-                $users = User::where('level', 'panitia')->get();
+                $users = User::where('level', 'panitia')->paginate(5);
                 $view = 'admin.panitia-table';
             } else {
                 // Pengguna level admin tetapi tidak ada pilihan tabel yang dipilih

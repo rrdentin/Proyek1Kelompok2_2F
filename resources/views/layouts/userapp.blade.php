@@ -20,3 +20,15 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/') }}dist/css/adminlte.min.css">
 </head>
+
+<body>
+    @yield('content')
+
+    <!-- Scripts -->
+    <script>
+        function toggleDropdown() {
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('show');
+        }
+    </script>
+</body>

@@ -72,16 +72,24 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#createAdmin"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
-                                        Admin</button>
-                                    <form class="form-left my-3" method="get" action="{{ route('searchAdmin') }}">
-                                        <div class="form-group w-80 mb-1">
-                                            <input type="text" name="search" class="form-control w-50 d-inline"
-                                                id="search" placeholder="Search">
-                                            <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                    <div class="container">
+                                        <div class="d-flex align-items-center" style="height: 50px">
+                                        <div class="col-md-9">
+                                            <button data-toggle="modal" data-target="#createAdmin"
+                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Admin
+                                            </button>
                                         </div>
-                                    </form>
+                                        <div class="col-md-5">
+                                            <form class="form-left my-4" method="get" action="{{ route('searchAdmin') }}">
+                                                <div class="form-group w-80 mb-1">
+                                                        <input type="text" name="search" class="form-control w-50 d-inline"
+                                                        id="search" placeholder="Search">
+                                                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 @include('admin.create.createAdmin')
@@ -106,7 +114,7 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
-                                                    <td class="text-center fonts-big">{{ $user->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $loop->iteration }}</td>
                                                     <td class="text-center fonts-big">{{ $user->name }}</td>
                                                     <td class="text-center fonts-big">{{ $user->email }}</td>
                                                     <td class="text-center fonts-big">{{ $user->username }}</td>
