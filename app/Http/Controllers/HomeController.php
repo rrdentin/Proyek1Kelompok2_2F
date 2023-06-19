@@ -272,7 +272,7 @@ class HomeController extends Controller
             return view('admin.edit.editProfile', compact('user'));
         } elseif ($level === 'panitia') {
             // Custom logic for moderator level
-            return view('panitia.profile', compact('user'));
+            return view('panitia.edit.editProfile', compact('user'));
         } elseif ($level === 'user') {
             // Custom logic for regular user level
             return view('user.edit_profile', compact('user'));
