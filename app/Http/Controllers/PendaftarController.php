@@ -76,11 +76,6 @@ class PendaftarController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-
-        //if ($validator->fails()) {
-        //    return redirect()->back()->withErrors($validator)->withInput()->with('success', 'Calon siswa berhasil ditambahkan');
-       // }
-
         // Upload image files
         $image_name = $request->file('foto')->store('images', 'public');
         $akte_name = $request->file('akte')->store('images', 'public');
@@ -171,13 +166,26 @@ class PendaftarController extends Controller
                 $validator->errors()->add('name', 'Sudah ada Pendaftar dengan data Nama, Tempat Lahir, dan Tanggal Lahir tersebut.');
             }
         });
+        $level = Auth::user()->level; // Assuming you have the role stored in the 'role' column of the users table
 
         // Validate input fields
         if ($validator->fails()) {
-            return redirect()->route('pendaftar.dashboard')
+            if ($level === 'user') {
+                return redirect()->route('pendaftar.dashboard')
                 ->withErrors($validator)
                 ->withInput()
                 ->with('modalError', 'Error'); // Add modalError flash data
+            } elseif ($level === 'admin') {
+                return redirect()->route('admin.pendaftar')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('modalError', 'Error'); // Add modalError flash data
+            } elseif ($level === 'panitia') {
+                return redirect()->route('panitia.pendaftar')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('modalError', 'Error'); // Add modalError flash data
+            }
         }
     
 
@@ -213,7 +221,14 @@ class PendaftarController extends Controller
 
         $pendaftar->save();
 
-        return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil diperbarui.');
+
+        if ($level === 'user') {
+            return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil diperbarui.');
+        } elseif ($level === 'admin') {
+            return redirect()->route('admin.pendaftar')->with('success', 'Pendaftaran berhasil diperbarui.');
+        } elseif ($level === 'panitia') {
+            return redirect()->route('panitia.pendaftar')->with('success', 'Pendaftaran berhasil diperbarui.');
+        }
     }
 
     public function destroy($id)
@@ -256,7 +271,7 @@ class PendaftarController extends Controller
             $pembayaran = Pembayaran::where('pendaftar_id', $id)->first();    
             if (!$pembayaran || $pembayaran->status !== 'terbayar') {
                 // Display a message and redirect back
-                return redirect()->back()->with('error', 'Pembayaran must be validated first before accepting the pendaftar.');
+                return redirect()->back()->with('error', 'Pembayaran harus divalidasi sebelum menerima pendaftar');
             }
         }
         
@@ -281,7 +296,7 @@ class PendaftarController extends Controller
         }
         
         // Redirect back or do any other desired action
-        return redirect()->to('/admin/pendaftar')->with('success', 'Status updated successfully.');
+        return redirect()->to('/admin/pendaftar')->with('success', 'Status berhasil diperbarui.');
     }
 
     public function print(){
