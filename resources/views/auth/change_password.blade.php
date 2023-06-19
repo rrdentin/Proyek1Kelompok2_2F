@@ -1,6 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.header_user')
+<title>Change Password | Shaleh</title>
+<link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
+<br>
+<br>
+<br>
+<br>
+<br>
 
-@section('content')
+@section('content2')
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -64,4 +73,10 @@
             </div>
         </div>
     </div>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection
