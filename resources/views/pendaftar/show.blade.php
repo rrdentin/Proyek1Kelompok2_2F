@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand navbar-dark navbar-light">
             <img src="{{ asset('dist/img/Logo Shaleh.png') }}" height="40" width="45" style="margin-right: 10px"
                 alt="AdminLTELogo">
-            <h1 style="color: #fbfafa">Detail Pendaftar</h1>
+            <h3 style="color: #fbfafa">Detail Pendaftar</h3>
 
             <!-- Right navbar links -->
             <div class="main-header navbar navbar-expand navbar-dark navbar-light" style="margin-left: 70%">
@@ -44,27 +44,75 @@
         <div class="row justify-content-center" style="margin-right: 5%">
             <section class="content">
                 <div class="container">
-
-                    <hr>
-
+                    <br>
                     <div class="row">
                         <div class="col-md-6">
-                            <h4>Data Pendaftar</h4>
-                            <p><strong>Nama:</strong> {{ $pendaftar->name }}</p>
-                            <p><strong>Tempat Lahir:</strong> {{ $pendaftar->tempatLahir }}</p>
-                            <p><strong>Tanggal Lahir:</strong> {{ $pendaftar->tglLahir }}</p>
-                            <p><strong>Jenis Kelamin:</strong> {{ $pendaftar->jenKel }}</p>
-                            <p><strong>Alamat:</strong> {{ $pendaftar->alamat }}</p>
-                            <p><strong>Jenjang Pendidikan:</strong> {{ $pendaftar->jenjangPend }}</p>
+                        <h4>Data Pendaftar</h4>
+                        <table border="0" cellpadding="30">
+                            <tr>
+                                <td colspan="4"><strong>NIK</strong></td>
+                                <td>: {{ $pendaftar->nik }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Nama</strong></td>
+                                <td>: {{ $pendaftar->name }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Tempat Lahir</strong></td>
+                                <td>:  {{ $pendaftar->tempatLahir }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Tanggal Lahir</strong></td>
+                                <td>:  {{ $pendaftar->tglLahir }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Jenis Kelamin</strong></td>
+                                <td>:  {{ $pendaftar->jenKel }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Alamat</strong></td>
+                                <td>:  {{ $pendaftar->alamat }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Pilihan Jenjang Pendidikan</strong></td>
+                                <td>:  {{ $pendaftar->jenjangPend }}</td>
+                            </tr>
+                        </table>
+
                         </div>
                         <div class="col-md-6">
                             <h4>Data Wali</h4>
-                            <p><strong>Nama Wali:</strong> {{ $pendaftar->name_wali }}</p>
-                            <p><strong>Email:</strong> {{ $pendaftar->user->email }}</p>
-                            <p><strong>Jenis Kelamin:</strong> {{ $pendaftar->user->jenKel }}</p>
-                            <p><strong>Nomor HP:</strong> {{ $pendaftar->user->noHp }}</p>
-
-
+                            <table border="0" cellpadding="30">
+                            <tr>
+                                <td colspan="4"><strong>Nama Wali</strong></td>
+                                <td>: {{ $pendaftar->name_wali }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Email</strong></td>
+                                <td>: {{ $pendaftar->user->email }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Jenis Kelamin</strong></td>
+                                <td>:  {{ $pendaftar->user->jenKel }}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong>Nomor HP</strong></td>
+                                <td>:  {{ $pendaftar->user->noHp }}</td>
+                            </tr>
+                            </table>
+                            <hr>
+                            <h4>History Data Calon Siswa</h4>
+                            <table border="0" cellpadding="30">
+                                <tr>
+                                    <td colspan="4"><strong>Didaftarkan Pada </strong></td>
+                                    <td>: {{ $pendaftar->created_at }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Diupdate Pada</strong></td>
+                                    <td>: {{ $pendaftar->updated_at }}</td>
+                                </tr>
+                            </table>
+                            
                         </div>
                     </div>
 
@@ -87,11 +135,19 @@
                         </div>
                     </div>
                 </div>
+                
         </div>
     </div>
     </div>
-
-    <aside class="control-sidebar control-sidebar-dark">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
         <!-- Control sidebar content goes here -->
     </aside>
 
