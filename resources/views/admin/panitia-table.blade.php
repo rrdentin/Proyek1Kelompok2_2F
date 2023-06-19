@@ -115,7 +115,7 @@
                                         <tbody>
                                             @foreach ($users as $user)
                                                 <tr>
-                                                    <td class="text-center fonts-big">{{ $user->id }}</td>
+                                                    <td class="text-center fonts-big">{{ $loop->iteration }}</td>
                                                     <td class="text-center fonts-big">{{ $user->name }}</td>
                                                     <td class="text-center fonts-big">{{ $user->email }}</td>
                                                     <td class="text-center fonts-big">{{ $user->username }}</td>
