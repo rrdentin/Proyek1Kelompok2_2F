@@ -59,7 +59,6 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
     Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
     Route::get('/user/dashboard/siswa', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');
-    
 });
 
 // Panitia routes
@@ -82,8 +81,6 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/pendaftar/print', [PendaftarController::class, 'print'])->name('admin.print');
     Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
     Route::get('/admin/siswa', [SiswaController::class, 'dashboard'])->name('admin.siswa');
-
-
 }
 );
 

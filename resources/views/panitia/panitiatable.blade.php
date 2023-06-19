@@ -119,14 +119,14 @@
                                                             method="POST">
                                                             <a class="btn btn-primary" href="#"
                                                                 data-toggle="modal"
-                                                                data-target="#editAdmin{{ $user->id }}">Edit</a>
+                                                                data-target="#editPanitia{{ $user->id }}">Edit</a>
                                                         </form>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    @include('admin.edit.editAdmin')
+                                    @include('panitia.edit.editPanitia')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>

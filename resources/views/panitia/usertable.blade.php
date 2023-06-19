@@ -118,7 +118,7 @@
                                                         <form action="{{ route('users.destroy', $user->id) }}"
                                                             method="POST">
                                                             <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
+                                                                href="#" data-toggle="modal" data-target="#editPanitia{{ $user->id }}">Edit</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
@@ -129,7 +129,7 @@
                                             @endforeach
                                         </tbody>
                                     </table>
-                                    @include('admin.edit.editAdmin')
+                                    @include('panitia.edit.editPanitia')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>
