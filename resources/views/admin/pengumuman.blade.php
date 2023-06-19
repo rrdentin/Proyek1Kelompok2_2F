@@ -73,9 +73,24 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#createPengumuman"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah
-                                        Pengumuman</button>
+                                    <div class="container">
+                                        <div class="d-flex align-items-center" style="height: 50px">
+                                        <div class="col-md-9">
+                                            <button data-toggle="modal" data-target="#createPengumuman"
+                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Pengumuman
+                                            </button>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <form class="form-left my-4" method="get" action="{{ route('searchPengumuman') }}">
+                                                <div class="form-group w-80 mb-1">
+                                                        <input type="text" name="search" class="form-control w-50 d-inline"
+                                                        id="search" placeholder="Search">
+                                                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 @include('admin.create.createPengumuman')
