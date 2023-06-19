@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('siswas', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('pendaftar_id')->unique();
-            $table->foreign('pendaftar_id')->references('id')->on('pendaftars')->onDelete('cascade');
-            $table->timestamps();
+        Schema::table('siswas', function (Blueprint $table) {
+            $table->string('nis')->nullable()->after('pendaftar_id');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('siswas');
+        Schema::table('siswas', function (Blueprint $table) {
+            $table->string('nis')->nullable();
+        });
     }
 };
