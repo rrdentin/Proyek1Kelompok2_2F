@@ -35,7 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('password.update');
     Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
     Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
-    Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
     Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
     Route::put('/pembayaran/{id}', [PembayaranController::class, 'update'])->name('pembayaran.update');
     Route::get('/pembayaran/{id}', [PembayaranController::class, 'show'])->name('pembayaran.show');
@@ -86,6 +85,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 
 // CRUD resources routes
 Route::resource('users', AdminController::class);
+Route::resource('pendaftars', PendaftarController::class);
 
 Route::get('/table', [AdminController::class, 'index'])->name('table');
 

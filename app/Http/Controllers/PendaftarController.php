@@ -237,7 +237,7 @@ class PendaftarController extends Controller
         $pendaftar = Pendaftar::findOrFail($id);
 
         if (!$pendaftar->isEditable()) {
-            return redirect()->route('pendaftar.dashboard')->with('error', 'Tidak dapat menghapus pendaftaran yang sudah diproses.');
+            return redirect()->route('admin.pendaftar')->with('error', 'Tidak dapat menghapus pendaftaran yang sudah diproses.');
         }
 
         // Delete image files
@@ -248,7 +248,7 @@ class PendaftarController extends Controller
         // Delete the pendaftar
         $pendaftar->delete();
 
-        return redirect()->route('pendaftar.dashboard')->with('success', 'Pendaftaran berhasil dihapus.');
+        return redirect()->route('admin.pendaftar')->with('success', 'Pendaftaran berhasil dihapus.');
     }
 
     public function updateStatus(Request $request, $id)

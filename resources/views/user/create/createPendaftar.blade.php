@@ -10,17 +10,17 @@
                 </button>
             </div>
             <div class="modal-body">
-<form method="POST" action="{{ route('pendaftar.store') }}" enctype="multipart/form-data">                    
- @csrf
+                <form method="POST" action="{{ route('pendaftar.store') }}" enctype="multipart/form-data">
+                    @csrf
                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                     @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endif
                     <div class="mb-3">
                         <label for="nik" class="form-label">NIK:</label>
@@ -49,8 +49,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="alamat" class="form-label">Alamat:</label>
-                        <textarea class="form-control" id="alamat" name="alamat"
-                            placeholder="Ketikan alamat calon siswa.."></textarea>
+                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Ketikan alamat calon siswa.."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="tempatLahir" class="form-label">Tempat Lahir:</label>
@@ -81,8 +80,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="noHp" class="form-label">Nomor Hp Wali:</label>
-                        <input type="text" class="form-control" id="noHp" name="noHp" value="{{ Auth::user()->noHp }}"
-                            required>
+                        <input type="text" class="form-control" id="noHp" name="noHp"
+                            value="{{ Auth::user()->noHp }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="user_jenKel" class="form-label">Jenis Kelamin (User)</label>
@@ -97,11 +96,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-<button type="submit" class="btn btn-primary">Tambah Calon Siswa</button>                    </div>
+                        <button type="submit" class="btn btn-primary">Tambah Calon Siswa</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
