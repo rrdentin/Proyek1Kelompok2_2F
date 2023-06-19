@@ -34,7 +34,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/change-password', [HomeController::class, 'showChangePasswordForm'])->name('password.change');
     Route::post('/change-password', [HomeController::class, 'changePassword'])->name('password.update');
     Route::get('dashboard/pendaftar/{id}', [PendaftarController::class, 'show'])->name('pendaftar.show');
-    Route::get('dashboard/pendaftar/{id}/edit', [PendaftarController::class, 'edit'])->name('pendaftar.edit');
     Route::put('/pendaftar/{id}', [PendaftarController::class, 'update'])->name('pendaftar.update');
     Route::delete('/pendaftar/{id}', 'PendaftarController@delete')->name('pendaftar.delete');
     Route::get('/pembayaran/{id}/edit', [PembayaranController::class, 'edit'])->name('pembayaran.edit');
@@ -57,7 +56,6 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::get('/user/edit-profile', [HomeController::class, 'editProfile'])->name('edit-profile');
     Route::post('/user/update-user', [HomeController::class, 'updateUser'])->name('update-user');
     Route::get('/user/dashboard/pendaftar', [PendaftarController::class, 'dashboard'])->name('pendaftar.dashboard');
-    Route::get('/user/dashboard/pendaftar/create', [PendaftarController::class, 'create'])->name('pendaftar.create');
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
     Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
     Route::get('/user/dashboard/siswa', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');

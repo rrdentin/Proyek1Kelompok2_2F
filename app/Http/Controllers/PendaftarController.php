@@ -44,12 +44,6 @@ class PendaftarController extends Controller
         return redirect()->back()->with('error', 'Unauthorized access.');
     }
 
-    public function create()
-    {
-        $user = Auth::user();
-        return view('user.create.createPendaftar', compact('user'));
-    }
-
     public function store(Request $request)
     {
         // Validate input fields
@@ -137,17 +131,6 @@ class PendaftarController extends Controller
     {
         $pendaftar = Pendaftar::findOrFail($id);
         return view('pendaftar.show', compact('pendaftar'));
-    }
-
-    public function edit($id)
-    {
-        $pendaftar = Pendaftar::findOrFail($id);
-
-        if (!$pendaftar->isEditable()) {
-            return redirect()->route('pendaftar.dashboard')->with('error', 'Tidak dapat mengedit pendaftaran yang sudah diproses.');
-        }
-
-        return view('pendaftar.edit', compact('pendaftar'));
     }
 
     public function update(Request $request, $id)
