@@ -112,3 +112,4 @@ Route::get('/search', [HomeController::class, 'searchAdmin'])->name('searchAdmin
 Route::get('/search/user', [HomeController::class, 'searchUser'])->name('searchUser');
 Route::get('/search/panitia', [HomeController::class, 'searchPanitia'])->name('searchPanitia');
 Route::get('/search/pendaftar', [HomeController::class, 'searchPendaftar'])->name('searchPendaftar');
+Route::get('/search/gallery', [HomeController::class, 'searchGallery'])->name('searchGallery');

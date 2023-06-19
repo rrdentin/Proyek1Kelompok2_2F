@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Pendaftar;
 use App\Models\Pembayaran;
+use App\Models\Gallery;
 
 
 //tesssss
@@ -371,5 +372,11 @@ class HomeController extends Controller
         }
 
         return view('admin.pendaftar', compact('pendaftars', 'pembayaran'));
+    }
+    public function searchGallery(Request $request){
+
+        $keyword = $request->search;
+        $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search. '%')->paginate(5);
+        return view('admin.gallery', compact('gallery'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }
