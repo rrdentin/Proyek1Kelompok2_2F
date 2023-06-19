@@ -45,7 +45,19 @@
                             </div>
 
                             <!-- Change Password Button -->
-                            <button type="submit" class="btn btn-primary">{{ __('Change Password') }}</button>
+                            <div class="container">
+                                <div class="d-flex align-items-center" style="height: 50px">
+                                <div class="col-md-10">
+                                    <a href="/user/landing" class="btn btn-primary btn-icon">
+                                        <i class="fas fa-arrow-left"></i>
+                                        Kembali
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary">{{ __('Change Password') }}</button>
+                                </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

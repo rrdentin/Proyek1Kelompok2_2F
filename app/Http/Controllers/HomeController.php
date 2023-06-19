@@ -265,8 +265,20 @@ class HomeController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-        return view('user.edit_profile', compact('user'));
+        $level = $user->level;
+
+        if ($level === 'admin') {
+            // Custom logic for admin level
+            return view('admin.edit.editProfile', compact('user'));
+        } elseif ($level === 'panitia') {
+            // Custom logic for moderator level
+            return view('panitia.profile', compact('user'));
+        } elseif ($level === 'user') {
+            // Custom logic for regular user level
+            return view('user.edit_profile', compact('user'));
+        } 
     }
+
     public function updateUser(Request $request)
     {
     $user = Auth::user();

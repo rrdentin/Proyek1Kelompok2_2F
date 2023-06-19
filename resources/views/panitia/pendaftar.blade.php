@@ -113,7 +113,7 @@
                             </td>
                             <td>
                                 <a href="{{ route('pendaftar.show', $pendaftar->id) }}" class="btn btn-primary">Lihat</a>
-                                <a href="{{ route('pendaftar.edit', $pendaftar->id) }}" class="btn btn-info">Edit</a>
+                                <a href="#" data-toggle="modal" data-target="#editPendaftar{{ $pendaftar->id }}" class="btn btn-info">Edit</a>
                                 <form action="{{ route('pendaftar.delete', $pendaftar->id) }}" method="POST"
                                     style="display: inline-block">
                                     @csrf

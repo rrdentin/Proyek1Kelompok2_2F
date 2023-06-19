@@ -80,6 +80,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/pendaftar/print/{id}', [PendaftarController::class, 'printPDF'])->name('admin.print');
     Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
     Route::get('/admin/siswa', [SiswaController::class, 'dashboard'])->name('admin.siswa');
+    Route::get('/user/edit/profile', [HomeController::class, 'editProfile'])->name('admin.edit.editProfile');
 }
 );
 
