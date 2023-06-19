@@ -97,6 +97,7 @@
                                                                 <th>Actions</th>
                                                             </tr>
                                                         </thead>
+                                                        <br>
                                                         <tbody>
                                                             @foreach ($pembayarans as $pembayaran)
                                                             <tr>
@@ -152,7 +153,7 @@
                                                                     <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
                                                                         class="btn btn-info">View</a>
                                                                     <a href="{{ route('admin.print', $pembayaran->id) }}"
-                                                                        class="btn btn-success">Print</a>
+                                                                        class="btn btn-success">Print <i class="fas fa-print"></i></a>
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -178,9 +179,7 @@
                                         <section class="col-lg-7 connectedSortable">
                                             <!-- Custom tabs (Charts with tabs)-->
                                         </section>
-
                                     </div>
-
                                     <!-- /.col -->
                                 </div>
                         </div>
