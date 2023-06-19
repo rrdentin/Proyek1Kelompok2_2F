@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Tabel Panitia | Shaleh </title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Tabel Panitia | Shaleh </title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('panitia.sidebar')
 <!--
 `body` tag options:
@@ -72,10 +72,26 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <button data-toggle="modal" data-target="#createPanitia"
-                                        class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Panitia</button>
+                                    <div class="container">
+                                        <div class="d-flex align-items-center" style="height: 50px">
+                                        <div class="col-md-9">
+                                            <button data-toggle="modal" data-target="#createPanitia"
+                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Panitia
+                                            </button>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <form class="form-left my-4" method="get" action="{{ route('searchPanitia') }}">
+                                                <div class="form-group w-80 mb-1">
+                                                        <input type="text" name="search" class="form-control w-50 d-inline"
+                                                        id="search" placeholder="Search">
+                                                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                
+
                                 @include('admin.create.createPanitia')
 
                                 <div class="table table-bordered">
@@ -101,8 +117,9 @@
                                                     <td class="text-center fonts-big">
                                                         <form action="{{ route('users.destroy', $user->id) }}"
                                                             method="POST">
-                                                            <a class="btn btn-primary"
-                                                                href="#" data-toggle="modal" data-target="#editAdmin{{ $user->id }}">Edit</a>
+                                                            <a class="btn btn-primary" href="#"
+                                                                data-toggle="modal"
+                                                                data-target="#editAdmin{{ $user->id }}">Edit</a>
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -127,7 +144,7 @@
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
-    
+
     @extends('admin.footer')
     <!-- /.control-sidebar -->
 

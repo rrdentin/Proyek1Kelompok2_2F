@@ -68,6 +68,7 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
     Route::get('/panitia/panitiatable', [PanitiaController::class, 'index'])->name('panitia.panitiatable');
     Route::post('add-panitia', [PanitiaController::class, 'addPanitia'])->name('panitia.add-panitia');
+    Route::get('/panitia/pendaftar', [PendaftarController::class, 'dashboard'])->name('panitia.pendaftar');
 });
 
 // Admin routes
