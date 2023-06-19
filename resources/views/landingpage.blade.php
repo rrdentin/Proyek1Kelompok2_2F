@@ -235,9 +235,9 @@
             <div class="row align-items-center">
                 <div class="col-lg-4 text-lg-start">Copyright &copy;Tim IT Kel2. 2023</div>
                 <div class="col-lg-4 my-3 my-lg-0">
-                    <a class="btn btn-light mx-2 ft-twitter" href="#" aria-label="Twitter"></a>
-                    <a class="btn btn-light mx-2 ft-facebook" href="#" aria-label="Facebook"></a>
-                    <a class="btn btn-light mx-2 ft-instagram" href="#" aria-label="Instagram"></a>
+                    <a class="btn btn-light mx-2 ft-twitter" href="https://twitter.com/AnakSalehMalang?s=20" aria-label="Twitter"></a>
+                    <a class="btn btn-light mx-2 ft-facebook" href="https://web.facebook.com/pages/Anak-Saleh-El-school/206693209353991" aria-label="Facebook"></a>
+                    <a class="btn btn-light mx-2 ft-instagram" href="https://www.instagram.com/paudterpaduanaksalehmalang/?hl=id" aria-label="Instagram"></a>
                 </div>
 
                 <div class="col-lg-4 text-lg-end">

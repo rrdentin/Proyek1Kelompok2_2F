@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Pendaftar;
 use App\Models\Pembayaran;
 use App\Models\Gallery;
+use App\Models\Pengumuman;
 
 
 //tesssss
@@ -305,7 +306,7 @@ class HomeController extends Controller
 
     $user->save();
 
-    return redirect()->back()->with('success', 'Profile updated successfully.');
+    return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
     }
     public function searchAdmin(Request $request){
 
@@ -378,5 +379,11 @@ class HomeController extends Controller
         $keyword = $request->search;
         $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search. '%')->paginate(5);
         return view('admin.gallery', compact('gallery'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function searchPengumuman(Request $request){
+
+        $keyword = $request->search;
+        $pengumumans= Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search. '%')->paginate(5);
+        return view('admin.pengumuman', compact('pengumumans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

@@ -23,7 +23,7 @@ class PendaftarController extends Controller
     public function dashboard()
     {
         $user = Auth::user();
-    
+
         if ($user->level == 'admin') {
             $pendaftars = Pendaftar::with('pembayaran')->get();
             return view('admin.pendaftar', compact('pendaftars'));
@@ -33,14 +33,14 @@ class PendaftarController extends Controller
         } elseif ($user->level == 'user') {
             $pendaftars = Pendaftar::where('user_id', $user->id)->get();
             $pembayaran = [];
-            
+
             if ($pendaftars->isNotEmpty()) {
                 $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
             }
-    
+
             return view('user.dashboard.pendaftar', compact('pendaftars', 'pembayaran'));
         }
-    
+
         // Handle other levels or no level assigned
         return redirect()->back()->with('error', 'Unauthorized access.');
     }
@@ -73,7 +73,7 @@ class PendaftarController extends Controller
                 $validator->errors()->add('name', 'Sudah ada Pendaftar dengan data Nama, Tempat Lahir, dan Tanggal Lahir tersebut.');
             }
         });
-    if ($validator->fails()) {
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
@@ -107,10 +107,10 @@ class PendaftarController extends Controller
         $pendaftar->status = 'pending';
         $pendaftar->save();
 
-    // Set jumlah berdasarkan jenjangPend
+        // Set jumlah berdasarkan jenjangPend
         if ($pendaftar->jenjangPend == 'TK') {
             $jumlah = 200000;
-        } elseif ($pendaftar->jenjangPend== 'Paud') {
+        } elseif ($pendaftar->jenjangPend == 'Paud') {
             $jumlah = 150000;
         }
 
@@ -148,8 +148,8 @@ class PendaftarController extends Controller
             'akte' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'kk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'nik' => [
-            'required',
-            Rule::unique('pendaftars')->ignore($pendaftar->id),
+                'required',
+                Rule::unique('pendaftars')->ignore($pendaftar->id),
             ],
             'jenjangPend' => 'required|in:TK,Paud',
             'tempatLahir' => 'required',
@@ -173,22 +173,22 @@ class PendaftarController extends Controller
         if ($validator->fails()) {
             if ($level === 'user') {
                 return redirect()->route('pendaftar.dashboard')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('modalError', 'Error'); // Add modalError flash data
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('modalError', 'Error'); // Add modalError flash data
             } elseif ($level === 'admin') {
                 return redirect()->route('admin.pendaftar')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('modalError', 'Error'); // Add modalError flash data
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('modalError', 'Error'); // Add modalError flash data
             } elseif ($level === 'panitia') {
                 return redirect()->route('panitia.pendaftar')
-                ->withErrors($validator)
-                ->withInput()
-                ->with('modalError', 'Error'); // Add modalError flash data
+                    ->withErrors($validator)
+                    ->withInput()
+                    ->with('modalError', 'Error'); // Add modalError flash data
             }
         }
-    
+
 
         // Update pendaftar data
         $pendaftar->name = $request->name;
@@ -260,24 +260,24 @@ class PendaftarController extends Controller
             // Handle the case when the Pendaftar record is not found
             abort(404);
         }
-        
+
         // Get the original status
         $originalStatus = $pendaftar->status;
-        
+
         // Update the status
         $pendaftar->status = $request->input('status');
-        
+
         // Check if the new status is "accepted" and the associated Pembayaran status is not "terbayar"
         if ($pendaftar->status === 'accepted') {
-            $pembayaran = Pembayaran::where('pendaftar_id', $id)->first();    
+            $pembayaran = Pembayaran::where('pendaftar_id', $id)->first();
             if (!$pembayaran || $pembayaran->status !== 'terbayar') {
                 // Display a message and redirect back
                 return redirect()->back()->with('error', 'Pembayaran harus divalidasi sebelum menerima pendaftar');
             }
         }
-        
+
         $pendaftar->save();
-        
+
         if ($originalStatus === 'accepted' && $pendaftar->status !== 'accepted') {
             // Delete the corresponding Siswa record
             if ($pendaftar->siswa) {
@@ -287,7 +287,7 @@ class PendaftarController extends Controller
             // Generate a unique NIS for the Siswa record
             $maxNIS = DB::table('siswas')->max('nis');
             $newNIS = ($maxNIS ?? 199999) + 1;
-        
+
             // Create a new Siswa record
             $siswa = new Siswa([
                 'pendaftar_id' => $pendaftar->id,
@@ -295,14 +295,20 @@ class PendaftarController extends Controller
             ]);
             $siswa->save();
         }
-        
+
         // Redirect back or do any other desired action
         return redirect()->to('/admin/pendaftar')->with('success', 'Status berhasil diperbarui.');
     }
 
-    public function print(){
-        $pendaftar = Pendaftar::all();
-        $pdf = PDF::loadview('admin.print',['pendaftar'=>$pendaftar]);
+    public function printPDF($id)
+    {
+        $pendaftar = Pendaftar::where('id', $id)->first();
+
+        if (!$pendaftar) {
+            return redirect()->back()->with('error', 'Pendaftar tidak ditemukan.');
+        }
+
+        $pdf = PDF::loadView('admin.print', ['pendaftar' => $pendaftar]);
         return $pdf->stream();
     }
 }

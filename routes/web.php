@@ -77,7 +77,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::post('add-admin', [AdminController::class, 'addAdmin'])->name('admin.add-admin');
     Route::get('/admin/pendaftar', [PendaftarController::class, 'dashboard'])->name('admin.pendaftar');
     Route::get('/admin/pembayaran', [PembayaranController::class, 'dashboard'])->name('admin.pembayaran');
-    Route::get('/admin/pendaftar/print', [PendaftarController::class, 'print'])->name('admin.print');
+    Route::get('/admin/pendaftar/print/{id}', [PendaftarController::class, 'printPDF'])->name('admin.print');
     Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
     Route::get('/admin/siswa', [SiswaController::class, 'dashboard'])->name('admin.siswa');
 }
@@ -113,3 +113,4 @@ Route::get('/search/user', [HomeController::class, 'searchUser'])->name('searchU
 Route::get('/search/panitia', [HomeController::class, 'searchPanitia'])->name('searchPanitia');
 Route::get('/search/pendaftar', [HomeController::class, 'searchPendaftar'])->name('searchPendaftar');
 Route::get('/search/gallery', [HomeController::class, 'searchGallery'])->name('searchGallery');
+Route::get('/search/pengumuman', [HomeController::class, 'searchPengumuman'])->name('searchPengumuman');
