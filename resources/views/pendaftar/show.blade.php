@@ -118,22 +118,32 @@
 
                     <hr>
 
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h4>File Pendukung</h4>
-                            <p><strong>Foto:</strong></p>
-                            <img style="image-resolution: 100%" src="{{ asset('storage/' . $pendaftar->foto) }}"
-                                height="25%" width="75%" alt="Foto Pendaftar">
-                            <br><br>
-                            <p><strong>Akte Kelahiran:</strong></p>
-                            <img src="{{ asset('storage/' . $pendaftar->akte) }}" height="25%" width="75%"
-                                alt="Akte Kelahiran">
-                            <br><br>
-                            <p><strong>Kartu Keluarga:</strong></p>
-                            <img src="{{ asset('storage/' . $pendaftar->kk) }}" height="25%" width="75%"
-                                alt="Kartu Keluarga">
-                        </div>
-                    </div>
+                    <table class='table table-bordered' style="width: 100%;">
+                        <h4>File Pendukung</h4>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">
+                                    <p><strong>Foto:</strong></p>
+                                </th>
+                                <th style="width: 50%;">
+                                    <p><strong>Akte Kelahiran:</strong></p>
+                                </th>
+                                <th style="width: 50%;">
+                                    <p><strong>Kartu Keluarga:</strong></p>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="{{ asset('storage/' . $pendaftar->foto) }}" height="50%" width="100%"
+                                        alt="Foto Pendaftar"></td>
+                                <td><img src="{{ asset('storage/' . $pendaftar->akte) }}" height="50%" width="100%"
+                                        alt="Akte Kelahiran"></td>
+                                <td><img src="{{ asset('storage/' . $pendaftar->kk) }}" height="50%" width="100%"
+                                        alt="Kartu Keluarga"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 
         </div>
