@@ -398,4 +398,10 @@ class HomeController extends Controller
         $pengumumans= Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search. '%')->paginate(5);
         return view('admin.pengumuman', compact('pengumumans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+    public function searchPendaftarUser(Request $request){
+
+        $keyword = $request->search;
+        $pendaftars= Pendaftar::where('name', 'like', '%' . $request->search. '%')->paginate(5);
+        return view('user.dashboard.pendaftar', compact('pendaftars'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 }
