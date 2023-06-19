@@ -27,6 +27,11 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body p-4">
+                             @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                        @endif
                                 <h6>Information</h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">

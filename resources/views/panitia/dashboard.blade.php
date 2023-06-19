@@ -37,7 +37,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('admin.profile') }}">
                             <th>{{ Auth::user()->name }}</th>
                         </a>
                         <a class="nav-link" href="{{ route('logout') }}"
