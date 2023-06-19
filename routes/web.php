@@ -59,7 +59,6 @@ Route::middleware(['checkLevel:user'])->group(function () {
     Route::post('/user/dashboard/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');
     Route::get('/user/dashboard/pembayaran', [PembayaranController::class, 'dashboard'])->name('pembayaran.dashboard');
     Route::get('/user/dashboard/siswa', [SiswaController::class, 'dashboard'])->name('siswa.dashboard');
-    
 });
 
 // Panitia routes
@@ -82,8 +81,6 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/pendaftar/print/{id}', [PendaftarController::class, 'printPDF'])->name('admin.print');
     Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
     Route::get('/admin/siswa', [SiswaController::class, 'dashboard'])->name('admin.siswa');
-
-
 }
 );
 
@@ -115,3 +112,4 @@ Route::get('/search', [HomeController::class, 'searchAdmin'])->name('searchAdmin
 Route::get('/search/user', [HomeController::class, 'searchUser'])->name('searchUser');
 Route::get('/search/panitia', [HomeController::class, 'searchPanitia'])->name('searchPanitia');
 Route::get('/search/pendaftar', [HomeController::class, 'searchPendaftar'])->name('searchPendaftar');
+Route::get('/search/gallery', [HomeController::class, 'searchGallery'])->name('searchGallery');
