@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use App\Models\Pendaftar;
 use App\Models\Pembayaran;
@@ -32,7 +32,7 @@ class PendaftarController extends Controller
         } elseif ($user->level == 'user') {
             $pendaftars = Pendaftar::where('user_id', $user->id)->get();
             $pembayaran = [];
-    
+            
             if ($pendaftars->isNotEmpty()) {
                 $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
             }
@@ -47,7 +47,7 @@ class PendaftarController extends Controller
     public function create()
     {
         $user = Auth::user();
-        return view('pendaftar.create', compact('user'));
+        return view('user.create.createPendaftar', compact('user'));
     }
 
     public function store(Request $request)
@@ -78,10 +78,14 @@ class PendaftarController extends Controller
                 $validator->errors()->add('name', 'Sudah ada Pendaftar dengan data Nama, Tempat Lahir, dan Tanggal Lahir tersebut.');
             }
         });
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('success', 'Calon siswa berhasil ditambahkan');
+    if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
+
+
+        //if ($validator->fails()) {
+        //    return redirect()->back()->withErrors($validator)->withInput()->with('success', 'Calon siswa berhasil ditambahkan');
+       // }
 
         // Upload image files
         $image_name = $request->file('foto')->store('images', 'public');
@@ -164,8 +168,11 @@ class PendaftarController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'akte' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'kk' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'nik' => [
+            'required',
+            Rule::unique('pendaftars')->ignore($pendaftar->id),
+            ],
             'jenjangPend' => 'required|in:TK,Paud',
-            'nik' => 'required',
             'tempatLahir' => 'required',
             'noHp' => 'required',
         ]);
@@ -184,8 +191,12 @@ class PendaftarController extends Controller
 
         // Validate input fields
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->route('pendaftar.dashboard')
+                ->withErrors($validator)
+                ->withInput()
+                ->with('modalError', 'Error'); // Add modalError flash data
         }
+    
 
         // Update pendaftar data
         $pendaftar->name = $request->name;
@@ -250,14 +261,24 @@ class PendaftarController extends Controller
             // Handle the case when the Pendaftar record is not found
             abort(404);
         }
-
+        
         // Get the original status
         $originalStatus = $pendaftar->status;
-
+        
         // Update the status
         $pendaftar->status = $request->input('status');
+        
+        // Check if the new status is "accepted" and the associated Pembayaran status is not "terbayar"
+        if ($pendaftar->status === 'accepted') {
+            $pembayaran = Pembayaran::where('pendaftar_id', $id)->first();    
+            if (!$pembayaran || $pembayaran->status !== 'terbayar') {
+                // Display a message and redirect back
+                return redirect()->back()->with('error', 'Pembayaran must be validated first before accepting the pendaftar.');
+            }
+        }
+        
         $pendaftar->save();
-
+        
         if ($originalStatus === 'accepted' && $pendaftar->status !== 'accepted') {
             // Delete the corresponding Siswa record
             if ($pendaftar->siswa) {
@@ -267,7 +288,7 @@ class PendaftarController extends Controller
             // Generate a unique NIS for the Siswa record
             $maxNIS = DB::table('siswas')->max('nis');
             $newNIS = ($maxNIS ?? 199999) + 1;
-
+        
             // Create a new Siswa record
             $siswa = new Siswa([
                 'pendaftar_id' => $pendaftar->id,
@@ -275,10 +296,11 @@ class PendaftarController extends Controller
             ]);
             $siswa->save();
         }
-
+        
         // Redirect back or do any other desired action
         return redirect()->to('/admin/pendaftar')->with('success', 'Status updated successfully.');
     }
+
     public function print(){
         $pendaftar = Pendaftar::all();
         $pdf = PDF::loadview('admin.print',['pendaftar'=>$pendaftar]);
