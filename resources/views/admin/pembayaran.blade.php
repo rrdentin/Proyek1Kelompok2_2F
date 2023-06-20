@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Pembayaran Admin | Shaleh </title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Pembayaran Admin | Shaleh </title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 
 <body class="hold-transition sidebar-mini">
@@ -59,7 +59,7 @@
                     <div class="col-12">
                         <div class="card">
                             <section class="content-header">
-                                
+
                             </section>
 
                             <!-- Main content -->
@@ -70,7 +70,7 @@
                                             <div class="card-body">
                                                 <div class="box-header with-border">
                                                     <h6 class="box-title">Detail Pembayaran</h6>
-                                                    
+
                                                     <form action="{{ route('pembayaran.dashboard') }}" method="GET"
                                                         class="box-tools">
                                                         <div class="input-group">
@@ -105,55 +105,49 @@
                                                                 <td>{{ $pembayaran->pendaftar->name_wali }}</td>
                                                                 <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
                                                                 <td>
-                                                                    @if ($pembayaran->status === 'bayar')
                                                                     {{ $pembayaran->jumlah }}
-                                                                    @else
-                                                                    <input type="number" name="jumlah"
-                                                                        value="{{ $pembayaran->jumlah }}">
-                                                                    @endif
                                                                 </td>
                                                                 <td>
                                                                     <form
                                                                         action="{{ route('pembayaran.update', $pembayaran->id) }}"
-                                                                        method="POST" id="updateForm">
+                                                                        method="POST" class="update-form"
+                                                                        data-pembayaran-id="{{ $pembayaran->id }}">
                                                                         @csrf
                                                                         @method('PUT')
                                                                         <select name="status" class="form-control"
-                                                                            onchange="submitForm()">
+                                                                            onchange="submitForm(this)">
                                                                             <option value="bayar"
                                                                                 {{ $pembayaran->status === 'bayar' ? 'selected' : '' }}>
-                                                                                Bayar
-                                                                            </option>
+                                                                                Bayar</option>
                                                                             <option value="verifikasi"
                                                                                 {{ $pembayaran->status === 'verifikasi' ? 'selected' : '' }}>
                                                                                 Verifikasi</option>
                                                                             <option value="invalid"
                                                                                 {{ $pembayaran->status === 'invalid' ? 'selected' : '' }}>
-                                                                                Invalid
-                                                                            </option>
+                                                                                Invalid</option>
                                                                             <option value="terbayar"
                                                                                 {{ $pembayaran->status === 'terbayar' ? 'selected' : '' }}>
-                                                                                Terbayar
-                                                                            </option>
+                                                                                Terbayar</option>
                                                                         </select>
                                                                         <button type="submit" class="btn btn-primary"
                                                                             style="display: none;">Update</button>
                                                                     </form>
 
                                                                     <script>
-                                                                        function submitForm() {
-                                                                            document.getElementById("updateForm")
-                                                                                .submit();
+                                                                        function submitForm(selectElement) {
+                                                                            var form = selectElement.parentNode;
+                                                                            form.querySelector('button[type="submit"]')
+                                                                                .click();
                                                                         }
 
                                                                     </script>
-
                                                                 </td>
                                                                 <td>
                                                                     <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
                                                                         class="btn btn-info">View</a>
                                                                     <a href="{{ route('admin.print', $pembayaran->id) }}"
-                                                                        class="btn btn-success">Print <i class="fas fa-print"></i></a>
+                                                                        class="btn btn-success">Print <i
+                                                                            class="fas fa-print"></i></a>
                                                                 </td>
                                                             </tr>
                                                             @endforeach
@@ -161,7 +155,7 @@
                                                     </table>
                                                 </div>
                                                 <!-- /.box-body -->
-                                                <div class="box-footer clearfix">
+                                                <div class="pagination">
                                                     {{ $pembayarans->links() }}
                                                 </div>
                                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
@@ -210,3 +204,11 @@
     <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
 
 </body>
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+</style>
