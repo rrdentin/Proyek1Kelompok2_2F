@@ -53,7 +53,7 @@
 
         <div style="margin-left: 250px">
             <section class="content">
-                <div class="container">
+                <div class="container-fluid">
                     <h1>Pembayaran Dashboard</h1>
                     <div class="row">
                         <div class="col-md-12">
@@ -110,6 +110,7 @@
                                 <p>Tidak ada pendaftar yang tersedia.</p>
                             @endif
                             </div>
+                            <img src="/ppdb/bayar.png" alt="foto bank" style="width:100%"> <br><br>
                         </div>
                         <div class="row">
                             <!-- Left col -->

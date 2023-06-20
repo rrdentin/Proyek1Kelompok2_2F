@@ -1,6 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.header_user')
+<title>Change Password | Shaleh</title>
+<link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
+<br>
+<br>
+<br>
+<br>
+<br>
 
-@section('content')
+@section('content2')
+
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -45,11 +54,29 @@
                             </div>
 
                             <!-- Change Password Button -->
-                            <button type="submit" class="btn btn-primary">{{ __('Change Password') }}</button>
+                            <div class="container">
+                                <div class="d-flex align-items-center" style="height: 50px">
+                                <div class="col-md-10">
+                                    <a href="/user/landing" class="btn btn-primary btn-icon">
+                                        <i class="fas fa-arrow-left"></i>
+                                        Kembali
+                                    </a>
+                                </div>
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary">{{ __('Change Password') }}</button>
+                                </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<br>
 @endsection

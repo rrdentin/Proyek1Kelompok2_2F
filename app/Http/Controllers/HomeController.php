@@ -265,8 +265,20 @@ class HomeController extends Controller
     public function editProfile()
     {
         $user = Auth::user();
-        return view('user.edit_profile', compact('user'));
+        $level = $user->level;
+
+        if ($level === 'admin') {
+            // Custom logic for admin level
+            return view('admin.edit.editProfile', compact('user'));
+        } elseif ($level === 'panitia') {
+            // Custom logic for moderator level
+            return view('panitia.edit.editProfile', compact('user'));
+        } elseif ($level === 'user') {
+            // Custom logic for regular user level
+            return view('user.edit_profile', compact('user'));
+        } 
     }
+
     public function updateUser(Request $request)
     {
     $user = Auth::user();
@@ -385,5 +397,11 @@ class HomeController extends Controller
         $keyword = $request->search;
         $pengumumans= Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search. '%')->paginate(5);
         return view('admin.pengumuman', compact('pengumumans'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+    public function searchPendaftarUser(Request $request){
+
+        $keyword = $request->search;
+        $pendaftars= Pendaftar::where('name', 'like', '%' . $request->search. '%')->paginate(5);
+        return view('user.dashboard.pendaftar', compact('pendaftars'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

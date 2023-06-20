@@ -36,7 +36,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('admin.profile') }}">
                             <th>{{ Auth::user()->name }}</th>
                         </a>
                         <a class="nav-link" href="{{ route('logout') }}"
@@ -72,7 +72,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="card-header">
-                                    <div class="container">
+                                    <div class="container"> 
                                         <div class="d-flex align-items-center" style="height: 50px">
                                         <div class="col-md-9">
                                             <button data-toggle="modal" data-target="#createAdmin"
