@@ -17,7 +17,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">{{ __('Change Password') }}</div>
+                    <div class="card-header">{{ __('Ubah Password') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('password.change') }}">

@@ -75,20 +75,24 @@
                                 <div class="card-header">
                                     <div class="container">
                                         <div class="d-flex align-items-center" style="height: 50px">
-                                        <div class="col-md-9">
-                                            <button data-toggle="modal" data-target="#createUser"
-                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah User
-                                            </button>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <form class="form-left my-4" method="get" action="{{ route('searchUser') }}">
-                                                <div class="form-group w-80 mb-1">
-                                                        <input type="text" name="search" class="form-control w-50 d-inline"
-                                                        id="search" placeholder="Search">
-                                                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
-                                                </div>
-                                            </form>
-                                        </div>
+                                            <div class="col-md-9">
+                                                <button data-toggle="modal" data-target="#createUser"
+                                                    class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i>
+                                                    Tambah User
+                                                </button>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <form class="form-left my-4" method="get"
+                                                    action="{{ route('searchUser') }}">
+                                                    <div class="form-group w-80 mb-1">
+                                                        <input type="text" name="search"
+                                                            class="form-control w-50 d-inline" id="search"
+                                                            placeholder="Search">
+                                                        <button type="submit"
+                                                            class="btn btn-primary mb-1">Cari</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -117,9 +121,9 @@
                                                     <td class="text-center fonts-big">{{ $user->level }}</td>
                                                     <td class="text-center fonts-big">
                                                         <a class="btn btn-primary" href="#" data-toggle="modal"
-                                                            data-target="#editAdmin{{ $user->id }}">Edit</a>
+                                                            data-target="#editAdmin{{ $user->id }}">Ubah</a>
                                                         <a class="btn btn-danger" href="#" data-toggle="modal"
-                                                            data-target="#deleteAdmin{{ $user->id }}">Delete</a>
+                                                            data-target="#deleteAdmin{{ $user->id }}">Hapus</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

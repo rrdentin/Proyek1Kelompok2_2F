@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Gallery</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Ubah Gallery</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -20,7 +20,8 @@
                                 <select class="form-control" name="kategori_galeri" required>
                                     <option value="TK" {{ $galeri->kategori_galeri === 'TK' ? 'selected' : '' }}>TK
                                     </option>
-                                    <option value="Paud" {{ $galeri->kategori_galeri === 'Paud' ? 'selected' : '' }}>Paud
+                                    <option value="Paud" {{ $galeri->kategori_galeri === 'Paud' ? 'selected' : '' }}>
+                                        Paud
                                     </option>
                                 </select>
                             </div>
@@ -41,7 +42,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">Edit Gallery</button>
+                            <button type="submit" class="btn btn-primary">Ubah Gallery</button>
                         </div>
                     </form>
                 </div>

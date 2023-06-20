@@ -61,57 +61,58 @@
                                             <div class="card-body">
 
                                                 @if (!empty($siswas) && count($siswas) > 0)
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>No</th>
-                                                                <th>NIS</th>
-                                                                <th>Name</th>
-                                                                <th>Foto</th>
-                                                                <th>Name Wali</th>
-                                                                <th>Jenjang Pendidikan</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @php $no = 1; @endphp
-                                                            @foreach($siswas as $siswa)
-                                                            <tr>
-                                                                <td>{{ $no++ }}</td>
-                                                                <td>{{ $siswa->nis }}</td>
-                                                                <td>{{ $siswa->pendaftar->name }}</td>
-                                                                <td>
-                                                                    @if($siswa->pendaftar->foto)
-                                                                    <img src="{{ asset('storage/'.$siswa->pendaftar->foto) }}"
-                                                                        alt="Foto" height="50">
-                                                                    @else
-                                                                    No foto available
-                                                                    @endif
-                                                                </td>
-                                                                <td>{{ $siswa->pendaftar->name_wali }}</td>
-                                                                <td>{{ $siswa->pendaftar->jenjangPend }}</td>
-                                                                <td>
-                                                                    <a href="{{ route('siswa.edit', $siswa->id) }}"
-                                                                        class="btn btn-primary">Edit</a>
-                                                                    <form
-                                                                        action="{{ route('siswa.destroy', $siswa->id) }}"
-                                                                        method="POST" style="display: inline-block;">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Delete</button>
-                                                                    </form>
-                                                                </td>
-                                                            </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>No</th>
+                                                                    <th>NIS</th>
+                                                                    <th>Name</th>
+                                                                    <th>Foto</th>
+                                                                    <th>Name Wali</th>
+                                                                    <th>Jenjang Pendidikan</th>
+                                                                    <th>Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @php $no = 1; @endphp
+                                                                @foreach ($siswas as $siswa)
+                                                                    <tr>
+                                                                        <td>{{ $no++ }}</td>
+                                                                        <td>{{ $siswa->nis }}</td>
+                                                                        <td>{{ $siswa->pendaftar->name }}</td>
+                                                                        <td>
+                                                                            @if ($siswa->pendaftar->foto)
+                                                                                <img src="{{ asset('storage/' . $siswa->pendaftar->foto) }}"
+                                                                                    alt="Foto" height="50">
+                                                                            @else
+                                                                                No foto available
+                                                                            @endif
+                                                                        </td>
+                                                                        <td>{{ $siswa->pendaftar->name_wali }}</td>
+                                                                        <td>{{ $siswa->pendaftar->jenjangPend }}</td>
+                                                                        <td>
+                                                                            <a href="{{ route('siswa.edit', $siswa->id) }}"
+                                                                                class="btn btn-primary">Edit</a>
+                                                                            <form
+                                                                                action="{{ route('siswa.destroy', $siswa->id) }}"
+                                                                                method="POST"
+                                                                                style="display: inline-block;">
+                                                                                @csrf
+                                                                                @method('DELETE')
+                                                                                <button type="submit"
+                                                                                    class="btn btn-danger">Delete</button>
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 @else
-                                                <div class="alert alert-info" style="border: none;">
-                                                    <p>Tidak ada siswa yang tersedia.</p>
-                                                </div>
+                                                    <div class="alert alert-info" style="border: none;">
+                                                        <p>Tidak ada siswa yang tersedia.</p>
+                                                    </div>
                                                 @endif
                                                 <div class="pagination">
                                                     {{ $siswas->links() }}

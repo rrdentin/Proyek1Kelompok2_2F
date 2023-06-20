@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Pengumuman</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Ubah Pengumuman</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -34,15 +34,15 @@
                             <div class="form-group">
                                 <label for="gambar_pengumuman">Gambar:</label>
                                 <br>
-                                <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}" width='50'
-                                    height='50' class="img img-responsive" />
+                                <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                    width='50' height='50' class="img img-responsive" />
                                 <input class="form-control form-control-sm" name="gambar_pengumuman" type="file"
                                     value="{{ $pengumuman->gambar_pengumuman }}">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-                            <button type="submit" class="btn btn-primary">Edit Pengumuman</button>
+                            <button type="submit" class="btn btn-primary">Ubah Pengumuman</button>
                         </div>
                     </form>
                 </div>

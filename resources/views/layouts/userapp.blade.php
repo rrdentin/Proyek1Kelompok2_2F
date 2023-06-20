@@ -9,7 +9,7 @@
     <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 
     {{-- css --}}
-    <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('landing/css/style.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

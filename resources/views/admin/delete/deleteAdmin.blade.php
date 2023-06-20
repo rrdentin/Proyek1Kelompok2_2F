@@ -14,7 +14,8 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">Apakah Anda yakin ingin menghapus User dengan nama
-                            <b>{{ $user->name }}</b>?</div>
+                            <b>{{ $user->name }}</b>?
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-danger">Hapus Pengguna</button>

@@ -41,40 +41,42 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                        @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @endif
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
 
-                        @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                        @endif
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
                         @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->username }}
-                            </a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->username }}
+                                </a>
 
-                            @if(Auth::check())
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @if(Auth::user()->level == 'panitia')
-                                <a class="dropdown-item"
-                                    href="{{ route('panitia.profile') }}">{{ __('View Profile') }}</a>
-                                @elseif(Auth::user()->level == 'admin')
-                                <a class="dropdown-item"
-                                    href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
-                                @else
-                                <a class="dropdown-item" href="{{ route('user.landing') }}">{{ __('Home') }}</a>
-                                <a class="dropdown-item" href="{{ route('user.dashboard')}}">{{__('Dashboard')}}</a>
-                                @endif
-
+                                @if (Auth::check())
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                        @if (Auth::user()->level == 'panitia')
+                                            <a class="dropdown-item"
+                                                href="{{ route('panitia.profile') }}">{{ __('View Profile') }}</a>
+                                        @elseif(Auth::user()->level == 'admin')
+                                            <a class="dropdown-item"
+                                                href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                                        @else
+                                            <a class="dropdown-item"
+                                                href="{{ route('user.landing') }}">{{ __('Home') }}</a>
+                                            <a class="dropdown-item"
+                                                href="{{ route('user.dashboard') }}">{{ __('Dashboard') }}</a>
+                                        @endif
                                 @endif
                                 </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -82,17 +84,17 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
-                            </div>
-                        </li>
-                        @endguest
-                    </ul>
-                </div>
+                    </div>
+                    </li>
+                @endguest
+                </ul>
             </div>
-        </nav>
+    </div>
+    </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+    <main class="py-4">
+        @yield('content')
+    </main>
     </div>
 </body>
 

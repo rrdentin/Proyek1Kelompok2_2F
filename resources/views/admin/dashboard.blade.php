@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Dashboard Admin | Shaleh</title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Dashboard Admin | Shaleh</title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 <!--
 `body` tag options:

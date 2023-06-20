@@ -105,7 +105,7 @@ public function update(Request $request, $id)
 
     $pembayaran->save();
 
-    return redirect()->route('pembayaran.dashboard')->with('success', 'Berkas pembayaran berhasil diunggah ulang.');
+    return redirect()->route('admin.pembayaran')->with('success', 'Berkas pembayaran berhasil diunggah ulang.');
 }
 
     public function print($id)

@@ -15,7 +15,8 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">Apakah Anda yakin ingin menghapus Pendaftar dengan nama
-                            <b>{{ $pendaftar->name }}</b>?</div>
+                            <b>{{ $pendaftar->name }}</b>?
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-danger">Hapus Pendaftar</button>

@@ -141,9 +141,9 @@
                                             class="btn btn-primary">Lihat</a>
                                         <a href="#" data-toggle="modal"
                                             data-target="#editPendaftar{{ $pendaftar->id }}"
-                                            class="btn btn-info">Edit</a>
+                                            class="btn btn-info">Ubah</a>
                                         <a class="btn btn-danger" href="#" data-toggle="modal"
-                                            data-target="#deletePendaftar{{ $pendaftar->id }}">Delete</a>
+                                            data-target="#deletePendaftar{{ $pendaftar->id }}">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -15,7 +15,8 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">Apakah Anda yakin ingin menghapus Pengumuman dengan nomor
-                            <b>{{ $pengumuman->id }}</b>?</div>
+                            <b>{{ $pengumuman->id }}</b>?
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-danger">Hapus Pengumuman</button>

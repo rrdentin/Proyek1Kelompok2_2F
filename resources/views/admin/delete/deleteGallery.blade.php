@@ -15,7 +15,8 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">Apakah Anda yakin ingin menghapus Galeri dengan nomor
-                            <b>{{ $galeri->id }}</b>?</div>
+                            <b>{{ $galeri->id }}</b>?
+                        </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-danger">Hapus Galeri</button>
