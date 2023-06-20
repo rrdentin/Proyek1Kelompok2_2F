@@ -16,7 +16,7 @@
 		<h6><a target="_blank" href="https://www.sekolahanaksaleh.sch.id-…n-dompdf-laravel/">www.sekolahanaksaleh.sch.id</a></h5>
 	</center>
 
-	<table class='table table-bordered' style="margin-left: -1%">
+	<table class='table table-bordered' style="margin-left: -0.2%">
 		<thead>
             @php $i=1 @endphp 
             <tr>
