@@ -151,7 +151,7 @@
                                                                     <button data-toggle="modal"
                                                                         data-target="#editPendaftar{{ $pendaftar->id }}"
                                                                         class="btn btn-primary"
-                                                                        href="#">Edit</button>
+                                                                        href="#">Ubah</button>
                                                                 @endif
                                                             </td>
 

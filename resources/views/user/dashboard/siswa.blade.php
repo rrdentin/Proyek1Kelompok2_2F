@@ -98,10 +98,10 @@
                                                                 <td>{{ $siswa->pendaftar->jenjangPend }}</td>
                                                                 <td>
                                                                     <a href="{{ route('siswa.show', $siswa->id) }}"
-                                                                        class="btn btn-primary">Show</a>
+                                                                        class="btn btn-primary">Lihat</a>
                                                                     <form
                                                                         action="{{ route('siswa.print', $siswa->id) }}"
-                                                                        class="btn btn-danger">Print</button>
+                                                                        class="btn btn-success">Cetak</button>
                                                                     </form>
                                                                 </td>
                                                             </tr>

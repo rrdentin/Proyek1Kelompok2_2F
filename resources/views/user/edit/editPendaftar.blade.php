@@ -4,7 +4,7 @@
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Edit Calon Siswa</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Ubah Calon Siswa</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -105,7 +105,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                             <button type="submit" class="btn btn-primary"
-                                onclick="confirmUpdate({{ $pendaftar->id }})">Update Calon Siswa</button>
+                                onclick="confirmUpdate({{ $pendaftar->id }})">Ubah Calon Siswa</button>
                         </div>
                     </form>
                 </div>
