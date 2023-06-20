@@ -80,11 +80,11 @@
                                     </span>
                                     @enderror
                                 </div>
-
                                 <br>
                                 <input type="submit" value="Login" class="btn btn-block btn-primary">
                                 </a>
-                                <br>
+                                <span style="font-size: 11; margin: 33%">Forgot password? <a href="{{ route('password.reset') }}">Reset</a></span>
+                                <br><br>
                                 <div class="signin">
                                 <span style="margin-left: 15%">You don't have an account? <a href="{{ route('register') }}">Register</a></span><br>
                                 <span style="margin: 47%">Or </span><br> <span style="margin-left: 39%">Go To <a href="/">Home</a></span><br>

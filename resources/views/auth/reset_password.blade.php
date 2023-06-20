@@ -64,7 +64,7 @@
               </div>
               <br>
               <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Saya setuju untuk register dengan ketentuan privacy policy</span>
+                <label class="control control--checkbox mb-0"><span class="caption">Saya setuju untuk mereset password</span>
                   <input type="checkbox" checked="checked" required/>
                   <div class="control__indicator"></div>
                 </label>
