@@ -58,59 +58,61 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table table-bordered">
-                            @if (!empty($pembayarans) && count($pembayarans) > 0)
-                            @if ($message = Session::get('success'))
-                                            <div class="alert alert-success">
-                                                <p>{{ $message }}</p>
-                                            </div>
-                                        @endif    
-                            <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Name Wali</th>
-                                            <th>Jenjang Pendidikan</th>
-                                            <th>Jumlah</th>
-                                            <th>Status</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($pembayarans as $pembayaran)
+                                @if (!empty($pembayarans) && count($pembayarans) > 0)
+                                    @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
+                                    @endif
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $pembayaran->pendaftar->name }}</td>
-                                                <td>{{ $pembayaran->pendaftar->name_wali }}</td>
-                                                <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
-                                                <td>{{ $pembayaran->jumlah }}</td>
-                                                <td>{{ $pembayaran->status }}</td>
-                                                <td>
-                                                    @if ($pembayaran->status == 'bayar')
-                                                        <a href="{{ route('pembayaran.edit', $pembayaran->id) }}"
-                                                            class="btn btn-primary">Upload</a>
-                                                    @elseif ($pembayaran->status == 'invalid')
-                                                        <a href="{{ route('pembayaran.update', $pembayaran->id) }}"
-                                                            class="btn btn-warning">Update</a>
-                                                    @elseif ($pembayaran->status == 'verifikasi')
-                                                        <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
-                                                            class="btn btn-primary">Show</a>
-                                                    @elseif ($pembayaran->status == 'terbayar')
-                                                        <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
-                                                            class="btn btn-primary">Show</a>
-                                                        <a href="{{ route('pembayaran.print', $pembayaran->id) }}"
-                                                            class="btn btn-success">Print</a>
-                                                    @endif
-                                                </td>
+                                                <th>Name</th>
+                                                <th>Name Wali</th>
+                                                <th>Jenjang Pendidikan</th>
+                                                <th>Jumlah</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($pembayarans as $pembayaran)
+                                                <tr>
+                                                    <td>{{ $pembayaran->pendaftar->name }}</td>
+                                                    <td>{{ $pembayaran->pendaftar->name_wali }}</td>
+                                                    <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
+                                                    <td>{{ $pembayaran->jumlah }}</td>
+                                                    <td>{{ $pembayaran->status }}</td>
+                                                    <td>
+                                                        @if ($pembayaran->status == 'bayar')
+                                                            <a class="btn btn-primary" href="#"
+                                                                data-toggle="modal"
+                                                                data-target="#uploadPembayaran{{ $pembayaran->id }}">Upload</a>
+                                                        @elseif ($pembayaran->status == 'invalid')
+                                                            <a href="{{ route('pembayaran.update', $pembayaran->id) }}"
+                                                                class="btn btn-warning">Update</a>
+                                                        @elseif ($pembayaran->status == 'verifikasi')
+                                                            <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
+                                                                class="btn btn-primary">Show</a>
+                                                        @elseif ($pembayaran->status == 'terbayar')
+                                                            <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
+                                                                class="btn btn-primary">Show</a>
+                                                            <a href="{{ route('pembayaran.print', $pembayaran->id) }}"
+                                                                class="btn btn-success">Print</a>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            @include('user.edit.uploadPembayaran')
+                                        </tbody>
+                                    </table>
 
-                                {{ $pembayarans->links() }}
-                            @else
-                                <p>Tidak ada pendaftar yang tersedia.</p>
-                            @endif
+                                    {{ $pembayarans->links() }}
+                                @else
+                                    <p>Tidak ada pendaftar yang tersedia.</p>
+                                @endif
                             </div>
-                            <img src="/ppdb/bayar.png" alt="foto bank" style="width:100%"> <br><br>
+                            {{-- <img src="/ppdb/bayar.png" alt="foto bank" width="700px"> <br><br> --}}
                         </div>
                         <div class="row">
                             <!-- Left col -->

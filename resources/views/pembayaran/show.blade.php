@@ -43,61 +43,44 @@
         <br>
         <!-- /.navbar -->
         <section class="content">
-        <div class="container-fluid">
-            <!-- Small boxes (Stat box) -->
-            <div class="small-box bg-light" style="width: 200px auto">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box) -->
                 <div class="inner">
                     <center>
-                        <img src="/ppdb/bank.png" alt="foto bank" style="width:60%"> <br><br>    
+                        <img src="/ppdb/bank.png" alt="foto bank" style="width:60%"> <br><br>
                         <h4 style="font-weight: bold">
                             ----------------------------------------------------------------------------------------------------------------------------------------------
                         </h4>
-                        
+
                         <div class="container text-left">
-                        <table>
-                            <tr>
-                                <th>Name</th>
-                                <td>{{ $pembayaran->name }}</td>
-                            </tr>
-                            <tr>
-                                <th>Name Wali</th>
-                                <td>{{ $pembayaran->name_wali }}</td>
-                            </tr>
-                            <tr>
-                                <th>Jenjang Pendidikan</th>
-                                <td>{{ $pembayaran->jenjangPend }}</td>
-                            </tr>
-                            <tr>
-                                <th>Jumlah</th>
-                                <td>{{ $pembayaran->jumlah }}</td>
-                            </tr>
-                            <tr>
-                                <th>Status</th>
-                                <td>{{ $pembayaran->status }}</td>
-                            </tr>
-                        </table>
-                        <h4 style="font-weight: bold">
-                            --------------------------------------------------------------------------------------------------------------------------------------------
-                        </h4>
-                        <a href="{{ route('pembayaran.print', $pembayaran->id) }}" style="font-weight: bold">Print Bukti pembayaran</a>
-                        <h4 style="font-weight: bold">
-                            --------------------------------------------------------------------------------------------------------------------------------------------
-                        </h4>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Name: </th>
+                                    <td>{{ $pembayaran->pendaftar->name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Name Wali: </th>
+                                    <td>{{ $pembayaran->pendaftar->name_wali }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Jenjang Pendidikan: </th>
+                                    <td>{{ $pembayaran->pendaftar->jenjangPend }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Jumlah: </th>
+                                    <td>{{ $pembayaran->jumlah }}</td>
+                                </tr>
+                                <tr class="bg-success">
+                                    <th>Status: </th>
+                                    <td>{{ $pembayaran->status }}</td>
+                                </tr>
+                            </table>
                         </div>
                 </div>
             </div>
-        </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    
-        <!-- Control sidebar content goes here -->
+
+    <!-- Control sidebar content goes here -->
     </aside>
 
     @extends('admin.footer')
