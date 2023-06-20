@@ -8,8 +8,6 @@
 <br>
 
 @section('content2')
-
-
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -52,20 +50,14 @@
                                 <label for="new_password_confirmation">{{ __('Confirm New Password') }}</label>
                                 <input id="new_password_confirmation" type="password" class="form-control" name="new_password_confirmation" required>
                             </div>
-
+                            <br>
                             <!-- Change Password Button -->
-                            <div class="container">
-                                <div class="d-flex align-items-center" style="height: 50px">
-                                <div class="col-md-10">
-                                    <a href="/user/landing" class="btn btn-primary btn-icon">
-                                        <i class="fas fa-arrow-left"></i>
-                                        Kembali
-                                    </a>
-                                </div>
-                                <div class="col-md-4">
-                                    <button type="submit" class="btn btn-primary">{{ __('Change Password') }}</button>
-                                </div>
-                                </div>
+                            <div class="text-center">
+                                <a href="{{ '/' . auth()->user()->level . '/profile' }}" class="btn btn-secondary">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Kembali
+                                </a>
+                                <button type="submit" class="btn btn-primary ">{{ __('Change Password') }}</button>
                             </div>
                         </form>
                     </div>
@@ -74,9 +66,9 @@
         </div>
     </div>
     <br>
-<br>
-<br>
-<br>
-<br>
-<br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 @endsection
