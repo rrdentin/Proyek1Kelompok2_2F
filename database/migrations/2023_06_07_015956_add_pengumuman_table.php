@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->date('tgl_pengumuman');
             $table->string('judul_pengumuman');
-            $table->string('desc_pengumuman');
             $table->string('gambar_pengumuman');
             $table->timestamps();
         });
