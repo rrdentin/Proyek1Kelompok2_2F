@@ -17,9 +17,12 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="kategori_galeri">Kategori:</label>
-                                <input class="form-control form-control-sm" name="kategori_galeri" type="text"
-                                    value="{{ $galeri->kategori_galeri }}" placeholder="Ketikan kategori galeri Anda.."
-                                    required>
+                                <select class="form-control" name="kategori_galeri" required>
+                                    <option value="TK" {{ $galeri->kategori_galeri === 'TK' ? 'selected' : '' }}>TK
+                                    </option>
+                                    <option value="Paud" {{ $galeri->kategori_galeri === 'Paud' ? 'selected' : '' }}>Paud
+                                    </option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="keterangan_galeri">Keterangan:</label>

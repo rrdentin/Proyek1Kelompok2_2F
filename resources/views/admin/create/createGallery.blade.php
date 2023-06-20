@@ -14,8 +14,10 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="kategori_galeri">Kategori:</label>
-                            <input class="form-control form-control-sm" name="kategori_galeri" type="text"
-                                placeholder="Ketikan kategori galeri Anda.." required>
+                            <select class="form-control" name="kategori_galeri" required>
+                                <option value="TK">TK</option>
+                                <option value="Paud">Paud</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="keterangan_galeri">Keterangan:</label>

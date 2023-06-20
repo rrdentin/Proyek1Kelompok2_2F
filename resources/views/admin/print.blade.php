@@ -18,34 +18,48 @@
 
 	<table class='table table-bordered' style="margin-left: -1%">
 		<thead>
+            @php $i=1 @endphp 
             <tr>
                 <th>No</th>
-                <th>Nama</th>
-                <th>Nama Wali</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat</th>
-                <th>Tanggal Lahir</th>
-                <th>Jenjang Pendidikan</th>
+                <td>{{ $pendaftar->id }}</td> 
+            </tr>
+            <tr>
                 <th>NIK</th>
+                <td>{{ $pendaftar->nik }}</td>
+            </tr>
+            <tr>
+                <th>Nama</th>
+                <td>{{ $pendaftar->name }}</td>
+            </tr>
+            <tr>
+                <th>Nama Wali</th>
+                <td>{{ $pendaftar->name_wali }}</td>
+            </tr>
+            <tr>
+                <th>Jenis Kelamin</th>
+                <td>{{ $pendaftar->jenKel }}</td>
+            </tr>
+            <tr>
+                <th>Alamat</th>
+                <td>{{ $pendaftar->alamat }}</td>
+            </tr>
+            <tr>
+                <th>Tanggal Lahir</th>
+                <td>{{ $pendaftar->tglLahir }}</td>
+            </tr>
+            <tr>
+                <th>Jenjang Pendidikan</th>
+                <td>{{ $pendaftar->jenjangPend }}</td>
+            </tr>
+            <tr>
                 <th>Tempat Lahir</th>
+                <td>{{ $pendaftar->tempatLahir }}</td>
+            </tr>
+            <tr>
                 <th>Status</th>
+                <td>{{ $pendaftar->status }}</td>
             </tr>
         </thead>
-		<tbody>
-			@php $i=1 @endphp
-                <tr>
-                    <td>{{ $pendaftar->id }}</td>
-                    <td>{{ $pendaftar->name }}</td>
-                    <td>{{ $pendaftar->name_wali }}</td>
-                    <td>{{ $pendaftar->jenKel }}</td>
-                    <td>{{ $pendaftar->alamat }}</td>
-                    <td>{{ $pendaftar->tglLahir }}</td>
-                    <td>{{ $pendaftar->jenjangPend }}</td>
-                    <td>{{ $pendaftar->nik }}</td>
-                    <td>{{ $pendaftar->tempatLahir }}</td>
-                    <td>{{ $pendaftar->status }}</td>
-                </tr>
-        </tbody>
     </table>
 </body>
 
