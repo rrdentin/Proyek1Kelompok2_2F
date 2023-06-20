@@ -30,33 +30,33 @@ class HomeController extends Controller
      * @throws ValidationException
      */
     public function login(Request $request)
-{
-    // Validate the login request data
-    $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    {
+        // Validate the login request data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    $credentials = $request->only('email', 'password');
-    $remember = $request->filled('remember');
+        $credentials = $request->only('email', 'password');
+        $remember = $request->filled('remember');
 
-    // Attempt to authenticate the user
-    if (Auth::attempt($credentials, $remember)) {
-        // Redirect the user based on their level
-        if (Auth::user()->level === 'admin') {
-            return redirect()->route('admin.dashboard');
-        } elseif (Auth::user()->level === 'panitia') {
-            return redirect()->route('panitia.dashboard');
-        } else {
-            return redirect()->route('user.landing');
+        // Attempt to authenticate the user
+        if (Auth::attempt($credentials, $remember)) {
+            // Redirect the user based on their level
+            if (Auth::user()->level === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif (Auth::user()->level === 'panitia') {
+                return redirect()->route('panitia.dashboard');
+            } else {
+                return redirect()->route('user.landing');
+            }
         }
-    }
 
-    // If authentication fails, redirect back with an error
-    throw ValidationException::withMessages([
-        'email' => [trans('auth.failed')],
-    ]);
-}
+        // If authentication fails, redirect back with an error
+        throw ValidationException::withMessages([
+            'email' => [trans('auth.failed')],
+        ]);
+    }
 
     /**
      * Show the login form.
@@ -92,7 +92,6 @@ class HomeController extends Controller
             $user->save();
 
             return redirect()->route('password.change')->with('status', 'Password changed successfully.');
-
         }
 
         // If current password doesn't match, redirect back with an error
@@ -155,7 +154,7 @@ class HomeController extends Controller
         // Redirect to the landing page
         return redirect('/');
     }
-    
+
 
     /**
      * Handle user registration.
@@ -222,12 +221,12 @@ class HomeController extends Controller
      */
     public function showAdminDashboard()
     {
-    $user = Auth::user(); // Get the authenticated user
-    $adminCount = User::where('level', 'admin')->count();
-    $panitiaCount = User::where('level', 'panitia')->count();
-    $userCount = User::where('level', 'user')->count();
+        $user = Auth::user(); // Get the authenticated user
+        $adminCount = User::where('level', 'admin')->count();
+        $panitiaCount = User::where('level', 'panitia')->count();
+        $userCount = User::where('level', 'user')->count();
 
-    return view('admin.dashboard', compact('adminCount', 'panitiaCount', 'userCount', 'user'));
+        return view('admin.dashboard', compact('adminCount', 'panitiaCount', 'userCount', 'user'));
     }
 
     /**
@@ -241,7 +240,7 @@ class HomeController extends Controller
         $adminCount = User::where('level', 'admin')->count();
         $panitiaCount = User::where('level', 'panitia')->count();
         $userCount = User::where('level', 'user')->count();
-    
+
         return view('panitia.dashboard', compact('adminCount', 'panitiaCount', 'userCount', 'user'));
     }
 
@@ -259,9 +258,9 @@ class HomeController extends Controller
         } elseif ($level === 'user') {
             // Custom logic for regular user level
             return view('user.profile', compact('user'));
-        } 
+        }
     }
-    
+
     public function editProfile()
     {
         $user = Auth::user();
@@ -276,51 +275,52 @@ class HomeController extends Controller
         } elseif ($level === 'user') {
             // Custom logic for regular user level
             return view('user.edit_profile', compact('user'));
-        } 
+        }
     }
 
     public function updateUser(Request $request)
     {
-    $user = Auth::user();
-    $validator = Validator::make($request->all(), [
-        'username' => 'nullable',
-        'name' => 'required',
-        'noHp' => 'nullable',
-        'tglLahir' => 'nullable',
-        'jenKel' => 'nullable',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
+        $user = Auth::user();
+        $validator = Validator::make($request->all(), [
+            'username' => 'nullable',
+            'name' => 'required',
+            'noHp' => 'nullable',
+            'tglLahir' => 'nullable',
+            'jenKel' => 'nullable',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
 
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
-    }
-
-    $user->username = $request->username;
-    $user->name = $request->name;
-    $user->noHp = $request->noHp;
-    $user->tglLahir = $request->tglLahir;
-    $user->jenKel = $request->jenKel;
-
-    if ($request->hasFile('foto')) {
-        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-            Storage::disk('public')->delete($user->foto);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $image_name = $request->file('foto')->store('images', 'public');
-        $user->foto = $image_name;
-    } elseif ($request->has('delete_foto')) {
-        // Delete profile picture
-        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-            Storage::disk('public')->delete($user->foto);
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->noHp = $request->noHp;
+        $user->tglLahir = $request->tglLahir;
+        $user->jenKel = $request->jenKel;
+
+        if ($request->hasFile('foto')) {
+            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+                Storage::disk('public')->delete($user->foto);
+            }
+
+            $image_name = $request->file('foto')->store('images', 'public');
+            $user->foto = $image_name;
+        } elseif ($request->has('delete_foto')) {
+            // Delete profile picture
+            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+                Storage::disk('public')->delete($user->foto);
+            }
+            $user->foto = null;
         }
-        $user->foto = null;
-    }
 
-    $user->save();
+        $user->save();
 
-    return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
+        return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
     }
-    public function searchAdmin(Request $request){
+    public function searchAdmin(Request $request)
+    {
 
         $request->has('search');
         $level = Auth::user()->level;
@@ -328,15 +328,15 @@ class HomeController extends Controller
         if ($level === 'admin') {
             $users = User::where('level', 'admin')->where('name', 'LIKE', '%' . $request->search . '%')->get();
             $view = 'admin.admintable';
-        }
-        else{
+        } else {
             $users = User::all();
         }
 
-        return view($view,['users' => $users]);
+        return view($view, ['users' => $users]);
     }
 
-    public function searchUser(Request $request){
+    public function searchUser(Request $request)
+    {
 
         $request->has('search');
         $level = Auth::user()->level;
@@ -344,14 +344,14 @@ class HomeController extends Controller
 
         if ($level === 'user') {
             $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
-        }
-        else{
+        } else {
             $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
         }
 
-        return view($view,['users' => $users]);
+        return view($view, ['users' => $users]);
     }
-    public function searchPanitia(Request $request){
+    public function searchPanitia(Request $request)
+    {
 
         $request->has('search');
         $level = Auth::user()->level;
@@ -359,14 +359,14 @@ class HomeController extends Controller
 
         if ($level === 'panitia') {
             $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
-        }
-        else{
+        } else {
             $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
         }
 
-        return view($view,['users' => $users]);
+        return view($view, ['users' => $users]);
     }
-    public function searchPendaftar(Request $request){
+    public function searchPendaftar(Request $request)
+    {
 
         $request->has('search');
         $level = Auth::user()->level;
@@ -374,8 +374,7 @@ class HomeController extends Controller
 
         if ($level === 'admin') {
             $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->get();
-        }
-        else{
+        } else {
             $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->get();
         }
 
@@ -386,22 +385,25 @@ class HomeController extends Controller
 
         return view('admin.pendaftar', compact('pendaftars', 'pembayaran'));
     }
-    public function searchGallery(Request $request){
+    public function searchGallery(Request $request)
+    {
 
         $keyword = $request->search;
-        $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search. '%')->paginate(5);
+        $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search . '%')->paginate(5);
         return view('admin.gallery', compact('gallery'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    public function searchPengumuman(Request $request){
+    public function searchPengumuman(Request $request)
+    {
 
         $keyword = $request->search;
-        $pengumumans= Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search. '%')->paginate(5);
+        $pengumumans = Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search . '%')->paginate(5);
         return view('admin.pengumuman', compact('pengumumans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
-    public function searchPendaftarUser(Request $request){
+    public function searchPendaftarUser(Request $request)
+    {
 
         $keyword = $request->search;
-        $pendaftars= Pendaftar::where('name', 'like', '%' . $request->search. '%')->paginate(5);
+        $pendaftars = Pendaftar::where('name', 'like', '%' . $request->search . '%')->paginate(5);
         return view('user.dashboard.pendaftar', compact('pendaftars'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

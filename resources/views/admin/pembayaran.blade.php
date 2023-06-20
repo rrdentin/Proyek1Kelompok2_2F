@@ -78,7 +78,7 @@
                                                                 placeholder="Search">
                                                             <div class="input-group-btn">
                                                                 <button type="submit" class="btn btn-primary">
-                                                                    Search
+                                                                    Cari
                                                                 </button>
                                                             </div>
                                                         </div>

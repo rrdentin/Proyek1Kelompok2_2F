@@ -37,9 +37,9 @@ class Pendaftar extends Model
     }
 
     public function pembayaran()
-{
-    return $this->hasMany(Pembayaran::class);
-}
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
 
     public function siswa()
     {
@@ -51,6 +51,4 @@ class Pendaftar extends Model
         // Only allow editing if the status is 'pending' and there is no associated siswa
         return $this->status === 'pending' && !$this->siswa;
     }
-
 }
-

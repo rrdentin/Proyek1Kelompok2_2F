@@ -70,7 +70,7 @@
                                     <th>Jumlah: </th>
                                     <td>{{ $pembayaran->jumlah }}</td>
                                 </tr>
-                                <tr class="bg-success">
+                                <tr class="table-info">
                                     <th>Status: </th>
                                     <td>{{ $pembayaran->status }}</td>
                                 </tr>

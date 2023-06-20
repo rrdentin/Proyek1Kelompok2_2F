@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    public $timestamps= false;
+    public $timestamps = false;
     protected $primaryKey = 'id';
     use HasFactory, Notifiable;
 

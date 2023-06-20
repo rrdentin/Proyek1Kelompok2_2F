@@ -1,6 +1,6 @@
 @extends('admin.app')
-    <title>Tabel Pengumuman | Shaleh </title>
-    <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
+<title>Tabel Pengumuman | Shaleh </title>
+<link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('panitia.sidebar')
 <!--
 `body` tag options:
@@ -79,7 +79,7 @@
                                 </div>
 
                                 @include('admin.create.createPengumuman')
-                                
+
                                 <div class="table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
@@ -96,9 +96,12 @@
                                             @foreach ($pengumumans as $pengumuman)
                                                 <tr>
                                                     <td class="text-center fonts-big">{{ $loop->iteration }}</td>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}</td>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->judul_pengumuman }}</td>
-                                                    <td class="text-center fonts-big">{{ $pengumuman->desc_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">{{ $pengumuman->tgl_pengumuman }}
+                                                    </td>
+                                                    <td class="text-center fonts-big">
+                                                        {{ $pengumuman->judul_pengumuman }}</td>
+                                                    <td class="text-center fonts-big">
+                                                        {{ $pengumuman->desc_pengumuman }}</td>
                                                     <td class="text-center fonts-big">
                                                         <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
                                                             width='50' height='50' class="img img-responsive" />

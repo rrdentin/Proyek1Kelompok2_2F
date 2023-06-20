@@ -60,49 +60,53 @@
                         <div class="row">
                             <div class="col-lg">
                                 <div class="card">
-                                <div class="container">
-                                <div class="container"> 
-                                        <div class="d-flex align-items-center" style="height: 50px">
-                                        <div class="col-md-9">
-                                            <button data-toggle="modal" data-target="#createPendaftar"
-                                                class="btn btn-icon btn-primary"><i class="fas fa-user-plus"></i> Tambah Calon Siswa
-                                            </button>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <form class="form-left my-4" method="get" action="{{ route('searchPendaftarUser') }}">
-                                                <div class="form-group w-80 mb-1">
-                                                        <input type="text" name="search" class="form-control w-50 d-inline"
-                                                        id="search" placeholder="Search">
-                                                    <button type="submit" class="btn btn-primary mb-1">Cari</button>
+                                    <div class="container">
+                                        <div class="container">
+                                            <div class="d-flex align-items-center" style="height: 50px">
+                                                <div class="col-md-9">
+                                                    <button data-toggle="modal" data-target="#createPendaftar"
+                                                        class="btn btn-icon btn-primary"><i
+                                                            class="fas fa-user-plus"></i> Tambah Calon Siswa
+                                                    </button>
                                                 </div>
-                                            </form>
-                                        </div>
+                                                <div class="col-md-5">
+                                                    <form class="form-left my-4" method="get"
+                                                        action="{{ route('searchPendaftarUser') }}">
+                                                        <div class="form-group w-80 mb-1">
+                                                            <input type="text" name="search"
+                                                                class="form-control w-50 d-inline" id="search"
+                                                                placeholder="Search">
+                                                            <button type="submit"
+                                                                class="btn btn-primary mb-1">Cari</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                        
-                                        <br>
 
-                                        @include('user.create.createPendaftar')
-                                        @include('user.edit.editPendaftar')
+                                    <br>
 
-                                        @if ($errors->any())
+                                    @include('user.create.createPendaftar')
+                                    @include('user.edit.editPendaftar')
+
+                                    @if ($errors->any())
                                         <div class="alert alert-danger">
                                             <ul>
                                                 @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
+                                                    <li>{{ $error }}</li>
                                                 @endforeach
                                             </ul>
                                         </div>
-                                        @endif
+                                    @endif
 
-                                        @if ($message = Session::get('success'))
+                                    @if ($message = Session::get('success'))
                                         <div class="alert alert-success">
                                             <p>{{ $message }}</p>
                                         </div>
-                                        @endif
-                                        <div class="table table-responsive">
-                                            @if ($pendaftars->count() > 0)
+                                    @endif
+                                    <div class="table table-responsive">
+                                        @if ($pendaftars->count() > 0)
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
@@ -115,65 +119,66 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($pendaftars as $pendaftar)
-                                                    <tr>
-                                                        <td>{{ $pendaftar->name }}
-                                                        </td>
-                                                        <td class="text-center fonts-big">
-                                                            {{ $pendaftar->jenjangPend }}</td>
-                                                        <td class="text-center fonts-big">
-                                                            @if ($pendaftar->pembayaran->isNotEmpty())
-                                                            @foreach ($pendaftar->pembayaran as $pembayaran)
-                                                            @if ($pembayaran->status == 'bayar' || $pembayaran->status
-                                                            == 'invalid')
-                                                            <a class="btn btn-success "
-                                                                href="{{ route('pembayaran.dashboard') }}">Bayar</a>
-                                                            @else
-                                                            {{ $pembayaran->status }}
-                                                            @endif
-                                                            @endforeach
-                                                            @endif
-                                                        </td>
-                                                        <td class="text-center fonts-big">
-                                                            @if ($pendaftar->status == 'accepted')
-                                                            <a
-                                                                href="{{ route('siswa.show', $pendaftar->siswa->id) }}">{{ $pendaftar->status }}</a>
-                                                            @else
-                                                            {{ $pendaftar->status }}
-                                                            @endif
-                                                        </td>
-                                                        <td class="text-center fonts-big">
-                                                            <a class="btn btn-primary"
-                                                                href="{{ route('pendaftar.show', $pendaftar->id) }}">Lihat</a>
-                                                            @if ($pendaftar->status == 'pending')
-                                                            <button data-toggle="modal" data-target="#editPendaftar{{ $pendaftar->id }}"
-                                                                class="btn btn-primary" href="#">Edit</button>
-                                                            @endif
-                                                        </td>
+                                                        <tr>
+                                                            <td>{{ $pendaftar->name }}
+                                                            </td>
+                                                            <td class="text-center fonts-big">
+                                                                {{ $pendaftar->jenjangPend }}</td>
+                                                            <td class="text-center fonts-big">
+                                                                @if ($pendaftar->pembayaran->isNotEmpty())
+                                                                    @foreach ($pendaftar->pembayaran as $pembayaran)
+                                                                        @if ($pembayaran->status == 'bayar' || $pembayaran->status == 'invalid')
+                                                                            <a class="btn btn-success "
+                                                                                href="{{ route('pembayaran.dashboard') }}">Bayar</a>
+                                                                        @else
+                                                                            {{ $pembayaran->status }}
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+                                                            </td>
+                                                            <td class="text-center fonts-big">
+                                                                @if ($pendaftar->status == 'accepted')
+                                                                    <a
+                                                                        href="{{ route('siswa.show', $pendaftar->siswa->id) }}">{{ $pendaftar->status }}</a>
+                                                                @else
+                                                                    {{ $pendaftar->status }}
+                                                                @endif
+                                                            </td>
+                                                            <td class="text-center fonts-big">
+                                                                <a class="btn btn-primary"
+                                                                    href="{{ route('pendaftar.show', $pendaftar->id) }}">Lihat</a>
+                                                                @if ($pendaftar->status == 'pending')
+                                                                    <button data-toggle="modal"
+                                                                        data-target="#editPendaftar{{ $pendaftar->id }}"
+                                                                        class="btn btn-primary"
+                                                                        href="#">Edit</button>
+                                                                @endif
+                                                            </td>
 
-                                                    </tr>
+                                                        </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
-                                            @else
+                                        @else
                                             <div class=" alert alert-info" style="border: none;">
                                                 <p>Tidak ada pendaftar yang tersedia.</p>
                                             </div>
-                                            @endif
-                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
-                            <!-- content ega -->
-                            <!-- Main row -->
-                            <div class="row">
-                                <!-- Left col -->
-                                <section class="col-lg-7 connectedSortable">
-                                    <!-- Custom tabs (Charts with tabs)-->
-                            </div>
+                        </div>
+                        <!-- content ega -->
+                        <!-- Main row -->
+                        <div class="row">
+                            <!-- Left col -->
+                            <section class="col-lg-7 connectedSortable">
+                                <!-- Custom tabs (Charts with tabs)-->
                         </div>
                     </div>
                 </div>
         </div>
+    </div>
     </div>
     </div>
 

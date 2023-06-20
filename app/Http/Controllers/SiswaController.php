@@ -11,13 +11,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Barryvdh\DomPDF\Facade\PDF;
+
 class SiswaController extends Controller
 {
 
     public function dashboard()
     {
         $user = Auth::user();
-    
+
         if ($user->level == 'admin') {
 
             $siswas = Siswa::with('pendaftar')->paginate(5);
@@ -28,17 +29,17 @@ class SiswaController extends Controller
         } elseif ($user->level == 'user') {
             $pendaftars = Pendaftar::where('user_id', $user->id)->get();
             $siswas = [];
-    
+
             if ($pendaftars->isNotEmpty()) {
                 $pendaftarIds = $pendaftars->pluck('id')->toArray();
                 $siswas = Siswa::whereIn('pendaftar_id', $pendaftarIds)
                     ->orderBy('created_at', 'desc')
                     ->paginate(5);
             }
-    
+
             return view('user.dashboard.siswa', compact('pendaftars', 'siswas'));
         }
-    
+
         // Handle other levels or no level assigned
         return redirect()->back()->with('error', 'Unauthorized access.');
     }

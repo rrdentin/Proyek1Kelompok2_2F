@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Selamat Datang | Landing</title>
     <link rel="stylesheet" href="real.css">
-  <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
+    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 </head>
 
 <body id="top-page">
@@ -32,7 +32,7 @@
                         </a>
                         <div id="dropdownMenu" class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="{{ route('user.profile') }}">View Profile</a>
-                            <a class="dropdown-item" href="{{ route('user.dashboard')}}">Dashboard</a>
+                            <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Logout
@@ -52,28 +52,33 @@
         <div class="container">
             <div class="mast-hero-subheading">Selamat Datang " {{ Auth::user()->name }} " di </div>
             <div class="mast-hero-heading text-uppercase">Sekolah Shaleh</div>
-            <a class="btn-hero btn-hero-style text-uppercase" href="{{ route('user.dashboard')}}">PPDB Manager </a>
+            <a class="btn-hero btn-hero-style text-uppercase" href="{{ route('user.dashboard') }}">PPDB Manager </a>
         </div>
     </header>
     <marquee bgcolor="#283845" width="100%" color="#ffff">
-        <h1 style="color:#FFFF00; font-size: 1rem;">Untuk memulai mendaftarkan anak ke TK / Paud Anak Saleh silahkan masuk ke dashboard atau tombol ppdb manager untuk melakukan registrasi calon siswa sekolah saleh malang, bersama Sekolah Anak Saleh Be Piously Great</h1>
+        <h1 style="color:#FFFF00; font-size: 1rem;">Untuk memulai mendaftarkan anak ke TK / Paud Anak Saleh silahkan
+            masuk ke dashboard atau tombol ppdb manager untuk melakukan registrasi calon siswa sekolah saleh malang,
+            bersama Sekolah Anak Saleh Be Piously Great</h1>
     </marquee>
     {{-- Deadline Section --}}
     <div class="page-section">
         <script src="https://cdn.logwork.com/widget/countdown.js"></script>
-        <a href="https://logwork.com/countdown-z11m" class="countdown-timer" data-style="circles" data-timezone="Asia/Jakarta" data-date="2023-06-22 14:00" data-background="#283845" data-digitscolor="#283845">Deadline Pendaftaran Anak</a>
+        <a href="https://logwork.com/countdown-z11m" class="countdown-timer" data-style="circles"
+            data-timezone="Asia/Jakarta" data-date="2023-06-22 14:00" data-background="#283845"
+            data-digitscolor="#283845">Deadline Pendaftaran Anak</a>
     </div>
 
     {{-- About Sekolah (Elang) --}}
-        <section class="page-section" id="mekanisme" style="margin-top: -2rem;">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Mekanisme Pendaftaran</h2>
-                    <h3 class="section-subheading text-muted">Berikut Berkas yang harus disiapkan Orangtua sebelum mendaftarkan Ananda ke SD Anak Saleh.</h3>
-                    <img src="/ppdb/alvian.jpeg" style='size:px'><br>
-                </div>
+    <section class="page-section" id="mekanisme" style="margin-top: -2rem;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Mekanisme Pendaftaran</h2>
+                <h3 class="section-subheading text-muted">Berikut Berkas yang harus disiapkan Orangtua sebelum
+                    mendaftarkan Ananda ke SD Anak Saleh.</h3>
+                <img src="/ppdb/alvian.jpeg" style='size:px'><br>
             </div>
-        </section>
+        </div>
+    </section>
     <div>
         {{-- <img src="images/sekolah.jpg" alt="">
         <img src="images/sekolah.jpg" alt=""> --}}

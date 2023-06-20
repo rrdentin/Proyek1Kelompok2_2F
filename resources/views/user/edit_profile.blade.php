@@ -1,136 +1,137 @@
 @extends('layouts.header_user')
-    <title>Edit Profile | Shaleh</title>
-    <link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
+<title>Edit Profile | Shaleh</title>
+<link rel="icon" type="image/icon" sizes="32x32" href="/landing/images/LogoShaleh.png">
 @section('content2')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-<body style="background-color: #f4f5f7;">
-    <div class="container">
-        <div class="row gutters" style="padding: 10%;">
-            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
-                <div class="card h-100" >
-                    <div class="card-body" style="margin-top: 30px;">
-                        <div class="account-settings">
-                            <div class="user-profile">
-                                <div class="user-avatar">
-                                    <img id="profileImage"
-                                        src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://media.istockphoto.com/id/1316420668/vector/user-icon-human-person-symbol-social-profile-icon-avatar-login-sign-web-user-symbol.jpg?s=612x612&w=0&k=20&c=AhqW2ssX8EeI2IYFm6-ASQ7rfeBWfrFFV4E87SaFhJE=' }}"
-                                        alt="profile">
+    <body style="background-color: #f4f5f7;">
+        <div class="container">
+            <div class="row gutters" style="padding: 10%;">
+                <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body" style="margin-top: 30px;">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img id="profileImage"
+                                            src="{{ Auth::user()->foto ? asset('storage/' . Auth::user()->foto) : 'https://media.istockphoto.com/id/1316420668/vector/user-icon-human-person-symbol-social-profile-icon-avatar-login-sign-web-user-symbol.jpg?s=612x612&w=0&k=20&c=AhqW2ssX8EeI2IYFm6-ASQ7rfeBWfrFFV4E87SaFhJE=' }}"
+                                            alt="profile">
+                                    </div>
+
+                                    <h5 class="user-name">email</h5>
+                                    <h6 class="user-email">{{ Auth::user()->email }}</h6>
                                 </div>
-
-                                <h5 class="user-name">email</h5>
-                                <h6 class="user-email">{{ Auth::user()->email }}</h6>
-                            </div>
-                            <div class="about">
-                                <h6><a href="{{ route('password.change') }}">Change Password</a></h6>
+                                <div class="about">
+                                    <h6><a href="{{ route('password.change') }}">Change Password</a></h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12" >
-                <div class="card h-100"style="background-color: #ffff;">
-                    <div class="card-body">
-                        <form action="{{ route('update-user') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" >
-                                    <h6 class="mb-2 text-primary">Personal Details</h6>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="name">Nama</label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            placeholder="{{ Auth::user()->name ? Auth::user()->name : 'Enter full name' }}"
-                                            value="{{ Auth::user()->name }}">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100"style="background-color: #ffff;">
+                        <div class="card-body">
+                            <form action="{{ route('update-user') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <h6 class="mb-2 text-primary">Personal Details</h6>
                                     </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" name="username"
-                                            placeholder="{{ Auth::user()->username ? Auth::user()->username : 'Enter username' }}"
-                                            value="{{ Auth::user()->username }}">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="noHp">Phone</label>
-                                        <input type="text" class="form-control" id="noHp" name="noHp"
-                                            placeholder="{{ Auth::user()->noHp ? Auth::user()->noHp : 'Enter phone number' }}"
-                                            value="{{ Auth::user()->noHp }}">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="jenKel">Gender</label>
-                                        <select class="form-control" id="jenKel" name="jenKel">
-                                            <option value="Perempuan"
-                                                {{ Auth::user()->jenKel === 'Perempuan' ? 'selected' : '' }}>Perempuan
-                                            </option>
-                                            <option value="Laki-laki"
-                                                {{ Auth::user()->jenKel === 'Laki-laki' ? 'selected' : '' }}>Laki-laki
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="tglLahir">Date of Birth</label>
-                                        <input type="date" class="form-control" id="tglLahir" name="tglLahir"
-                                            value="{{ Auth::user()->tglLahir }}">
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                    <div class="form-group">
-                                        <label for="foto">Profile Image</label>
-                                        <input type="file" class="form-control" id="foto" name="foto" accept="image/*"
-                                            onchange="previewImage(event)">
-                                        <small id="fotoHelp" class="form-text text-muted"></small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="deleteFoto">Delete Profile Image</label>
-                                        <div class="form-check">
-                                            <input class="form-check-input" style="border-color: black;" type="checkbox" id="deleteFoto"
-                                                name="delete_foto">
-                                            <label class="form-check-label" for="deleteFoto">
-                                                Delete current profile image
-                                            </label>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="name">Nama</label>
+                                            <input type="text" class="form-control" id="name" name="name"
+                                                placeholder="{{ Auth::user()->name ? Auth::user()->name : 'Enter full name' }}"
+                                                value="{{ Auth::user()->name }}">
                                         </div>
                                     </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text" class="form-control" id="username" name="username"
+                                                placeholder="{{ Auth::user()->username ? Auth::user()->username : 'Enter username' }}"
+                                                value="{{ Auth::user()->username }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="noHp">Phone</label>
+                                            <input type="text" class="form-control" id="noHp" name="noHp"
+                                                placeholder="{{ Auth::user()->noHp ? Auth::user()->noHp : 'Enter phone number' }}"
+                                                value="{{ Auth::user()->noHp }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="jenKel">Gender</label>
+                                            <select class="form-control" id="jenKel" name="jenKel">
+                                                <option value="Perempuan"
+                                                    {{ Auth::user()->jenKel === 'Perempuan' ? 'selected' : '' }}>Perempuan
+                                                </option>
+                                                <option value="Laki-laki"
+                                                    {{ Auth::user()->jenKel === 'Laki-laki' ? 'selected' : '' }}>Laki-laki
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="tglLahir">Date of Birth</label>
+                                            <input type="date" class="form-control" id="tglLahir" name="tglLahir"
+                                                value="{{ Auth::user()->tglLahir }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                        <div class="form-group">
+                                            <label for="foto">Profile Image</label>
+                                            <input type="file" class="form-control" id="foto" name="foto"
+                                                accept="image/*" onchange="previewImage(event)">
+                                            <small id="fotoHelp" class="form-text text-muted"></small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="deleteFoto">Delete Profile Image</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" style="border-color: black;" type="checkbox"
+                                                    id="deleteFoto" name="delete_foto">
+                                                <label class="form-check-label" for="deleteFoto">
+                                                    Delete current profile image
+                                                </label>
+                                            </div>
+                                        </div>
 
 
+
+                                    </div>
 
                                 </div>
-
-                            </div>
-                            <div class="row gutters">
-                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="text-right">
-                                        <a href="{{ '/' . auth()->user()->level . '/profile' }}" class="btn btn-secondary">
-                                            <i class="fas fa-arrow-left"></i>
-                                            Kembali
-                                        </a>
-                                        <button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="text-right">
+                                            <a href="{{ '/' . auth()->user()->level . '/profile' }}"
+                                                class="btn btn-secondary">
+                                                <i class="fas fa-arrow-left"></i>
+                                                Kembali
+                                            </a>
+                                            <button type="submit" id="submit" name="submit"
+                                                class="btn btn-primary">Update</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
-
+    </body>
 @endsection
 
 
 <script>
-     function previewImage(event) {
+    function previewImage(event) {
         var reader = new FileReader();
-        reader.onload = function () {
+        reader.onload = function() {
             var img = document.getElementById("profileImage");
             img.src = reader.result;
         }
@@ -164,7 +165,6 @@
         var fileInput = document.getElementById("foto");
         fileInput.value = null;
     }
-
 </script>
 
 
@@ -239,5 +239,4 @@
         border: 0;
         margin-bottom: 1rem;
     }
-
 </style>

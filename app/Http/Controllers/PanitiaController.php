@@ -55,7 +55,7 @@ class PanitiaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'username' => 'required|string|max:255|unique:users',
@@ -72,13 +72,13 @@ class PanitiaController extends Controller
             'password' => Hash::make($request->password),
             'level' => $request->level,
         ]);
-        
+
         $user->save();
 
         // Redirect the user to a desired location after saving to the database
         return redirect()->route('panitia.panitiatable')->with('success', 'User Berhasil Ditambahakan!');
     }
-    
+
     /**
      * Display the specified resource.
      *

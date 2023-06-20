@@ -1,5 +1,5 @@
 @foreach ($users as $user)
-    <div class="modal fade" id="editPanitia{{ $user->id }}" tabindex="-1" role="dialog" 
+    <div class="modal fade" id="editPanitia{{ $user->id }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">

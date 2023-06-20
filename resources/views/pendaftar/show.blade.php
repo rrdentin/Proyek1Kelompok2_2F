@@ -47,58 +47,58 @@
                     <br>
                     <div class="row">
                         <div class="col-md-6">
-                        <h4>Data Pendaftar</h4>
-                        <table border="0" cellpadding="30">
-                            <tr>
-                                <td colspan="4"><strong>NIK</strong></td>
-                                <td>: {{ $pendaftar->nik }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Nama</strong></td>
-                                <td>: {{ $pendaftar->name }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Tempat Lahir</strong></td>
-                                <td>:  {{ $pendaftar->tempatLahir }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Tanggal Lahir</strong></td>
-                                <td>:  {{ $pendaftar->tglLahir }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Jenis Kelamin</strong></td>
-                                <td>:  {{ $pendaftar->jenKel }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Alamat</strong></td>
-                                <td>:  {{ $pendaftar->alamat }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Pilihan Jenjang Pendidikan</strong></td>
-                                <td>:  {{ $pendaftar->jenjangPend }}</td>
-                            </tr>
-                        </table>
+                            <h4>Data Pendaftar</h4>
+                            <table border="0" cellpadding="30">
+                                <tr>
+                                    <td colspan="4"><strong>NIK</strong></td>
+                                    <td>: {{ $pendaftar->nik }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Nama</strong></td>
+                                    <td>: {{ $pendaftar->name }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Tempat Lahir</strong></td>
+                                    <td>: {{ $pendaftar->tempatLahir }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Tanggal Lahir</strong></td>
+                                    <td>: {{ $pendaftar->tglLahir }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Jenis Kelamin</strong></td>
+                                    <td>: {{ $pendaftar->jenKel }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Alamat</strong></td>
+                                    <td>: {{ $pendaftar->alamat }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Pilihan Jenjang Pendidikan</strong></td>
+                                    <td>: {{ $pendaftar->jenjangPend }}</td>
+                                </tr>
+                            </table>
 
                         </div>
                         <div class="col-md-6">
                             <h4>Data Wali</h4>
                             <table border="0" cellpadding="30">
-                            <tr>
-                                <td colspan="4"><strong>Nama Wali</strong></td>
-                                <td>: {{ $pendaftar->name_wali }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Email</strong></td>
-                                <td>: {{ $pendaftar->user->email }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Jenis Kelamin</strong></td>
-                                <td>:  {{ $pendaftar->user->jenKel }}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"><strong>Nomor HP</strong></td>
-                                <td>:  {{ $pendaftar->user->noHp }}</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Nama Wali</strong></td>
+                                    <td>: {{ $pendaftar->name_wali }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Email</strong></td>
+                                    <td>: {{ $pendaftar->user->email }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Jenis Kelamin</strong></td>
+                                    <td>: {{ $pendaftar->user->jenKel }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"><strong>Nomor HP</strong></td>
+                                    <td>: {{ $pendaftar->user->noHp }}</td>
+                                </tr>
                             </table>
                             <hr>
                             <h4>History Data Calon Siswa</h4>
@@ -112,7 +112,7 @@
                                     <td>: {{ $pendaftar->updated_at }}</td>
                                 </tr>
                             </table>
-                            
+
                         </div>
                     </div>
 
@@ -145,7 +145,7 @@
                         </tbody>
                     </table>
                 </div>
-                
+
         </div>
     </div>
     </div>
@@ -157,8 +157,8 @@
     <br>
     <br>
     <br>
-    
-        <!-- Control sidebar content goes here -->
+
+    <!-- Control sidebar content goes here -->
     </aside>
 
     @extends('admin.footer')

@@ -44,58 +44,58 @@
         <!-- /.navbar -->
         <!-- Main content -->
         <div style="margin-left: 250px">
-        <section class="content">
-            <div class="container-fluid">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1 class="m-0">PPBD Manager | Shaleh</h1>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content-header -->
-
-                <!-- Main content -->
-                <section class="content">
-                    <div class="container-fluid">
-                        <!-- Small boxes (Stat box) -->
-                        <!-- content alvian -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Content Header (Page header) -->
+                    <div class="content-header">
                         <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-lg">
-                                    <div class="card">
-                                        <div class="card-header border-0">
-                                            <div class="d-flex justify-content-between">
-                                                <img src="/ppdb/1.png" style='size:px' /><br>
+                            <div class="row mb-2">
+                                <div class="col-sm-6">
+                                    <h1 class="m-0">PPBD Manager | Shaleh</h1>
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                        </div><!-- /.container-fluid -->
+                    </div>
+                    <!-- /.content-header -->
+
+                    <!-- Main content -->
+                    <section class="content">
+                        <div class="container-fluid">
+                            <!-- Small boxes (Stat box) -->
+                            <!-- content alvian -->
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-lg">
+                                        <div class="card">
+                                            <div class="card-header border-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <img src="/ppdb/1.png" style='size:px' /><br>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- content ega -->
-                                <!-- Main row -->
-                                <div class="row">
-                                    <!-- Left col -->
-                                    <section class="col-lg-7 connectedSortable">
-                                        <!-- Custom tabs (Charts with tabs)-->
+                                    <!-- content ega -->
+                                    <!-- Main row -->
+                                    <div class="row">
+                                        <!-- Left col -->
+                                        <section class="col-lg-7 connectedSortable">
+                                            <!-- Custom tabs (Charts with tabs)-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                
-            </div>
-        </section>
+
+                </div>
+            </section>
         </div>
-            <!-- /.row -->
-        </div>
+        <!-- /.row -->
+    </div>
     </div>
     </div>
     <aside class="control-sidebar control-sidebar-dark">
         <!-- Control sidebar content goes here -->
     </aside>
-    
+
     <!-- /.content-wrapper -->
     @extends('admin.footer')
     <!-- /.control-sidebar -->

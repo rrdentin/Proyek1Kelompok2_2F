@@ -48,7 +48,7 @@ class AdminController extends Controller
                 $view = 'panitia.panitiatable';
             } else {
                 // Pengguna level panitia tetapi tidak ada pilihan tabel yang dipilih
-                return redirect()->route('table', ['table' => 'panitia']) ;
+                return redirect()->route('table', ['table' => 'panitia']);
             }
         } else {
             return redirect('/');
@@ -75,7 +75,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function store(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'username' => 'required|string|max:255|unique:users',
@@ -92,13 +92,13 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
             'level' => $request->level,
         ]);
-        
+
         $user->save();
 
         // Redirect the user to a desired location after saving to the database
         return redirect()->route('admin.admintable')->with('scs', 'User Berhasil Ditambahakan!');
     }
-    
+
     /**
      * Display the specified resource.
      *

@@ -14,9 +14,9 @@ class Siswa extends Model
     protected $table = 'siswas';
 
     protected $fillable = [
-        'pendaftar_id', 
+        'pendaftar_id',
         'nis',
-        
+
     ];
 
     public function pendaftar()

@@ -1,5 +1,5 @@
 @extends('layouts.userapp')
-<title>Siswa  | Shaleh </title>
+<title>Siswa | Shaleh </title>
 <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('layouts.usersidebar')
 <!--
@@ -65,52 +65,53 @@
                                         <br>
                                         <div class="table-responsive">
                                             @if (!empty($siswas) && count($siswas) > 0)
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>NIS</th>
-                                                        <th>Name</th>
-                                                        <th>Foto</th>
-                                                        <th>Name Wali</th>
-                                                        <th>Jenjang Pendidikan</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                    $no = 1;
-                                                    @endphp
-                                                    @foreach($siswas as $siswa)
-                                                    <tr>
-                                                        <td>{{ $no++ }}</td>
-                                                        <td>{{ $siswa->nis }}</td>
-                                                        <td>{{ $siswa->pendaftar->name }}</td>
-                                                        <td>
-                                                            @if($siswa->pendaftar->foto)
-                                                            <img src="{{ asset('storage/'.$siswa->pendaftar->foto) }}"
-                                                                alt="Foto" height="50">
-                                                            @else
-                                                            No foto available
-                                                            @endif
-                                                        </td>
-                                                        <td>{{ $siswa->pendaftar->name_wali }}</td>
-                                                        <td>{{ $siswa->pendaftar->jenjangPend }}</td>
-                                                        <td>
-                                                            <a href="{{ route('siswa.show', $siswa->id) }}"
-                                                                class="btn btn-primary">Show</a>
-                                                            <form action="{{ route('siswa.print', $siswa->id) }}"
-                                                                class="btn btn-danger">Print</button>
-                                                            </form>
-                                                        </td>
-                                                    </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>NIS</th>
+                                                            <th>Name</th>
+                                                            <th>Foto</th>
+                                                            <th>Name Wali</th>
+                                                            <th>Jenjang Pendidikan</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @php
+                                                            $no = 1;
+                                                        @endphp
+                                                        @foreach ($siswas as $siswa)
+                                                            <tr>
+                                                                <td>{{ $no++ }}</td>
+                                                                <td>{{ $siswa->nis }}</td>
+                                                                <td>{{ $siswa->pendaftar->name }}</td>
+                                                                <td>
+                                                                    @if ($siswa->pendaftar->foto)
+                                                                        <img src="{{ asset('storage/' . $siswa->pendaftar->foto) }}"
+                                                                            alt="Foto" height="50">
+                                                                    @else
+                                                                        No foto available
+                                                                    @endif
+                                                                </td>
+                                                                <td>{{ $siswa->pendaftar->name_wali }}</td>
+                                                                <td>{{ $siswa->pendaftar->jenjangPend }}</td>
+                                                                <td>
+                                                                    <a href="{{ route('siswa.show', $siswa->id) }}"
+                                                                        class="btn btn-primary">Show</a>
+                                                                    <form
+                                                                        action="{{ route('siswa.print', $siswa->id) }}"
+                                                                        class="btn btn-danger">Print</button>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
                                             @else
-                                            <div class="alert alert-info" style="border: none;">
-                                                <p>Tidak ada siswa yang tersedia.</p>
-                                            </div>
+                                                <div class="alert alert-info" style="border: none;">
+                                                    <p>Tidak ada siswa yang tersedia.</p>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
