@@ -302,13 +302,26 @@ class PendaftarController extends Controller
 
     public function printPDF($id)
     {
-        $pendaftar = Pendaftar::where('id', $id)->first();
+        $user = Auth::user();
 
-        if (!$pendaftar) {
-            return redirect()->back()->with('error', 'Pendaftar tidak ditemukan.');
+        if ($user->level == 'admin') {
+            $pendaftar = Pendaftar::where('id', $id)->first();
+
+            if (!$pendaftar) {
+                return redirect()->back()->with('error', 'Pendaftar tidak ditemukan.');
+            }
+
+            $pdf = PDF::loadView('admin.print', ['pendaftar' => $pendaftar]);
+            return $pdf->stream();
+        } elseif ($user->level == 'panitia') {
+            $pendaftar = Pendaftar::where('id', $id)->first();
+
+            if (!$pendaftar) {
+                return redirect()->back()->with('error', 'Pendaftar tidak ditemukan.');
+            }
+
+            $pdf = PDF::loadView('panitia.print', ['pendaftar' => $pendaftar]);
+            return $pdf->stream();
         }
-
-        $pdf = PDF::loadView('admin.print', ['pendaftar' => $pendaftar]);
-        return $pdf->stream();
     }
 }

@@ -67,6 +67,8 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/panitiatable', [PanitiaController::class, 'index'])->name('panitia.panitiatable');
     Route::post('add-panitia', [PanitiaController::class, 'addPanitia'])->name('panitia.add-panitia');
     Route::get('/panitia/pendaftar', [PendaftarController::class, 'dashboard'])->name('panitia.pendaftar');
+    Route::get('/panitia/pembayaran', [PembayaranController::class, 'dashboard'])->name('panitia.pembayaran');
+    Route::get('/panitia/pendaftar/print/{id}', [PendaftarController::class, 'printPDF'])->name('panitia.print');
     Route::get('/panitia/edit/profile', [HomeController::class, 'editProfile'])->name('panitia.edit.editProfile');
 });
 
@@ -102,12 +104,10 @@ Route::get('auth/facebook/callback', [FacebookController::class, 'handleFacebook
 
 //Pengumuman routes
 Route::get('admin/pengumuman', [PengumumanController::class, 'index'])->name('admin.pengumuman');
-Route::get('panitia/pengumuman', [PengumumanController::class, 'index'])->name('panitia.pengumuman');
 Route::resource('pengumuman', PengumumanController::class);
 
 //Gallery routes
 Route::get('admin/gallery', [GalleryController::class, 'index'])->name('admin.gallery');
-Route::get('panitia/gallery', [GalleryController::class, 'index'])->name('panitia.gallery');
 Route::resource('gallery', GalleryController::class);
 
 //Search routes

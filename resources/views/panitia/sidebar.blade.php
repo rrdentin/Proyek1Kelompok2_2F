@@ -61,7 +61,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('admin.pembayaran') }}" class="nav-link">
+                    <a href="{{ route('panitia.pembayaran') }}" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor"
                             class="bi bi-coin" viewBox="0 0 16 16">
                             <path
