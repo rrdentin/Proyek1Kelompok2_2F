@@ -20,7 +20,7 @@ class SiswaController extends Controller
     
         if ($user->level == 'admin') {
 
-            $siswas = Siswa::with('pendaftar')->get();
+            $siswas = Siswa::with('pendaftar')->paginate(5);
             return view('admin.siswa', compact('siswas'));
         } elseif ($user->level == 'panitia') {
             $siswa = Siswa::with('pendaftar')->get();
