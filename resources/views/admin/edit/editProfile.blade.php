@@ -7,7 +7,7 @@
 
 <body style="background-color: #f4f5f7;">
     <div class="container">
-        <div class="row gutters" style="margin-top: 150px;">
+        <div class="row gutters" style="padding: 10%;">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100" >
                     <div class="card-body" style="margin-top: 30px;">
@@ -104,7 +104,10 @@
                             <div class="row gutters">
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="text-right">
-                                        <button type="button" name="cancel"  class="btn btn-secondary" href="{{ route('admin.dashboard')}}">Cancel</button>
+                                        <a href="{{ '/' . auth()->user()->level . '/profile' }}" class="btn btn-secondary">
+                                            <i class="fas fa-arrow-left"></i>
+                                            Kembali
+                                        </a>
                                         <button type="submit" id="submit" name="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </div>
