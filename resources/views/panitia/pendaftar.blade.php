@@ -58,6 +58,27 @@
                 <h1>Tabel Daftar Calon Siswa </h1>
                 <h6>Mohon untuk selektif dan teliti dalam menyeleksi calon siswa ! </h6>
                 <hr>
+                @include('user.edit.editPendaftar')
+                @include('admin.delete.deletePendaftar')
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form class="form-left my-4" method="get" action="{{ route('searchPendaftar') }}">
                     <div class="form-group w-80 mb-3">
                         <input type="text" name="search" class="form-control w-50 d-inline" id="search"
@@ -119,14 +140,9 @@
                                             class="btn btn-primary">Lihat</a>
                                         <a href="#" data-toggle="modal"
                                             data-target="#editPendaftar{{ $pendaftar->id }}"
-                                            class="btn btn-info">Edit</a>
-                                        <form action="{{ route('pendaftar.delete', $pendaftar->id) }}" method="POST"
-                                            style="display: inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"
-                                                onclick="return confirm('Apakah Anda yakin ingin menghapus pendaftar ini?')">Delete</button>
-                                        </form>
+                                            class="btn btn-info">Ubah</a>
+                                        <a class="btn btn-danger" href="#" data-toggle="modal"
+                                            data-target="#deletePendaftar{{ $pendaftar->id }}">Hapus</a>
                                     </td>
                                 </tr>
                             @endforeach

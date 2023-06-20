@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body p-4">
-                                    <h6>Information</h6>
+                                    <h6>Informasi</h6>
                                     <hr class="mt-0 mb-4">
                                     <div class="row pt-1">
                                         <div class="col-8 mb-3">
@@ -39,7 +39,7 @@
                                             <p class="text-muted">{{ Auth::user()->noHp ?? '-' }}</p>
                                         </div>
                                     </div>
-                                    <h6>Details</h6>
+                                    <h6>Detail</h6>
                                     <hr class="mt-0 mb-4">
                                     <div class="row pt-1">
                                         <div class="col-6 mb-3">

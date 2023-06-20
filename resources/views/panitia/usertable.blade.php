@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
 
-                                @include('admin.create.createUser')
+                                @include('panitia.create.createUser')
 
                                 <div class="table table-bordered">
                                     <table class="table">
@@ -120,16 +120,16 @@
                                                     <td class="text-center fonts-big">{{ $user->level }}</td>
                                                     <td class="text-center fonts-big">
                                                         <a class="btn btn-primary" href="#" data-toggle="modal"
-                                                            data-target="#editPanitia{{ $user->id }}">Edit</a>
+                                                            data-target="#editPanitia{{ $user->id }}">Ubah</a>
                                                         <a class="btn btn-danger" href="#" data-toggle="modal"
-                                                            data-target="#deleteAdmin{{ $user->id }}">Delete</a>
+                                                            data-target="#deletePanitia{{ $user->id }}">Hapus</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
                                     </table>
                                     @include('panitia.edit.editPanitia')
-                                    @include('admin.delete.deleteAdmin')
+                                    @include('panitia.delete.deletePanitia')
                                 </div>
                                 <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
                                     <i class="fas fa-arrow-left"></i>

@@ -88,6 +88,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 // CRUD resources routes
 Route::resource('users', AdminController::class);
 Route::resource('pendaftars', PendaftarController::class);
+Route::resource('panitias', PanitiaController::class);
 
 Route::get('/table', [AdminController::class, 'index'])->name('table');
 

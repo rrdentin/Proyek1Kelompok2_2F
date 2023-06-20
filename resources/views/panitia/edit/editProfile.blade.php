@@ -23,7 +23,7 @@
                                     <h6 class="user-email">{{ Auth::user()->email }}</h6>
                                 </div>
                                 <div class="about">
-                                    <h6><a href="{{ route('password.change') }}">Change Password</a></h6>
+                                    <h6><a href="{{ route('password.change') }}">Ubah Password</a></h6>
                                 </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 @csrf
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <h6 class="mb-2 text-primary">Personal Details</h6>
+                                        <h6 class="mb-2 text-primary">Detail Personal</h6>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label for="noHp">Phone</label>
+                                            <label for="noHp">Nomor Telepon</label>
                                             <input type="text" class="form-control" id="noHp" name="noHp"
                                                 placeholder="{{ Auth::user()->noHp ? Auth::user()->noHp : 'Enter phone number' }}"
                                                 value="{{ Auth::user()->noHp }}">
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label for="jenKel">Gender</label>
+                                            <label for="jenKel">Jenis Kelamin</label>
                                             <select class="form-control" id="jenKel" name="jenKel">
                                                 <option value="Perempuan"
                                                     {{ Auth::user()->jenKel === 'Perempuan' ? 'selected' : '' }}>Perempuan
@@ -77,25 +77,25 @@
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label for="tglLahir">Date of Birth</label>
+                                            <label for="tglLahir">Tanggal Lahir</label>
                                             <input type="date" class="form-control" id="tglLahir" name="tglLahir"
                                                 value="{{ Auth::user()->tglLahir }}">
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                         <div class="form-group">
-                                            <label for="foto">Profile Image</label>
+                                            <label for="foto">Foto Profil</label>
                                             <input type="file" class="form-control" id="foto" name="foto"
                                                 accept="image/*" onchange="previewImage(event)">
                                             <small id="fotoHelp" class="form-text text-muted"></small>
                                         </div>
                                         <div class="form-group">
-                                            <label for="deleteFoto">Delete Profile Image</label>
+                                            <label for="deleteFoto">Hapus Foto Profil</label>
                                             <div class="form-check">
                                                 <input class="form-check-input" style="border-color: black;" type="checkbox"
                                                     id="deleteFoto" name="delete_foto">
                                                 <label class="form-check-label" for="deleteFoto">
-                                                    Delete current profile image
+                                                    Hapus foto profil saat ini
                                                 </label>
                                             </div>
                                         </div>
@@ -108,10 +108,13 @@
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="text-right">
-                                            <button type="button" name="cancel" class="btn btn-secondary"
-                                                href="{{ route('admin.dashboard') }}">Cancel</button>
+                                            <a href="{{ '/' . auth()->user()->level . '/profile' }}"
+                                                class="btn btn-secondary">
+                                                <i class="fas fa-arrow-left"></i>
+                                                Kembali
+                                            </a>
                                             <button type="submit" id="submit" name="submit"
-                                                class="btn btn-primary">Update</button>
+                                                class="btn btn-primary">Ubah</button>
                                         </div>
                                     </div>
                                 </div>

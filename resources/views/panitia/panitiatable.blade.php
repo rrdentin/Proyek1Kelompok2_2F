@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
 
-                                @include('admin.create.createPanitia')
+                                @include('panitia.create.createPanitia')
 
                                 <div class="table table-bordered">
                                     <table class="table">
@@ -123,7 +123,7 @@
                                                             method="POST">
                                                             <a class="btn btn-primary" href="#"
                                                                 data-toggle="modal"
-                                                                data-target="#editPanitia{{ $user->id }}">Edit</a>
+                                                                data-target="#editPanitia{{ $user->id }}">Ubah</a>
                                                         </form>
                                                     </td>
                                                 </tr>
