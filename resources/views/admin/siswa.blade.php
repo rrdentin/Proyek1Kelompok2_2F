@@ -113,15 +113,16 @@
                                                     <p>Tidak ada siswa yang tersedia.</p>
                                                 </div>
                                                 @endif
+                                                <div class="pagination">
+                                                    {{ $siswas->links() }}
+                                                </div>
                                                 <a href="/admin/dashboard" class="btn btn-primary btn-icon">
                                                     <i class="fas fa-arrow-left"></i>
                                                     Kembali
                                                 </a>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
                             </section>
                         </div>
@@ -146,3 +147,11 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('/') }}dist/js/pages/dashboard3.js"></script>
 </body>
+<style>
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+</style>
