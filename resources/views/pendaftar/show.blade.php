@@ -1,5 +1,5 @@
 @extends('layouts.userapp')
-<title>Daftar Siswa | Shaleh </title>
+<title>Daftar Pendaftar | Shaleh </title>
 <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 
 <body id="top-page">

@@ -72,7 +72,7 @@
                                                             <th>NIS</th>
                                                             <th>Name</th>
                                                             <th>Foto</th>
-                                                            <th>Name Wali</th>
+                                                            <th>Nama Wali</th>
                                                             <th>Jenjang Pendidikan</th>
                                                             <th>Actions</th>
                                                         </tr>
