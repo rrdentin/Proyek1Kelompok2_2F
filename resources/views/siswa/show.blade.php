@@ -56,12 +56,9 @@
                                     @else
                                         No foto available
                                     @endif
-                                    <br>
-                                    <td colspan="4"><strong>Nama</strong></td>
-                                    <td>: {{ $siswa->pendaftar->name }}</td>
-                                    <hr>
-                                    <td colspan="4"><strong>NIS</strong></td>
-                                    <td>: {{ $siswa->nis }}</td>
+                                    <strong><h6>Berikut adalah Nomor Induk Siswa {{ $siswa->pendaftar->name }}</h6></strong>
+                                    <td colspan="4"><strong> {{ $siswa->nis }}</strong></td>
+                                    <td></td>
                                     <hr>
                                     <td><strong style="font-size: 13; margin-left: -1.9%">Didaftarkan Pada </strong></td>
                                     <td >: {{ $pendaftar->created_at }}</td>
@@ -71,38 +68,57 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body p-4">
-                                        <h3>Information</h3>
+                                        <h3>Informasi Siswa</h3>
                                         <hr class="mt-0 mb-1">
                                         <div class="row pt-4">
                                             <div class="col-8 mb-3">
-                                                <td colspan="4"><strong>NIK</strong></td>
-                                                <td>: {{ $siswa->pendaftar->nik }}</td>
+                                                <table width="400px">
+                                                    <tr>
+                                                        <td><strong>NIK</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->nik }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Nama Siswa</strong><td>
+                                                        <td>: {{ $siswa->pendaftar->name }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Tempat Lahir</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->tempatLahir }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Tanggal Lahir</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->tglLahir }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Alamat</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->alamat }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Jenjang Pendidikan</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->jenjangPend }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Jenis Kelamin</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->jenKel }}<td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><strong>Status</strong><td>
+                                                        <td> : {{ $siswa->pendaftar->status }}<td>
+                                                    </tr>                  
+                                                </table>    
                                             </div>
-                                            <div class="col-8 mb-3">
-                                                <td colspan="4"><strong>Nama Wali</strong></td>
-                                                <td>: {{ $siswa->pendaftar->name_wali }}</td>
-                                            </div>
-                                            <div class="col-8 mb-3">
-                                                <td colspan="4"><strong>Alamat</strong></td>
-                                                <td>: {{ $siswa->pendaftar->alamat }}</td>
-                                            </div>
-                                            <div class="col-8 mb-3">
-                                                <td colspan="4"><strong>Jenjang Pendidikan</strong></td>
-                                                <td>: {{ $siswa->pendaftar->jenjangPend }}</td>
-                                            </div>
+                                        
                                         </div>
                                         <br>
-                                        <h3>Details</h3>
+                                        <h3>Informasi Wali</h3>
                                         <hr class="mt-0 mb-4">
-                                        <div class="row pt-1">
-                                            <div class="col-6 mb-3">
-                                                <td colspan="4"><strong>Jenis Kelamin :</strong></td>
-                                                <td> {{ $siswa->pendaftar->jenKel }}</td>
-                                            </div>
-                                            <div class="col-6 mb-3">
-                                                <td colspan="4"><strong>Tempat Lahir</strong></td>
-                                                <td>: {{ $siswa->pendaftar->tempatLahir }}</td>
-                                            </div>
+                                            <table width="600px">
+                                                <tr>
+                                                    <td><strong>Nama Wali </strong><td>
+                                                    <td> : {{ $siswa->pendaftar->name_wali }}<td>
+                                                </tr>
+                                            </table>
+                                            </hr>
                                         </div>
                                     </div>
 
