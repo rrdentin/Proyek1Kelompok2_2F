@@ -84,6 +84,11 @@
                                                         </div>
                                                     </form>
                                                 </div>
+                                                @if ($message = Session::get('success'))
+                                                    <div class="alert alert-success">
+                                                        <p>{{ $message }}</p>
+                                                    </div>
+                                                @endif
                                                 <!-- /.box-header -->
                                                 <div class="box-body">
                                                     <table class="table table-bordered">

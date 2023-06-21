@@ -59,7 +59,11 @@
                                     <div class="col-md-12">
                                         <div class="box">
                                             <div class="card-body">
-
+                                                @if ($message = Session::get('success'))
+                                                    <div class="alert alert-success">
+                                                        <p>{{ $message }}</p>
+                                                    </div>
+                                                @endif
                                                 @if (!empty($siswas) && count($siswas) > 0)
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered">

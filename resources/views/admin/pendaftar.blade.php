@@ -86,7 +86,11 @@
                         <button type="submit" class="btn btn-primary mb-1">Cari</button>
                     </div>
                 </form>
-
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
                 @if (count($pendaftars) > 0)
                     <table class="table table-striped">
                         <thead>
