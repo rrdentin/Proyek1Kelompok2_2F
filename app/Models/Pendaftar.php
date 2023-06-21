@@ -49,6 +49,6 @@ class Pendaftar extends Model
     public function isEditable()
     {
         // Only allow editing if the status is 'pending' and there is no associated siswa
-        return $this->status === 'pending' && !$this->siswa;
+        return $this->status === 'pending' && !$this->siswa|| 'rejected' && !$this->siswa;
     }
 }
