@@ -19,17 +19,45 @@
     <link rel="stylesheet" href="{{ asset('landing/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('landing/css/bootstrap.min.css') }}">
 
+    {{-- Owl Carousel --}}
+    <link rel="stylesheet" href="{{ asset('landing/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('landing/css/owl.theme.default.min.css') }}">
+
 </head>
 
 <body>
     @yield('content')
-
     <!-- Scripts -->
     <script>
         function toggleDropdown() {
             var dropdownMenu = document.getElementById('dropdownMenu');
             dropdownMenu.classList.toggle('show');
         }
+    </script>
+
+    <script src="{{ asset('landing/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('landing/js/owl.carousel.min.js') }}"></script>
+
+    <script>
+        $('.pengumumans-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: false,
+            autoplay:true,
+            autoplayTimeout:2000,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        })
     </script>
 </body>
 

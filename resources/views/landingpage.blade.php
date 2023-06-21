@@ -129,50 +129,27 @@
     </div>
 
     <!-- pengumuman -->
-    <section id="one" class="wrapper style2">
+    <section id="one" style="background-color: lightgray;">
 
-        <div class="inner">
-            <div class="grid-style">
-
-                <div>
-                    <div class="box">
-                        <div class="image fit">
-                            <img src="images/img-1.png" style="height:450px;" alt="" />
-                        </div>
-                        <div class="content">
-                            <header class="align-center">
-                                <p>Baca Selengkapnya</p>
-                                <h2>Pengumuman1</h2>
-                            </header>
-                            <p>akan muncul bila galery sudah bisa</p>
-                            <footer class="align-center">
-                                <a target="_blank" href="https://id.wikipedia.org/wiki/Madrasah_aliah"
-                                    class="button alt">Lebih Lengkap</a>
-                            </footer>
-                        </div>
+        <div class="py-5">
+            <div class="container">
+                <h1 class="section-heading text-center text-uppercase" style="margin-bottom: 2rem">Pengumuman</h1>
+                <div class="row">
+                    <div class="owl-carousel pengumumans-carousel owl-theme">
+                        @foreach ($pengumumans as $pengumuman)
+                            <div class="item">
+                                <div class="card">
+                                    <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                        alt="Pengumuman Image" height="250px" width="300px">
+                                    <div class="card-body">
+                                        <h5>{{ $pengumuman->judul_pengumuman }}</h5>
+                                        <span>{{ $pengumuman->desc_pengumuman }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-
-                <div>
-                    <div class="box">
-                        <div class="image fit">
-                            <img src="images/img-2.png" style="height: 450px;" alt="" />
-                        </div>
-                        <div class="content">
-                            <header class="align-center">
-                                <p>Baca Selengkapnya</p>
-                                <h2>Pengumuman2</h2>
-                            </header>
-                            <p>Akan muncul bila galery sudah bisa</p>
-                            <footer class="align-center">
-                                <a target="_blank"
-                                    href="https://www.google.com/search?q=apa+itu+sistem+informasi+alumni&oq=apa+itu+sistem+informasi+alumni&aqs=chrome..69i57.4178j0j4&sourceid=chrome&ie=UTF-8"
-                                    class="button alt">Lebih Lengkap</a>
-                            </footer>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>

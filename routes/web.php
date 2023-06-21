@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLevel;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GoogleController;
@@ -13,9 +14,8 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PanitiaController;
 
-Route::get('/', function () {
-    return view('landingpage');
-});
+
+Route::get('/', [LandingController::class, 'index']);
 
 // Login routes
 Route::get('/login', [HomeController::class, 'showLoginForm'])->name('login');
