@@ -157,7 +157,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-4">
-                            {{ $users->links() }}
+                            {{ $pendaftars->links() }}
                             </div>
                         </div>
                     </div>
