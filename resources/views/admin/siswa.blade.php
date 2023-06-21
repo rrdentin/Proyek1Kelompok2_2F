@@ -16,7 +16,7 @@
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="AdminLTELogo" height="170"
+        <img class="animation__shake" src="{{ asset('/') }}dist/img/Logo Shaleh.png" alt="Sekolah Saleh Logo" height="170"
             width="195">
     </div>
     <div class="wrapper">
@@ -53,7 +53,7 @@
         <div style="margin-left: 250px">
             <section class="content">
                 <div class="container-fluid">
-                    <h1>Siswa Dashboard</h1>
+                    <h1>Data Siswa </h1>
                     <!-- Small boxes (Stat box) -->
                     <!-- content alvian -->
                     <br>
@@ -61,7 +61,9 @@
                         <div class="row">
                             <div class="col-lg">
                                 <div class="card">
+                                <br>
                                     <div class="card-header border-0">
+                                    <h6>Berikut Tabel data siswa Sekolah Saleh yang sudah diseleksi</h6>
                                         <br>
                                         <div class="table-responsive">
                                             @if (!empty($siswas) && count($siswas) > 0)
