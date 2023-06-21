@@ -154,6 +154,46 @@
         </div>
     </section>
 
+    {{-- gallery --}}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="owl-carousel pengumumans-carousel owl-theme">
+                        @foreach ($pengumumans as $pengumuman)
+                            <div class="item">
+                                <div class="card">
+                                    <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                        alt="Pengumuman Image" height="250px" width="300px">
+                                    <div class="card-body">
+                                        <h5>{{ $pengumuman->judul_pengumuman }}</h5>
+                                        <span>{{ $pengumuman->desc_pengumuman }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="owl-carousel pengumumans-carousel owl-theme">
+                        @foreach ($pengumumans as $pengumuman)
+                            <div class="item">
+                                <div class="card">
+                                    <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                        alt="Pengumuman Image" height="250px" width="300px">
+                                    <div class="card-body">
+                                        <h5>{{ $pengumuman->judul_pengumuman }}</h5>
+                                        <span>{{ $pengumuman->desc_pengumuman }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section id="tutors">
         <div class="tengah">
