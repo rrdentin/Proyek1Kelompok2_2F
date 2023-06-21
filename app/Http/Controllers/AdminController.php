@@ -92,7 +92,7 @@ class AdminController extends Controller
         $user->save();
 
         // Redirect the user to a desired location after saving to the database
-        return redirect()->route('admin.admintable')->with('scs', 'User Berhasil Ditambahakan!');
+        return redirect()->back()->with('success', 'User Berhasil Ditambahakan!');
     }
 
     /**
@@ -140,12 +140,12 @@ class AdminController extends Controller
         //fungsi eloquent untuk mengupdate data inputan kita
         User::find($id)->update($request->all());
         //jika data berhasil diupdate, akan kembali ke halaman utama
-        return redirect()->route('admin.admintable')->with('success', 'Berhasil Diupdate');
+        return redirect()->back()->with('success', 'User Berhasil Diupdate!');
     }
     public function destroy($id)
     {
         //fungsi eloquent untuk menghapus data
         User::find($id)->delete();
-        return redirect()->route('admin.admintable')->with('success', 'Berhasil Dihapus');
+        return redirect()->back()->with('success', 'User Berhasil Dihapus!');
     }
 }
