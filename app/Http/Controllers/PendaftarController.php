@@ -134,7 +134,7 @@ class PendaftarController extends Controller
         $pendaftar = Pendaftar::findOrFail($id);
 
         if (!$pendaftar->isEditable()) {
-            return redirect()->route('pendaftar.dashboard')->with('error', 'Tidak dapat mengedit pendaftaran yang sudah diproses.');
+            return redirect()->back()->with('error', 'Tidak dapat mengedit pendaftaran yang sudah diproses.');
         }
 
         $validator = Validator::make($request->all(), [
