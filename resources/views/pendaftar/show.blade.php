@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h4>Data Pendaftar</h4>
-                            <table border="0" cellpadding="30">
+                            <table border="0" width="500px">
                                 <tr>
                                     <td colspan="4"><strong>NIK</strong></td>
                                     <td>: {{ $pendaftar->nik }}</td>
@@ -74,7 +74,7 @@
                                     <td>: {{ $pendaftar->alamat }}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4"><strong>Pilihan Jenjang Pendidikan</strong></td>
+                                    <td colspan="4"><strong>Jenjang Pendidikan</strong></td>
                                     <td>: {{ $pendaftar->jenjangPend }}</td>
                                 </tr>
                             </table>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="col-md-6">
                             <h4>Data Wali</h4>
-                            <table border="0" cellpadding="30">
+                            <table border="0" width="500px">
                                 <tr>
                                     <td colspan="4"><strong>Nama Wali</strong></td>
                                     <td>: {{ $pendaftar->name_wali }}</td>
@@ -102,7 +102,7 @@
                             </table>
                             <hr>
                             <h4>History Data Calon Siswa</h4>
-                            <table border="0" cellpadding="30">
+                            <table border="0" width="400px">
                                 <tr>
                                     <td colspan="4"><strong>Didaftarkan Pada </strong></td>
                                     <td>: {{ $pendaftar->created_at }}</td>
