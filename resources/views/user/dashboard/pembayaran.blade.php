@@ -89,16 +89,15 @@
                                                                 data-toggle="modal"
                                                                 data-target="#uploadPembayaran{{ $pembayaran->id }}">Unggah</a>
                                                         @elseif ($pembayaran->status == 'invalid')
-                                                            <a href="{{ route('pembayaran.update', $pembayaran->id) }}"
-                                                                class="btn btn-warning">Ubah</a>
+                                                            <a class="btn btn-warning" href="#"
+                                                                data-toggle="modal"
+                                                                data-target="#uploadPembayaran{{ $pembayaran->id }}">Ubah</a>
                                                         @elseif ($pembayaran->status == 'verifikasi')
                                                             <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
                                                                 class="btn btn-primary">Lihat</a>
                                                         @elseif ($pembayaran->status == 'terbayar')
                                                             <a href="{{ route('pembayaran.show', $pembayaran->id) }}"
                                                                 class="btn btn-primary">Lihat</a>
-                                                            <a href="{{ route('pembayaran.print', $pembayaran->id) }}"
-                                                                class="btn btn-success">Cetak</a>
                                                         @endif
                                                     </td>
                                                 </tr>
