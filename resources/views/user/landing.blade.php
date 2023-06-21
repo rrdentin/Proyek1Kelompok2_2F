@@ -62,10 +62,9 @@
     </marquee>
     {{-- Deadline Section --}}
     <div class="page-section">
-        <script src="https://cdn.logwork.com/widget/countdown.js"></script>
-        <a href="https://logwork.com/countdown-z11m" class="countdown-timer" data-style="circles"
-            data-timezone="Asia/Jakarta" data-date="2023-06-22 14:00" data-background="#283845"
-            data-digitscolor="#283845">Deadline Pendaftaran Anak</a>
+    <script src="https://cdn.logwork.com/widget/countdown.js"></script>
+        <a href="https://logwork.com/countdown-zaeb" class="countdown-timer" data-style="circles" 
+            data-timezone="Asia/Jakarta" data-date="2023-06-28 15:00" data-background="#283845" data-digitscolor="#283845">Deadline Pendaftaran</a>
     </div>
 
     {{-- About Sekolah (Elang) --}}

@@ -25,17 +25,17 @@ class PendaftarController extends Controller
         $user = Auth::user();
 
         if ($user->level == 'admin') {
-            $pendaftars = Pendaftar::with('pembayaran')->get();
+            $pendaftars = Pendaftar::with('pembayaran')->paginate(5)->withQueryString();
             return view('admin.pendaftar', compact('pendaftars'));
         } elseif ($user->level == 'panitia') {
-            $pendaftars = Pendaftar::with('pembayaran')->get();
+            $pendaftars = Pendaftar::with('pembayaran')->paginate(5)->withQueryString();
             return view('panitia.pendaftar', compact('pendaftars'));
         } elseif ($user->level == 'user') {
-            $pendaftars = Pendaftar::where('user_id', $user->id)->get();
+            $pendaftars = Pendaftar::where('user_id', $user->id)->paginate(5)->withQueryString();
             $pembayaran = [];
 
             if ($pendaftars->isNotEmpty()) {
-                $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
+                $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->paginate(1)->withQueryString();
             }
 
             return view('user.dashboard.pendaftar', compact('pendaftars', 'pembayaran'));

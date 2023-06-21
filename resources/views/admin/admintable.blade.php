@@ -97,10 +97,10 @@
                                 </div>
 
                                 @include('admin.create.createAdmin')
-                                @if ($message = Session::get('scs'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
+                                @if ($message = Session::get('success'))
+                                        <div class="alert alert-success">
+                                            <p>{{ $message }}</p>
+                                        </div>
                                 @endif
 
                                 <div class="table table-bordered">

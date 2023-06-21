@@ -96,6 +96,11 @@
                                     </div>
                                 </div>
                             </div>
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success">
+                                    <p>{{ $message }}</p>
+                                </div>
+                            @endif
                             @include('admin.create.createGallery')
                             <div class="table-responsive">
                                 <table class="table">
