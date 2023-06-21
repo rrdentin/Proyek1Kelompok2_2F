@@ -70,6 +70,11 @@
                                     <th>Jumlah: </th>
                                     <td>{{ $pembayaran->jumlah }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Foto Bukti: </th>
+                                    <td> <img src="{{ asset("storage/$pembayaran->bukti_pembayaran") }}" height="75px" width="100px" style="margin-right: 10px"
+                                        alt="AdminLTELogo"> </td>
+                                </tr>
                                 <tr class="table-info">
                                     <th>Status: </th>
                                     <td>{{ $pembayaran->status }}</td>
