@@ -148,10 +148,36 @@ class SiswaController extends Controller
 
     public function print($id)
     {
+        $user = Auth::user();
         $siswa = Siswa::findOrFail($id);
 
-        // Proses cetak pembayaran
+        if ($user->level == 'admin') {
+            $siswa = Siswa::where('id', $id)->first();
 
-        return view('siswa.print', compact('siswa'));
+            if (!$siswa) {
+                return redirect()->back()->with('error', 'Siswa tidak ditemukan.');
+            }
+
+            $pdf = PDF::loadView('siswa.print', ['siswa' => $siswa]);
+            return $pdf->stream();
+        } elseif ($user->level == 'panitia') {
+            $siswa = Siswa::where('id', $id)->first();
+
+            if (!$siswa) {
+                return redirect()->back()->with('error', 'Siswa tidak ditemukan.');
+            }
+
+            $pdf = PDF::loadView('siswa.print', ['siswa' => $siswa]);
+            return $pdf->stream();
+        } elseif ($user->level == 'user') {
+            $siswa = Siswa::where('id', $id)->first();
+
+            if (!$siswa) {
+                return redirect()->back()->with('error', 'Siswa tidak ditemukan.');
+            }
+
+            $pdf = PDF::loadView('siswa.print', ['siswa' => $siswa]);
+            return $pdf->stream();
+        }
     }
 }
