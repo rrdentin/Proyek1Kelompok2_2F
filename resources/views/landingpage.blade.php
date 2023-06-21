@@ -129,7 +129,7 @@
     </div>
 
     <!-- pengumuman -->
-    <section id="one" style="background-color: lightgray;">
+    <section id="one" style="background-color: #c5d0d8;">
 
         <div class="py-5">
             <div class="container">
@@ -156,37 +156,42 @@
 
     {{-- gallery --}}
     <section>
-        <div class="container">
+        <div class="container" style="padding: 3rem;">
+            <h1 class="section-heading text-center text-uppercase" style="margin-bottom: 2rem">Gallery</h1>
             <div class="row">
                 <div class="col-6">
-                    <div class="owl-carousel pengumumans-carousel owl-theme">
-                        @foreach ($pengumumans as $pengumuman)
+                    <div class="owl-carousel tk-carousel owl-theme">
+                        @foreach ($gallery as $galeri)
+                        @if($galeri->kategori_galeri == "TK")
                             <div class="item">
                                 <div class="card">
-                                    <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                    <img src="{{ asset("storage/gallery/$galeri->gambar_galeri") }}"
                                         alt="Pengumuman Image" height="250px" width="300px">
                                     <div class="card-body">
-                                        <h5>{{ $pengumuman->judul_pengumuman }}</h5>
-                                        <span>{{ $pengumuman->desc_pengumuman }}</span>
+                                        <h5>{{ $galeri->kategori_galeri }}</h5>
+                                        <span>{{ $galeri->keterangan_galeri }}</span>
                                     </div>
                                 </div>
                             </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>
                 <div class="col-6">
-                    <div class="owl-carousel pengumumans-carousel owl-theme">
-                        @foreach ($pengumumans as $pengumuman)
+                    <div class="owl-carousel paud-carousel owl-theme">
+                        @foreach ($gallery as $galeri)
+                        @if($galeri->kategori_galeri == "Paud")
                             <div class="item">
                                 <div class="card">
-                                    <img src="{{ asset("storage/pengumuman/$pengumuman->gambar_pengumuman") }}"
+                                    <img src="{{ asset("storage/gallery/$galeri->gambar_galeri") }}"
                                         alt="Pengumuman Image" height="250px" width="300px">
                                     <div class="card-body">
-                                        <h5>{{ $pengumuman->judul_pengumuman }}</h5>
-                                        <span>{{ $pengumuman->desc_pengumuman }}</span>
+                                        <h5>{{ $galeri->kategori_galeri }}</h5>
+                                        <span>{{ $galeri->keterangan_galeri }}</span>
                                     </div>
                                 </div>
                             </div>
+                        @endif
                         @endforeach
                     </div>
                 </div>
