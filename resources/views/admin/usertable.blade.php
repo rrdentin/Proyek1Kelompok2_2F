@@ -99,7 +99,7 @@
 
                                 @include('admin.create.createUser')
 
-                                <div class="table-responsive">
+                                <div class="table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
