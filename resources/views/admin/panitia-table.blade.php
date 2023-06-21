@@ -104,7 +104,7 @@
                                     </div>
                                 @endif
 
-                                <div class="table-responsive">
+                                <div class="table-bordered">
                                     <table class="table">
                                         <thead class="thead-dark">
                                             <tr>
@@ -133,7 +133,7 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
-                                    </table>
+                                    </table>      
                                     @include('admin.edit.editAdmin')
                                     @include('admin.delete.deleteAdmin')
                                 </div>

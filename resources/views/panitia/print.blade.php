@@ -8,18 +8,29 @@
 </head>
 
 <body>
-    <style type="text/css">
-        table tr td,
-        table tr th {
-            font-size: 9pt;
-        }
-    </style>
-    <center>
-        <h5>Bukti Pendaftaran</h4>
-            <h6><a target="_blank"
-                    href="https://www.sekolahanaksaleh.sch.id-…n-dompdf-laravel/">www.sekolahanaksaleh.sch.id</a>
-        </h5>
-    </center>
+    <div class="row justify-content-center align-items-center">
+        <table border="0" width="100%" style="text-align:center;">
+            <tbody>
+                <tr>
+                    <td align="left"><img src="dist/img/Logo Shaleh.png" width="130px"
+                            alt="Logo Shaleh"></td>
+                    <td align="center" width="150%">
+                        <div>
+                            <span style="font-family: 'Times New Roman'; font-size:16pt">YAYASAN ANAK SHALEH</span><br>
+                            <span style="font-family: 'Times New Roman'; font-size:16pt"><strong>TK | PAUD ANAK SHALEH</strong></span><br>
+                            <span style="font-family: 'Times New Roman'; font-size:14pt">Mojolangu, Kec. Lowokwaru, Kota Malang, Jawa Timur 65143</span><br>
+                            <h6><a target="_blank"
+                                href="https://www.sekolahanaksaleh.sch.id-…n-dompdf-laravel/">www.sekolahanaksaleh.sch.id</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr style="height:10px; border:0; border-top:3px double #000000">
+        <div style="text-align: center">
+            <h3>Detail Pendaftaran</h3><br>
+        </div>
+
 
     <table class='table table-bordered' style="margin-left: -0.2%">
         <thead>

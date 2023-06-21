@@ -19,43 +19,39 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $userLevel = Auth::user()->level;
-        $selectedTable = $request->query('table'); // Mengambil nilai query parameter 'table'
+{
+    $userLevel = Auth::user()->level;
+    $selectedTable = $request->query('table');
 
-
-        // Memeriksa level pengguna dan pilihan tabel yang dipilih
-        if ($userLevel === 'admin') {
-            if ($selectedTable === 'admin') {
-                $users = User::where('level', 'admin')->paginate(5);
-                $view = 'admin.admintable';
-            } elseif ($selectedTable === 'user') {
-                $users = User::where('level', 'user')->paginate(5);
-                $view = 'admin.usertable';
-            } elseif ($selectedTable === 'panitia') {
-                $users = User::where('level', 'panitia')->paginate(5);
-                $view = 'admin.panitia-table';
-            } else {
-                // Pengguna level admin tetapi tidak ada pilihan tabel yang dipilih
-                return redirect()->route('table', ['table' => 'admin']);
-            }
-        } elseif ($userLevel === 'panitia') {
-            if ($selectedTable === 'user') {
-                $users = User::where('level', 'user')->paginate(5);
-                $view = 'panitia.usertable';
-            } elseif ($selectedTable === 'panitia') {
-                $users = User::where('level', 'panitia')->paginate(5);
-                $view = 'panitia.panitiatable';
-            } else {
-                // Pengguna level panitia tetapi tidak ada pilihan tabel yang dipilih
-                return redirect()->route('table', ['table' => 'panitia']);
-            }
+    if ($userLevel === 'admin') {
+        if ($selectedTable === 'admin') {
+            $users = User::where('level', 'admin')->paginate(5)->withQueryString();
+            $view = 'admin.admintable';
+        } elseif ($selectedTable === 'user') {
+            $users = User::where('level', 'user')->paginate(5)->withQueryString();
+            $view = 'admin.usertable';
+        } elseif ($selectedTable === 'panitia') {
+            $users = User::where('level', 'panitia')->paginate(1)->withQueryString();
+            $view = 'admin.panitia-table';
         } else {
-            return redirect('/');
+            return redirect()->route('table', ['table' => 'admin']);
         }
-
-        return view($view, compact('users'));
+    } elseif ($userLevel === 'panitia') {
+        if ($selectedTable === 'user') {
+            $users = User::where('level', 'user')->paginate(5)->withQueryString();
+            $view = 'panitia.usertable';
+        } elseif ($selectedTable === 'panitia') {
+            $users = User::where('level', 'panitia')->paginate(5)->withQueryString();
+            $view = 'panitia.panitiatable';
+        } else {
+            return redirect()->route('table', ['table' => 'panitia']);
+        }
+    } else {
+        return redirect('/');
     }
+
+    return view($view, compact('users'));
+}
 
     /**
      * Show the form for creating a new resource.

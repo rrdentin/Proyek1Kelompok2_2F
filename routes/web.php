@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
     Route::delete('/siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     Route::get('/siswa/{id}/print', [SiswaController::class, 'print'])->name('siswa.print');
-
+    Route::get('/table', [AdminController::class, 'index'])->name('table');
 });
 
 // User routes
@@ -64,7 +64,6 @@ Route::middleware(['checkLevel:user'])->group(function () {
 Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
     Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
-    Route::get('/panitia/panitiatable', [PanitiaController::class, 'index'])->name('panitia.panitiatable');
     Route::post('add-panitia', [PanitiaController::class, 'addPanitia'])->name('panitia.add-panitia');
     Route::get('/panitia/pendaftar', [PendaftarController::class, 'dashboard'])->name('panitia.pendaftar');
     Route::get('/panitia/pembayaran', [PembayaranController::class, 'dashboard'])->name('panitia.pembayaran');
@@ -91,8 +90,6 @@ Route::middleware(['checkLevel:admin'])->group(function () {
 Route::resource('users', AdminController::class);
 Route::resource('pendaftars', PendaftarController::class);
 Route::resource('panitias', PanitiaController::class);
-
-Route::get('/table', [AdminController::class, 'index'])->name('table');
 
 // Google routes
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('login.google');
