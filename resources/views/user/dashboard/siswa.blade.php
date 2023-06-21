@@ -83,7 +83,7 @@
                                                         @endphp
                                                         @foreach ($siswas as $siswa)
                                                             <tr>
-                                                                <td>{{ $no++ }}</td>
+                                                                <td>{{ $siswa->id }}</td>
                                                                 <td>{{ $siswa->nis }}</td>
                                                                 <td>{{ $siswa->pendaftar->name }}</td>
                                                                 <td>
@@ -99,10 +99,8 @@
                                                                 <td>
                                                                     <a href="{{ route('siswa.show', $siswa->id) }}"
                                                                         class="btn btn-primary">Lihat</a>
-                                                                    <form
-                                                                        action="{{ route('siswa.print', $siswa->id) }}"
-                                                                        class="btn btn-success">Cetak</button>
-                                                                    </form>
+                                                                    <a href="{{ route('siswa.print', $siswa->id) }}"
+                                                                        class="btn btn-success">Cetak</a>
                                                                 </td>
                                                             </tr>
                                                         @endforeach
