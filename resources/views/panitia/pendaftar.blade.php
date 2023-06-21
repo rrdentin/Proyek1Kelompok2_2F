@@ -88,7 +88,7 @@
                 </form>
 
                 @if (count($pendaftars) > 0)
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No.</th>

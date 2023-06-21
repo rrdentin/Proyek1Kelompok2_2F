@@ -62,9 +62,7 @@ class GalleryController extends Controller
             'keterangan_galeri' => $request->keterangan_galeri,
             'gambar_galeri' => $fileName,
         ]);
-        return redirect()
-            ->route('admin.gallery')
-            ->with('success', 'Galeri berhasil ditambahakan!');
+        return redirect()->back()->with('success', 'User Berhasil Ditambahakan!');
     }
 
     /**
@@ -118,7 +116,7 @@ class GalleryController extends Controller
         $gallery->gambar_galeri = $fileName;
         $gallery->save();
 
-        return redirect()->route('admin.gallery')->with('success', 'Galeri berhasil diubah!');
+        return redirect()->back()->with('success', 'User Berhasil Diupdate!');
     }
 
     /**
@@ -134,9 +132,6 @@ class GalleryController extends Controller
         Storage::delete('public/gallery/' . $data->gambar_galeri);
         $data->delete();
 
-        return redirect()->route('admin.gallery')->with(
-            'success',
-            'Data Gallery Berhasil Dihapus'
-        );
+        return redirect()->back()->with('success', 'User Berhasil Dihapus!');
     }
 }
