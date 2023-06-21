@@ -1,5 +1,5 @@
 @extends('admin.app')
-<title>Tabel Admin | Shaleh </title>
+<title>Tabel Pendaftar | Shaleh </title>
 <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
 @extends('admin.sidebar')
 <!--
