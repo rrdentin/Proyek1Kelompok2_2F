@@ -120,11 +120,11 @@ class PembayaranController extends Controller
         $pembayaran->save();
 
         if ($user->level === 'user') {
-            return redirect()->route('pembayaran.dashboard')->with('success', 'Berkas pembayaran berhasil diunggah ulang.');
+            return redirect()->route('pembayaran.dashboard')->with('success', 'Berkas pembayaran berhasil diunggah.');
         } elseif ($user->level === 'admin') {
-            return redirect()->route('admin.pembayaran')->with('success', 'Berkas pembayaran berhasil diunggah ulang.');
+            return redirect()->route('admin.pembayaran')->with('success', 'Berkas pembayaran berhasil diunggah.');
         } elseif ($user->level === 'panitia') {
-            return redirect()->route('panitia.pembayaran')->with('success', 'Berkas pembayaran berhasil diunggah ulang.');
+            return redirect()->route('panitia.pembayaran')->with('success', 'Berkas pembayaran berhasil diunggah.');
         }
 // dibuat seperti itu bang messi
 

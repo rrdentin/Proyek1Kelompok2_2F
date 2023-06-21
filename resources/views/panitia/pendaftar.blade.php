@@ -124,7 +124,8 @@
                                             @method('PUT')
                                             <select name="status" class="form-control" onchange="this.form.submit()">
                                                 <option value="pending"
-                                                    {{ $pendaftar->status == 'pending' ? 'selected' : '' }}>Pending
+                                                    {{ $pendaftar->status == 'pending' ? 'selected' : '' }}>
+                                                    Pending
                                                 </option>
                                                 <option value="accepted"
                                                     {{ $pendaftar->status == 'accepted' ? 'selected' : '' }}>Accepted
@@ -157,7 +158,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-4">
-                            {{ $pendaftars->links() }}
+                                {{ $pendaftars->links() }}
                             </div>
                         </div>
                     </div>

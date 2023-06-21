@@ -1,7 +1,7 @@
 @extends('admin.app')
 <title>Siswa | Shaleh </title>
 <link rel="icon" href="{{ asset('dist/img/Logo Shaleh.png') }}">
-@extends('admin.sidebar')
+@extends('panitia.sidebar')
 <!--
 `body` tag options:
 
@@ -35,7 +35,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <a class="nav-link" href="{{ route('admin.profile') }}">
+                        <a class="nav-link" href="{{ route('panitia.profile') }}">
                             <th>{{ Auth::user()->name }}</th>
                         </a>
                         <a class="nav-link" href="{{ route('logout') }}"

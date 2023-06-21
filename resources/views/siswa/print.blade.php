@@ -44,7 +44,7 @@
                 <td>{{ $siswa->pendaftar->nik }}</td>
             </tr>
             <tr>
-                <th>Status</th>
+                <th>NIS</th>
                 <td>{{ $siswa->nis }}</td>
             </tr>
             <tr>

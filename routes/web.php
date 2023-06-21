@@ -64,6 +64,7 @@ Route::middleware(['checkLevel:user'])->group(function () {
 Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/dashboard', [HomeController::class, 'showPanitiaDashboard'])->name('panitia.dashboard');
     Route::get('/panitia/profile', [HomeController::class, 'viewProfile'])->name('panitia.profile');
+    Route::get('/panitia/siswa', [SiswaController::class, 'dashboard'])->name('panitia.siswa');
     Route::post('add-panitia', [PanitiaController::class, 'addPanitia'])->name('panitia.add-panitia');
     Route::get('/panitia/pendaftar', [PendaftarController::class, 'dashboard'])->name('panitia.pendaftar');
     Route::get('/panitia/pembayaran', [PembayaranController::class, 'dashboard'])->name('panitia.pembayaran');

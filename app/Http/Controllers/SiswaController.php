@@ -22,10 +22,29 @@ class SiswaController extends Controller
         if ($user->level == 'admin') {
 
             $siswas = Siswa::with('pendaftar')->paginate(5);
-            return view('admin.siswa', compact('siswas'));
+            $pendaftars = Pendaftar::all();
+            $siswas = [];
+
+            if ($pendaftars->isNotEmpty()) {
+                $pendaftarIds = $pendaftars->pluck('id')->toArray();
+                $siswas = Siswa::whereIn('pendaftar_id', $pendaftarIds)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5);
+            }
+
+            return view('admin.siswa', compact('pendaftars', 'siswas'));
         } elseif ($user->level == 'panitia') {
-            $siswa = Siswa::with('pendaftar')->get();
-            return view('panitia.siswa', compact('siswa'));
+            $pendaftars = Pendaftar::all();
+            $siswas = [];
+
+            if ($pendaftars->isNotEmpty()) {
+                $pendaftarIds = $pendaftars->pluck('id')->toArray();
+                $siswas = Siswa::whereIn('pendaftar_id', $pendaftarIds)
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(5);
+            }
+
+            return view('panitia.siswa', compact('pendaftars', 'siswas'));
         } elseif ($user->level == 'user') {
             $pendaftars = Pendaftar::where('user_id', $user->id)->get();
             $siswas = [];
