@@ -102,9 +102,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($pendaftars as $key => $pendaftar)
+                            @foreach ($pendaftars as $pendaftar)
                                 <tr>
-                                    <td>{{ $pendaftars->firstItem() + $key }}</td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $pendaftar->name }}</td>
                                     <td>{{ $pendaftar->name_wali }}</td>
                                     <td>{{ $pendaftar->jenjangPend }}</td>
