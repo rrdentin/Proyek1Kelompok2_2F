@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Panitia;
+use App\Models\Siswa;
 use App\Models\Pendaftar;
 use App\Models\Pembayaran;
 use App\Http\Middleware\CheckLevel;
@@ -186,5 +187,19 @@ class PanitiaController extends Controller
         }
 
         return view('panitia.pendaftar', compact('pendaftars', 'pembayaran'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function searchPSiswa(Request $request)
+    {
+        $keyword = $request->search;
+        $siswas = Siswa::where('nis', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        return view('panitia.siswa', compact('siswas'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function searchPPembayaran(Request $request)
+    {
+        $keyword = $request->search;
+        $pembayarans = Pembayaran::where('id', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        return view('panitia.pembayaran', compact('pembayarans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

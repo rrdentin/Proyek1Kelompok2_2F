@@ -62,7 +62,7 @@
                             <div class="col-lg">
                                 <div class="card">
                                     <div class="card-header border-0">
-                                        <form action="{{ route('pembayaran.dashboard') }}" method="GET"
+                                        <form action="{{ route('searchPSiswa') }}" method="GET"
                                             class="box-tools">
                                             <div class="input-group">
                                                 <input type="text" name="search" class="form-control"

@@ -119,3 +119,5 @@ Route::get('/search/pendaftars', [HomeController::class, 'searchPendaftarUser'])
 Route::get('/search/panitia/user', [PanitiaController::class, 'searchPUser'])->name('searchPUser');
 Route::get('/search/panitia/panitia', [PanitiaController::class, 'searchPPanitia'])->name('searchPPanitia');
 Route::get('/search/panitia/pendaftar', [PanitiaController::class, 'searchPPendaftar'])->name('searchPPendaftar');
+Route::get('/search/panitia/siswa', [PanitiaController::class, 'searchPSiswa'])->name('searchPSiswa');
+Route::get('/search/panitia/pembayaran', [PanitiaController::class, 'searchPpembayaran'])->name('searchPPembayaran');
