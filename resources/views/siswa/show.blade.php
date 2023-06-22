@@ -112,7 +112,7 @@
                                         <br>
                                         <h3>Informasi Wali</h3>
                                         <hr class="mt-0 mb-4">
-                                            <table width="600px">
+                                            <table width="200px">
                                                 <tr>
                                                     <td><strong>Nama Wali </strong><td>
                                                     <td> : {{ $siswa->pendaftar->name_wali }}<td>
