@@ -133,14 +133,23 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
-                                    </table>      
+                                    </table>  
+                                    <div class="container">
+                                        <div class="d-flex align-items-center" style="height: 50px">
+                                            <div class="col-lg-10">
+                                                <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
+                                                    <i class="fas fa-arrow-left"></i>
+                                                    Kembali
+                                                </a>
+                                            </div>
+                                            <div class="col-lg-4">
+                                            {{ $users->links() }}
+                                            </div>
+                                        </div>
+                                    </div>    
                                     @include('admin.edit.editAdmin')
                                     @include('admin.delete.deleteAdmin')
                                 </div>
-                                <a href="/admin/dashboard" class="btn btn-primary btn-icon">
-                                    <i class="fas fa-arrow-left"></i>
-                                    Kembali
-                                </a>
                             </div>
                         </div>
                     </div>

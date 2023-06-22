@@ -124,8 +124,7 @@
                                             @method('PUT')
                                             <select name="status" class="form-control" onchange="this.form.submit()">
                                                 <option value="pending"
-                                                    {{ $pendaftar->status == 'pending' ? 'selected' : '' }}>
-                                                    Pending
+                                                    {{ $pendaftar->status == 'pending' ? 'selected' : '' }}>Pending
                                                 </option>
                                                 <option value="accepted"
                                                     {{ $pendaftar->status == 'accepted' ? 'selected' : '' }}>Accepted

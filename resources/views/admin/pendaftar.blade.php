@@ -87,7 +87,7 @@
                     </div>
                 </form>
                 @if (count($pendaftars) > 0)
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>No.</th>
@@ -148,6 +148,19 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="container">
+                        <div class="d-flex align-items-center" style="height: 50px">
+                            <div class="col-lg-10">
+                                <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Kembali
+                                </a>
+                            </div>
+                            <div class="col-lg-4">
+                            {{ $pendaftars->links() }}
+                            </div>
+                        </div>
+                    </div>
                 @else
                     <p>Tidak ada pendaftar yang tersedia.</p>
                 @endif

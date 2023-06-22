@@ -31,7 +31,7 @@ class AdminController extends Controller
             $users = User::where('level', 'user')->paginate(5)->withQueryString();
             $view = 'admin.usertable';
         } elseif ($selectedTable === 'panitia') {
-            $users = User::where('level', 'panitia')->paginate(1)->withQueryString();
+            $users = User::where('level', 'panitia')->paginate(5)->withQueryString();
             $view = 'admin.panitia-table';
         } else {
             return redirect()->route('table', ['table' => 'admin']);

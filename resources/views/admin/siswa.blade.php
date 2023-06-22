@@ -108,6 +108,19 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                <div class="container">
+                                                    <div class="d-flex align-items-center" style="height: 50px">
+                                                        <div class="col-lg-10">
+                                                            <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
+                                                                <i class="fas fa-arrow-left"></i>
+                                                                Kembali
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                        {{ $siswas->links() }}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @else
                                                 <div class="alert alert-info" style="border: none;">
                                                     <p>Tidak ada siswa yang tersedia.</p>
