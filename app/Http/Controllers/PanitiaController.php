@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Panitia;
+use App\Models\Pendaftar;
+use App\Models\Pembayaran;
 use App\Http\Middleware\CheckLevel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PanitiaController extends Controller
 {
@@ -131,5 +134,57 @@ class PanitiaController extends Controller
         //fungsi eloquent untuk menghapus data
         User::find($id)->delete();
         return redirect()->back()->with('success', 'User Berhasil Dihapus!');
+    }
+
+    public function searchPUser(Request $request)
+    {
+
+        $request->has('search');
+        $level = Auth::user()->level;
+        $view = 'panitia.usertable';
+
+        if ($level === 'user') {
+            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        } else {
+            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        }
+
+        return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function searchPPanitia(Request $request)
+    {
+
+        $request->has('search');
+        $level = Auth::user()->level;
+        $view = 'panitia.panitiatable';
+
+        if ($level === 'panitia') {
+            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        } else {
+            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        }
+
+        return view($view, ['users' => $users]);
+    }
+
+    public function searchPPendaftar(Request $request)
+    {
+        $request->has('search');
+        $level = Auth::user()->level;
+        $view = 'panitia.pendaftar';
+
+        if ($level === 'panitia') {
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        } else {
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        }
+
+        $pembayaran = [];
+        if ($pendaftars->isNotEmpty()) {
+            $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->paginate(5)->withQueryString();
+        }
+
+        return view('panitia.pendaftar', compact('pendaftars', 'pembayaran'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

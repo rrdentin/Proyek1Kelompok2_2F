@@ -79,7 +79,7 @@
                         </ul>
                     </div>
                 @endif
-                <form class="form-left my-4" method="get" action="{{ route('searchPendaftar') }}">
+                <form class="form-left my-4" method="get" action="{{ route('searchPPendaftar') }}">
                     <div class="form-group w-80 mb-3">
                         <input type="text" name="search" class="form-control w-50 d-inline" id="search"
                             placeholder="Search">

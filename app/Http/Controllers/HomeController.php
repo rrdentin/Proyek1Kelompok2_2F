@@ -326,7 +326,7 @@ class HomeController extends Controller
         $level = Auth::user()->level;
 
         if ($level === 'admin') {
-            $users = User::where('level', 'admin')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $users = User::where('level', 'admin')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
             $view = 'admin.admintable';
         } else {
             $users = User::all();
@@ -343,9 +343,9 @@ class HomeController extends Controller
         $view = 'admin.usertable';
 
         if ($level === 'user') {
-            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
         } else {
-            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
         }
 
         return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
@@ -358,9 +358,9 @@ class HomeController extends Controller
         $view = 'admin.panitia-table';
 
         if ($level === 'panitia') {
-            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
         } else {
-            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
         }
 
         return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
@@ -372,14 +372,14 @@ class HomeController extends Controller
         $view = 'admin.pendaftar';
 
         if ($level === 'admin') {
-            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
         } else {
-            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->get();
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
         }
 
         $pembayaran = [];
         if ($pendaftars->isNotEmpty()) {
-            $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
+            $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->paginate(5)->withQueryString();
         }
 
         return view('admin.pendaftar', compact('pendaftars', 'pembayaran'))->with('i', (request()->input('page', 1) - 1) * 5);
@@ -388,21 +388,21 @@ class HomeController extends Controller
     {
 
         $keyword = $request->search;
-        $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search . '%')->paginate(5);
+        $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('admin.gallery', compact('gallery'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function searchPengumuman(Request $request)
     {
 
         $keyword = $request->search;
-        $pengumumans = Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search . '%')->paginate(5);
+        $pengumumans = Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('admin.pengumuman', compact('pengumumans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function searchPendaftarUser(Request $request)
     {
 
         $keyword = $request->search;
-        $pendaftars = Pendaftar::where('name', 'like', '%' . $request->search . '%')->paginate(5);
+        $pendaftars = Pendaftar::where('name', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('user.dashboard.pendaftar', compact('pendaftars'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

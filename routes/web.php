@@ -116,3 +116,6 @@ Route::get('/search/pendaftar', [HomeController::class, 'searchPendaftar'])->nam
 Route::get('/search/gallery', [HomeController::class, 'searchGallery'])->name('searchGallery');
 Route::get('/search/pengumuman', [HomeController::class, 'searchPengumuman'])->name('searchPengumuman');
 Route::get('/search/pendaftars', [HomeController::class, 'searchPendaftarUser'])->name('searchPendaftarUser');
+Route::get('/search/panitia/user', [PanitiaController::class, 'searchPUser'])->name('searchPUser');
+Route::get('/search/panitia/panitia', [PanitiaController::class, 'searchPPanitia'])->name('searchPPanitia');
+Route::get('/search/panitia/pendaftar', [PanitiaController::class, 'searchPPendaftar'])->name('searchPPendaftar');

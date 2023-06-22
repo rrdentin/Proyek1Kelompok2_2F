@@ -82,7 +82,7 @@
                                             </div>
                                             <div class="col-md-5">
                                                 <form class="form-left my-4" method="get"
-                                                    action="{{ route('searchUser') }}">
+                                                    action="{{ route('searchPUser') }}">
                                                     <div class="form-group w-80 mb-1">
                                                         <input type="text" name="search"
                                                             class="form-control w-50 d-inline" id="search"
