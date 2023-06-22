@@ -80,7 +80,7 @@ class PanitiaController extends Controller
         $user->save();
 
         // Redirect the user to a desired location after saving to the database
-        return redirect()->back()->with('success', 'User Berhasil Ditambahakan!');
+        return redirect()->back()->with('success', 'Panitia Berhasil Ditambahakan!');
     }
 
     /**
@@ -128,13 +128,13 @@ class PanitiaController extends Controller
         //fungsi eloquent untuk mengupdate data inputan kita
         User::find($id)->update($request->all());
         //jika data berhasil diupdate, akan kembali ke halaman utama
-        return redirect()->back()->with('success', 'User Berhasil Diupdate!');
+        return redirect()->back()->with('success', 'Panitia Berhasil Diupdate!');
     }
     public function destroy($id)
     {
         //fungsi eloquent untuk menghapus data
         User::find($id)->delete();
-        return redirect()->back()->with('success', 'User Berhasil Dihapus!');
+        return redirect()->back()->with('success', 'Panitia Berhasil Dihapus!');
     }
 
     public function searchPUser(Request $request)

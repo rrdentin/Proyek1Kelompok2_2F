@@ -350,6 +350,7 @@ class HomeController extends Controller
 
         return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
     public function searchPanitia(Request $request)
     {
 
@@ -365,6 +366,7 @@ class HomeController extends Controller
 
         return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
     public function searchPendaftar(Request $request)
     {
         $request->has('search');
@@ -384,6 +386,7 @@ class HomeController extends Controller
 
         return view('admin.pendaftar', compact('pendaftars', 'pembayaran'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
     public function searchGallery(Request $request)
     {
 
@@ -391,6 +394,7 @@ class HomeController extends Controller
         $gallery = Gallery::where('kategori_galeri', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('admin.gallery', compact('gallery'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
     public function searchPengumuman(Request $request)
     {
 
@@ -398,11 +402,19 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::where('judul_pengumuman', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('admin.pengumuman', compact('pengumumans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
     public function searchPendaftarUser(Request $request)
     {
 
         $keyword = $request->search;
         $pendaftars = Pendaftar::where('name', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('user.dashboard.pendaftar', compact('pendaftars'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
+    public function searchPembayaran(Request $request)
+    {
+        $keyword = $request->search;
+        $pembayarans = Pembayaran::where('id', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        return view('admin.pembayaran', compact('pembayarans'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }

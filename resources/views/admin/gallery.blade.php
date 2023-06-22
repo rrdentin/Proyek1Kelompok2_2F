@@ -102,7 +102,7 @@
                                 </div>
                             @endif
                             @include('admin.create.createGallery')
-                            <div class="table-responsive">
+                            <div class="table-bordered">
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>

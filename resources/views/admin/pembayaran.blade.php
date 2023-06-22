@@ -70,7 +70,7 @@
                                             <div class="card-body">
                                                 <div class="box-header with-border">
                                                     <h6 class="box-title">Detail Pembayaran</h6>
-                                                    <form action="{{ route('pembayaran.dashboard') }}" method="GET"
+                                                    <form action="{{ route('searchPembayaran') }}" method="GET"
                                                         class="box-tools">
                                                         <div class="input-group">
                                                             <input type="text" name="search" class="form-control"
