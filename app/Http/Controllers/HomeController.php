@@ -332,7 +332,7 @@ class HomeController extends Controller
             $users = User::all();
         }
 
-        return view($view, ['users' => $users]);
+        return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function searchUser(Request $request)
@@ -348,7 +348,7 @@ class HomeController extends Controller
             $users = User::where('level', 'user')->where('name', 'LIKE', '%' . $request->search . '%')->get();
         }
 
-        return view($view, ['users' => $users]);
+        return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function searchPanitia(Request $request)
     {
@@ -363,11 +363,10 @@ class HomeController extends Controller
             $users = User::where('level', 'panitia')->where('name', 'LIKE', '%' . $request->search . '%')->get();
         }
 
-        return view($view, ['users' => $users]);
+        return view($view, ['users' => $users])->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function searchPendaftar(Request $request)
     {
-
         $request->has('search');
         $level = Auth::user()->level;
         $view = 'admin.pendaftar';
@@ -383,7 +382,7 @@ class HomeController extends Controller
             $pembayaran = Pembayaran::whereIn('pendaftar_id', $pendaftars->pluck('id'))->get();
         }
 
-        return view('admin.pendaftar', compact('pendaftars', 'pembayaran'));
+        return view('admin.pendaftar', compact('pendaftars', 'pembayaran'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
     public function searchGallery(Request $request)
     {

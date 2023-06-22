@@ -62,6 +62,18 @@
                             <div class="col-lg">
                                 <div class="card">
                                     <div class="card-header border-0">
+                                        <form action="{{ route('pembayaran.dashboard') }}" method="GET"
+                                            class="box-tools">
+                                            <div class="input-group">
+                                                <input type="text" name="search" class="form-control"
+                                                    placeholder="Search">
+                                                <div class="input-group-btn">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Cari
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                         <br>
                                         <div class="table-responsive">
                                             @if (!empty($siswas) && count($siswas) > 0)
@@ -106,6 +118,20 @@
                                                         @endforeach
                                                     </tbody>
                                                 </table>
+                                                <div class="container">
+                                                    <div class="d-flex align-items-center" style="height: 50px">
+                                                        <div class="col-lg-10">
+                                                            <a href="/panitia/dashboard"
+                                                                class="btn btn-primary btn-icon">
+                                                                <i class="fas fa-arrow-left"></i>
+                                                                Kembali
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-lg-8">
+                                                            {{ $siswas->links() }}
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             @else
                                                 <div class="alert alert-info" style="border: none;">
                                                     <p>Tidak ada siswa yang tersedia.</p>
