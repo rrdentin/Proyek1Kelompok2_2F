@@ -70,7 +70,6 @@
                                             <div class="card-body">
                                                 <div class="box-header with-border">
                                                     <h6 class="box-title">Detail Pembayaran</h6>
-
                                                     <form action="{{ route('pembayaran.dashboard') }}" method="GET"
                                                         class="box-tools">
                                                         <div class="input-group">
@@ -158,15 +157,21 @@
                                                             @endforeach
                                                         </tbody>
                                                     </table>
+                                                    <div class="container">
+                                                        <div class="d-flex align-items-center" style="height: 50px">
+                                                            <div class="col-lg-10">
+                                                                <a href="/panitia/dashboard" class="btn btn-primary btn-icon">
+                                                                    <i class="fas fa-arrow-left"></i>
+                                                                    Kembali
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                            {{ $pembayarans->links() }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- /.box-body -->
-                                                <div class="pagination">
-                                                    {{ $pembayarans->links() }}
-                                                </div>
-                                                <a href="/admin/dashboard" class="btn btn-primary btn-icon">
-                                                    <i class="fas fa-arrow-left"></i>
-                                                    Kembali
-                                                </a>
                                             </div>
                                             <!-- /.box -->
                                         </div>
