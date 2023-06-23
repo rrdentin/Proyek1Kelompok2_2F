@@ -20,15 +20,15 @@ use Barryvdh\DomPDF\Facade\PDF;
 
 class PendaftarController extends Controller
 {
-    public function dashboard()
+    public function dashboard(Request $request)
     {
         $user = Auth::user();
 
         if ($user->level == 'admin') {
-            $pendaftars = Pendaftar::with('pembayaran')->paginate(5)->withQueryString();
+            $pendaftars = Pendaftar::with('pembayaran')->paginate(5)->appends($request->query());
             return view('admin.pendaftar', compact('pendaftars'));
         } elseif ($user->level == 'panitia') {
-            $pendaftars = Pendaftar::with('pembayaran')->paginate(5)->withQueryString();
+            $pendaftars = Pendaftar::with('pembayaran')->paginate(5)->appends($request->query());
             return view('panitia.pendaftar', compact('pendaftars'));
         } elseif ($user->level == 'user') {
             $pendaftars = Pendaftar::where('user_id', $user->id)->paginate(5)->withQueryString();
@@ -248,7 +248,7 @@ class PendaftarController extends Controller
         // Delete the pendaftar
         $pendaftar->delete();
 
-        return redirect()->route('admin.pendaftar')->with('success', 'Pendaftaran berhasil dihapus.');
+        return redirect()->back()->with('success', 'Pendaftaran berhasil dihapus.');
     }
 
     public function updateStatus(Request $request, $id)
@@ -296,8 +296,10 @@ class PendaftarController extends Controller
             $siswa->save();
         }
 
-        // Redirect back or do any other desired action
-        return redirect()->to('/admin/pendaftar')->with('success', 'Status berhasil diperbarui.');
+        // Redirect back or do any other desired actionif ($level === 'user') {
+            $level = Auth::user()->level; // Assuming you have the role stored in the 'role' column of the users table
+
+            return redirect()->back()->with('success', 'Status berhasil diperbarui.');
     }
 
     public function printPDF($id)

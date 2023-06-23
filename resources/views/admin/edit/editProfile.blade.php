@@ -32,7 +32,7 @@
                 <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
                     <div class="card h-100"style="background-color: #ffff;">
                         <div class="card-body">
-                            <form action="{{ route('update-user') }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.update-user') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row gutters">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

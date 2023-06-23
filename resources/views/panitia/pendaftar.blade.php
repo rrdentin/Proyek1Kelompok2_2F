@@ -118,7 +118,7 @@
 
                                     <td>{{ $pendaftar->status }}</td>
                                     <td>
-                                        <form action="{{ route('pendaftar.updateStatus', $pendaftar->id) }}"
+                                        <form action="{{ route('panitia.pendaftar.updateStatus', $pendaftar->id) }}"
                                             method="POST">
                                             @csrf
                                             @method('PUT')

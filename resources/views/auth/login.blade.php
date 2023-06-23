@@ -39,7 +39,18 @@
                                 <p class="mb-4">Selamat Datang silahkan Login</p>
                             </div>
                             <div class="card-body">
-
+                                @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
+                                </div>
+                                @endif
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                            @foreach ($errors->all() as $error)
+                                                {{ $error }}
+                                            @endforeach
+                                    </div>
+                                @endif
                                 <form action="{{ route('login') }}" method="post">
                                     @csrf
                                     @if (session('status'))
@@ -53,11 +64,7 @@
                                             aria-describedby="emailHelp" required autocomplete="email"
                                             value="{{ old('email') }}" placeholder="Email" autofocus
                                             style="font-size: 12px">
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                        
                                     </div>
 
                                     <br>

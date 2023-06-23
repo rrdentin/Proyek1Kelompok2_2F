@@ -162,7 +162,7 @@ class SiswaController extends Controller
 
         $siswa->delete();
 
-        return redirect()->route('siswa.index')->with('success', 'Siswa berhasil dihapus.');
+        return redirect()->back()->with('success', 'Siswa berhasil dihapus.');
     }
 
     public function print($id)

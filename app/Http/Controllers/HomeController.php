@@ -279,46 +279,52 @@ class HomeController extends Controller
     }
 
     public function updateUser(Request $request)
-    {
-        $user = Auth::user();
-        $validator = Validator::make($request->all(), [
-            'username' => 'nullable',
-            'name' => 'required',
-            'noHp' => 'nullable',
-            'tglLahir' => 'nullable',
-            'jenKel' => 'nullable',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
+{
+    $user = Auth::user();
+    $validator = Validator::make($request->all(), [
+        'username' => 'nullable',
+        'name' => 'required',
+        'noHp' => 'nullable',
+        'tglLahir' => 'nullable',
+        'jenKel' => 'nullable',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $user->username = $request->username;
-        $user->name = $request->name;
-        $user->noHp = $request->noHp;
-        $user->tglLahir = $request->tglLahir;
-        $user->jenKel = $request->jenKel;
-
-        if ($request->hasFile('foto')) {
-            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-                Storage::disk('public')->delete($user->foto);
-            }
-
-            $image_name = $request->file('foto')->store('images', 'public');
-            $user->foto = $image_name;
-        } elseif ($request->has('delete_foto')) {
-            // Delete profile picture
-            if ($user->foto && Storage::disk('public')->exists($user->foto)) {
-                Storage::disk('public')->delete($user->foto);
-            }
-            $user->foto = null;
-        }
-
-        $user->save();
-
-        return redirect()->route('user.profile')->with('success', 'Profile updated successfully.');
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    $user->username = $request->username;
+    $user->name = $request->name;
+    $user->noHp = $request->noHp;
+    $user->tglLahir = $request->tglLahir;
+    $user->jenKel = $request->jenKel;
+
+    if ($request->hasFile('foto')) {
+        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+            Storage::disk('public')->delete($user->foto);
+        }
+
+        $image_name = $request->file('foto')->store('images', 'public');
+        $user->foto = $image_name;
+    } elseif ($request->has('delete_foto')) {
+        // Delete profile picture
+        if ($user->foto && Storage::disk('public')->exists($user->foto)) {
+            Storage::disk('public')->delete($user->foto);
+        }
+        $user->foto = null;
+    }
+
+    $user->save();
+
+    if ($user->level === 'user') {
+        return redirect()->route('user.profile')->with('success', 'Profile berhasil dirubah.');
+    } elseif ($user->level === 'admin') {
+        return redirect()->route('admin.profile')->with('success', 'Profile berhasil dirubah.');
+    } elseif ($user->level === 'panitia') {
+        return redirect()->route('panitia.profile')->with('success', 'Profile berhasil dirubah.');
+    }
+}
     public function searchAdmin(Request $request)
     {
 
@@ -374,9 +380,9 @@ class HomeController extends Controller
         $view = 'admin.pendaftar';
 
         if ($level === 'admin') {
-            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->appends($request->query());
         } else {
-            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->withQueryString();
+            $pendaftars = Pendaftar::with('pembayaran')->where('name', 'LIKE', '%' . $request->search . '%')->paginate(5)->appends($request->query());
         }
 
         $pembayaran = [];
@@ -407,14 +413,23 @@ class HomeController extends Controller
     {
 
         $keyword = $request->search;
-        $pendaftars = Pendaftar::where('name', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
+        $pendaftars = Pendaftar::where('jenjangPend', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
         return view('user.dashboard.pendaftar', compact('pendaftars'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function searchPembayaran(Request $request)
     {
-        $keyword = $request->search;
-        $pembayarans = Pembayaran::where('id', 'like', '%' . $request->search . '%')->paginate(5)->withQueryString();
-        return view('admin.pembayaran', compact('pembayarans'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $search = $request->input('search');
+                $pembayarans = Pembayaran::where(function ($query) use ($search) {
+                    $query->whereHas('pendaftar', function ($q) use ($search) {
+                        $q->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('name_wali', 'like', '%' . $search . '%')
+                            ->orWhere('jenjangPend', 'like', '%' . $search . '%');
+                    })->orWhere('status', 'like', '%' . $search . '%');
+                });
+                            $pembayarans = $pembayarans->paginate(5);
+
+                        return view('admin.pembayaran', compact('pembayarans'))->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 }

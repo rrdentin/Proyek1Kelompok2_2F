@@ -18,17 +18,6 @@ class PembayaranController extends Controller
 
         if ($user->level == 'admin') {
             $pembayarans = Pembayaran::orderBy('created_at', 'desc');
-
-            // Filter by name, name_wali, jenjangPend, status
-            if ($request->has('search')) {
-                $search = $request->input('search');
-                $pembayarans = $pembayarans->whereHas('pendaftar', function ($q) use ($search) {
-                    $q->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('name_wali', 'like', '%' . $search . '%')
-                        ->orWhere('jenjangPend', 'like', '%' . $search . '%');
-                })->orWhere('status', 'like', '%' . $search . '%');
-            }
-
             $pembayarans = $pembayarans->paginate(5);
 
             return view('admin.pembayaran', compact('pembayarans'));

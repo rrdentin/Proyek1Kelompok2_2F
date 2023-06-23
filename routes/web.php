@@ -70,6 +70,8 @@ Route::middleware(['checkLevel:panitia'])->group(function () {
     Route::get('/panitia/pembayaran', [PembayaranController::class, 'dashboard'])->name('panitia.pembayaran');
     Route::get('/panitia/pendaftar/print/{id}', [PendaftarController::class, 'printPDF'])->name('panitia.print');
     Route::get('/panitia/edit/profile', [HomeController::class, 'editProfile'])->name('panitia.edit.editProfile');
+    Route::post('/panitia/update-user', [HomeController::class, 'updateUser'])->name('panitia.update-user');
+    Route::put('panitia/pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('panitia.pendaftar.updateStatus');
 });
 
 // Admin routes
@@ -83,6 +85,7 @@ Route::middleware(['checkLevel:admin'])->group(function () {
     Route::get('/admin/pendaftar/print/{id}', [PendaftarController::class, 'printPDF'])->name('admin.print');
     Route::put('pendaftar/{id}/update-status', [PendaftarController::class, 'updateStatus'])->name('pendaftar.updateStatus');
     Route::get('/admin/siswa', [SiswaController::class, 'dashboard'])->name('admin.siswa');
+    Route::post('/admin/update-user', [HomeController::class, 'updateUser'])->name('admin.update-user');
     Route::get('/admin/edit/profile', [HomeController::class, 'editProfile'])->name('admin.edit.editProfile');
 }
 );
